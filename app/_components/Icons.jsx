@@ -25,7 +25,7 @@ const perks=[
     },
 ]
   return (
-    <div className="grid grid-cols-4 gap-y-5 sn:grid-x-6 lg:grid-cols-4 lg:gap-x-8 lg:gap-y-5  mt-5">
+    <div className="grid grid-cols-4 gap-y-5 sn:grid-x-6 lg:grid-cols-4 lg:gap-x-8 lg:gap-y-5 bg-gray-100 mt-20">
 {perks.map((perk)=>(
   <div key={perk.name} className="text-center md:flex md:items-start md:text-left lg:block lg:text-center my-10">
     <div className="md:flex-shrink-0 flex justify-center">
@@ -33,7 +33,7 @@ const perks=[
 
     </div>
     <div className="mt-3 md:ml-4 md:mt-0 lg:ml-0 lg:mt-6">
-<h3 className="text-base font-medium text-gray-900">{perk.name}</h3>
+<h3 className="text-base md:font-medium text-gray-900">{perk.name}</h3>
 
     </div>
   </div>

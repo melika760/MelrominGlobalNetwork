@@ -1,6 +1,5 @@
 import React from 'react'
 import Image from 'next/image'
-import Icons from './Icons'
 const Aboutus = () => {
   return (
     <section>
@@ -31,7 +30,7 @@ const Aboutus = () => {
         </div>
       </div>
     </div>
-    <Icons/>
+   
   </section>
   )
 }
