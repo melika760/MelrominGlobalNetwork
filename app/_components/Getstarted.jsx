@@ -10,7 +10,7 @@ const Getstarted = () => {
     </div>
 
     <div className="mt-8 grid md:grid-cols-2 grid-cols-1 md:gap-20 gap-10">
-    <div className='border shadow-sm bg-gray-100 md:py-20 py-10 md:px-20 px-5 rounded-md'>
+    <div className='border shadow-lg bg-gray-100 md:py-20 py-10 md:px-20 px-5 rounded-md'>
 <h2 className='font-bold text-lg'>Suppliers:</h2>
 <ul className='my-7'>
     <li className='flex text-blue-950 py-2'><LogIn className='mr-2'/> Sign up to our website</li>
@@ -20,7 +20,7 @@ const Getstarted = () => {
 </ul>
 <p className='font-bold text-lg text-black'>Bingo! we will guarantee your shippment will be delivered at your agreed time.</p>
     </div>
-    <div className='border shadow-sm bg-gray-100 md:py-20 py-10 md:px-20 px-5 rounded-md'>
+    <div className='border shadow-lg bg-gray-100 md:py-20 py-10 md:px-20 px-5 rounded-md'>
 <h2 className='font-bold text-lg'>Forwarders:</h2>
 <ul className='my-7'>
     <li className='flex text-blue-950 py-2'><LogIn className='mr-2'/> Sign up to our website</li>

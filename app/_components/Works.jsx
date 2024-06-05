@@ -12,7 +12,7 @@ const Works = () => {
   
       <div className="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-16">
         <div className="relative h-64 overflow-hidden sm:h-80 lg:h-full">
-       <Image className='absolute inset-0 h-full w-full object-cover' src={"/Networking.png"} alt='Networking' width={500} height={200}/>
+       <Image className=' h-full w-full object-cover rounded-md shadow-md' src="/transportation-1.jpg" alt='transportation' width={500} height={200}/>
         </div>
   
         <div className="lg:py-16">

@@ -1,7 +1,9 @@
+"use client"
 import React from 'react'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
+import { LoginLink, RegisterLink } from '@kinde-oss/kinde-auth-nextjs'
 const Header = () => {
     const Menu=[
     {
@@ -32,7 +34,10 @@ const Header = () => {
     ))}
     </ul>
   </div>
-  <Button variant={"secondary"}>Login</Button>
+<div className='flex justify-between gap-3'>
+<LoginLink><Button variant={"ghost"}>Login</Button></LoginLink>
+<RegisterLink><Button>Create Account</Button></RegisterLink>
+</div>
 </div>
 )
 
