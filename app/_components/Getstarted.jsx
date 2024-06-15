@@ -16,7 +16,7 @@ const Getstarted = () => {
     <li className='flex text-blue-950 py-2'><LogIn className='mr-2'/> Sign up to our website</li>
     <li className='flex text-blue-950 py-2'><ReceiptText className='mr-2'/> Compelete Shippment inquiry</li>
     <li className='flex text-blue-950 py-2'><MessageSquareText className='mr-2'/>Choose your selected forwarders and start to chat with them</li>
-    <li className='flex text-blue-950 py-2'><ScrollText className='mr-2'/>Make your contract and arrange your payment trough our website </li>
+    <li className='flex text-blue-950 py-2'><ScrollText className='mr-2'/>Make your contract and arrange your payment through our website </li>
 </ul>
 <p className='font-bold text-lg text-black'>Bingo! we will guarantee your shippment will be delivered at your agreed time.</p>
     </div>
@@ -25,7 +25,7 @@ const Getstarted = () => {
 <ul className='my-7'>
     <li className='flex text-blue-950 py-2'><LogIn className='mr-2'/> Sign up to our website</li>
     <li className='flex text-blue-950 py-2'><MessageSquareText className='mr-2'/>Get quotes from suppliers and start chat with them</li>
-    <li className='flex text-blue-950 py-2'><ScrollText className='mr-2'/>Make your contract and get your invoice trough our website </li>
+    <li className='flex text-blue-950 py-2'><ScrollText className='mr-2'/>Make your contract and get your payment through our website </li>
 </ul>
 <p className='font-bold text-lg text-black'>Bingo! we will guarantee you will get paid at agreed time.</p>
     </div>
