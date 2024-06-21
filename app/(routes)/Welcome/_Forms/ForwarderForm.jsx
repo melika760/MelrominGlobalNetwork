@@ -18,19 +18,24 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover"
-import { ChevronsUpDown } from 'lucide-react'
+import { ChevronsUpDown, LoaderPinwheel } from 'lucide-react'
 import useInputs from '@/app/_components/_hooks/use-inputs'
-
+import { useRouter } from 'next/navigation'
+import {collection,addDoc} from "firebase/firestore"
+import { auth, db } from '@/config/firebaseConfig';
+import { useAuthState } from 'react-firebase-hooks/auth'
+import { toast } from 'sonner'
+import { Description } from '@radix-ui/react-dialog'
 const ForwarderForm = () => {
   const {value:companyname,ValueIsvalid:NameIsvalid, hasError:NameHasError,Changehandler:NameChange,Blurhandler:NameBlur}=useInputs(value=>value.trim()!=="");
   const {value:Address,ValueIsvalid:AddressIsvalid, hasError:AddressHasError,Changehandler:AddressChange,Blurhandler:AddressBlur}=useInputs(value=>value.trim()!=="");
   const {value:Phone,ValueIsvalid:PhoneIsvalid, hasError:PhoneHasError,Changehandler:PhoneChange,Blurhandler:PhoneBlur}=useInputs(value=>value.length>10);
   const {value:Mobile,ValueIsvalid:MobileIsvalid, hasError:MobileHasError,Changehandler:MobileChange,Blurhandler:MobileBlur}=useInputs(value=>value.length>10);
-  const {value:Ex,ValueIsvalid:ExIsvalid, hasError:ExHasError,Changehandler:ExChange,Blurhandler:ExBlur}=useInputs(value=>value.length>1);
+  const {value:Ex,ValueIsvalid:ExIsvalid, hasError:ExHasError,Changehandler:ExChange,Blurhandler:ExBlur}=useInputs(value=>value.length>0);
   const {value:des,ValueIsvalid:desIsvalid, hasError:desHasError,Changehandler:desChange,Blurhandler:desBlur}=useInputs(value=>value.length>10);
   const [selectedCounty, setSelectedCountry] = useState(null);
 const[open,setopen]=useState(false)
-
+const[loading,setloading]=useState(false)
 const[checkboxes,setselectedcheckbox]=useState({
   option1:false,
   option2:false,
@@ -38,18 +43,50 @@ const[checkboxes,setselectedcheckbox]=useState({
   option4:false,
 })
 const isAnyCheckboxChecked = Object.values(checkboxes).some(value => value);
-
+const router=useRouter()
+const[user]=useAuthState(auth)
+const[transportation,settransportation]=useState([])
 const handlecheckbox=(event)=>{
-  const { id, checked } = event.target;
+  const { id, checked,value } = event.target;
   setselectedcheckbox(prevState => ({
     ...prevState,
     [id]: checked,
   }));
- 
+  if (checked) {settransportation((prevSelected) => [...prevSelected, value])}else{
+    settransportation(((prevSelected) =>
+      prevSelected.filter((item) => item !== value)
+    ))
+  }
 }
-const ForwarderProfile=(event)=>{
-event.preventDefault();
+const ForwarderProfile=async(event)=>{
+  setloading(true)
+  event.preventDefault();
+  
+  if (!user) {
+    console.error("User is not authenticated");
+    return;
+  }
+  try {
+    const docRef = await addDoc(collection(db, "Forwarders"), {
+      name: companyname,
+      Address: Address,
+      country: selectedCounty,
+      Phone: Phone,
+      Mobile: Mobile,
+      transportationtype: transportation,
+      Experience:Ex,
+      description:des,
+      role: "Forwarder",
+      userId: user.uid
 
+    });
+    toast("Your profile is ready!")
+    console.log("Document written with ID: ", docRef.id);
+  } catch (error) {
+    console.error("Error adding document: ", error);
+  }
+  setloading(false)
+  router.replace("/dashboard")
 }
   return (
     <form className='grid md:grid-cols-2 grid-cols-1 gap-11 w-full' onSubmit={ForwarderProfile}>
@@ -141,7 +178,7 @@ Select Transportation Type:
     <label htmlFor="Option1" className="flex cursor-pointer items-start gap-4">
       <div className="flex items-center">
         &#8203;
-        <input type="checkbox" className="size-4 rounded border-gray-300" id="Option1"  checked={checkboxes["Option1"]} onChange={handlecheckbox}/>
+        <input type="checkbox" className="size-4 rounded border-gray-300" id="Option1"  checked={checkboxes["Option1"]} onChange={handlecheckbox} value={"Air Freight"}/>
       </div>
 
       <div>
@@ -152,7 +189,7 @@ Select Transportation Type:
     <label htmlFor="Option2" className="flex cursor-pointer items-start gap-4">
       <div className="flex items-center">
         &#8203;
-        <input type="checkbox" className="size-4 rounded border-gray-300" id="Option2"  checked={checkboxes["Option2"]} onChange={handlecheckbox}/>
+        <input type="checkbox" className="size-4 rounded border-gray-300" id="Option2"  checked={checkboxes["Option2"]} onChange={handlecheckbox} value={"Sea Freight"}/>
       </div>
 
       <div>
@@ -163,7 +200,7 @@ Select Transportation Type:
     <label htmlFor="Option3" className="flex cursor-pointer items-start gap-4">
       <div className="flex items-center">
         &#8203;
-        <input type="checkbox" className="size-4 rounded border-gray-300" id="Option3"  checked={checkboxes["Option3"]} onChange={handlecheckbox} />
+        <input type="checkbox" className="size-4 rounded border-gray-300" id="Option3"  checked={checkboxes["Option3"]} onChange={handlecheckbox} value={"Rail Freight"} />
       </div>
 
       <div>
@@ -173,7 +210,7 @@ Select Transportation Type:
     <label htmlFor="Option4" className="flex cursor-pointer items-start gap-4">
       <div className="flex items-center">
         &#8203;
-        <input type="checkbox" className="size-4 rounded border-gray-300" id="Option4"  checked={checkboxes["Option4"]} onChange={handlecheckbox}/>
+        <input type="checkbox" className="size-4 rounded border-gray-300" id="Option4"  checked={checkboxes["Option4"]} onChange={handlecheckbox} value={"Overland Freight"}/>
       </div>
 
       <div>
@@ -183,7 +220,9 @@ Select Transportation Type:
   </div>
 </fieldset>
   </label>
-  <Button disabled={!(NameIsvalid && AddressIsvalid && PhoneIsvalid && MobileIsvalid && isAnyCheckboxChecked && ExIsvalid && desHasError)}>Go to Dashboard</Button>
+  <Button disabled={!(NameIsvalid && AddressIsvalid && PhoneIsvalid && MobileIsvalid && isAnyCheckboxChecked && ExIsvalid && desIsvalid)}>
+  {loading? <LoaderPinwheel className='animate-spin'/>:"Go to Dashboard"}
+  </Button>
     </div>
     </form>)
 
