@@ -5,7 +5,7 @@ import Dashboardheader from './_components/Dashboardheader'
 const Dashboardlayout = ({children}) => {
   return (
     <div>
-        <div className='hidden md:block md:w-64 bg-slate-50 h-screen fixed'>
+        <div className='hidden md:block md:w-64 bg-slate-50 h-screen fixed shadow-sm'>
             <SideNavbar/>
         </div>
         <div className='md:ml-64'>

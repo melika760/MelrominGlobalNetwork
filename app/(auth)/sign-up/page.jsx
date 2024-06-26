@@ -100,7 +100,7 @@ useEffect(()=>{
   return (
     <div className='flex items-baseline justify-center my-20'>
       <div className='flex flex-col items-center p-10 bg-slate-100 border border-gray-200'>
-        <Image src={"/logo.svg"} width={200} height={200} alt='Logo' />
+        <Image src={"/logo2.png"} width={200} height={200} alt='Logo' className='mb-5 object-contain' />
         
         <h2 className='font-bold text-3xl'>Create an Account</h2>
         <h2 className='text-gray-500'>Enter your email and password to create an account</h2>

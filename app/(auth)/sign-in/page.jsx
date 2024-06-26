@@ -68,7 +68,7 @@ router.replace("/dashboard")
   return (
     <div className='flex items-baseline justify-center my-20'>
       <div className='flex flex-col items-center p-10 bg-slate-100 border border-gray-200'>
-        <Image src={"/logo.svg"} width={200} height={200} alt='Logo' />
+        <Image src={"/logo2.png"} width={200} height={200} alt='Logo' />
         
         <h2 className='font-bold text-3xl'>Create an Account</h2>
         <h2 className='text-gray-500'>Enter your email and password to create an account</h2>
@@ -102,10 +102,10 @@ router.replace("/dashboard")
       </div>
           ))}
           <Button onClick={handleSignIn} disabled={!passwordIsValid || !emailIsValid}>
-            {loader ? <LoaderIcon className='animate-spin' /> : "Create An Account"}
+            {loader ? <LoaderIcon className='animate-spin' /> : "Login"}
           </Button>
           <p>Already have an account?
-            <Link href="/sign-in" className='text-blue-500'>Click here to Sign in</Link>
+            <Link href="/sign-in" className='text-blue-500'>Click here to create an account</Link>
           </p>
         </div>
       </div>
