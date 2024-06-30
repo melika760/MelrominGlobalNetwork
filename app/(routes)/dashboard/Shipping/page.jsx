@@ -8,11 +8,13 @@ import { addDoc, collection, getDocs } from "firebase/firestore";
 import { auth, db } from "@/config/firebaseConfig";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 const Shipping = () => {
     const[loading,setloading]=useState(false)
     const[Isopen,setIsOpen]=useState(true)
     const[SecondOpen,setSecondOpen]=useState(false)
     const[user]=useAuthState(auth)
+    const router=useRouter()
     const AddingData=async(formData)=>{
         setloading(true)
 try{ const datas=await addDoc(collection(db,"ShippingData"),{
@@ -32,6 +34,7 @@ HsCode:formData.HS,
     transit:formData.transit,
     userId:user.uid
  })
+ router.push("/dashboard/ForwarderList")
 toast("Inquiery submitted successfully!")
 }catch(error){
     console.log(error)

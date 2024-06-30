@@ -21,7 +21,7 @@ const ShippingHistory = ({ shipdata }) => {
 
   return (
     <div className='p-6'>
-      {/* Header Row */}
+    
       <div className='grid grid-cols-5 gap-4 p-4 border-b-2 bg-gray-100'>
         <h3 className='font-bold'>Commodity</h3>
         <h3 className='font-bold'>Origin</h3>
@@ -29,8 +29,6 @@ const ShippingHistory = ({ shipdata }) => {
         <h3 className='font-bold'>Transportation</h3>
         <h3 className='font-bold'>More</h3>
       </div>
-
-      {/* Data Rows */}
       <div>
         {shippingData.length > 0 ? (
           shippingData.map((item, index) => (
