@@ -70,8 +70,8 @@ router.replace("/dashboard")
       <div className='flex flex-col items-center p-10 bg-slate-100 border border-gray-200'>
         <Image src={"/logo2.png"} width={200} height={200} alt='Logo' />
         
-        <h2 className='font-bold text-3xl'>Create an Account</h2>
-        <h2 className='text-gray-500'>Enter your email and password to create an account</h2>
+        <h2 className='font-bold text-3xl'>Login</h2>
+        <h2 className='text-gray-500'>Enter your email and password to login.</h2>
         <div className='w-full flex flex-col gap-5 mt-7'>
           <Input
             placeholder="Email"
@@ -105,7 +105,7 @@ router.replace("/dashboard")
             {loader ? <LoaderIcon className='animate-spin' /> : "Login"}
           </Button>
           <p>Already have an account?
-            <Link href="/sign-in" className='text-blue-500'>Click here to create an account</Link>
+            <Link href="/sign-up" className='text-blue-500'>Click here to create an account</Link>
           </p>
         </div>
       </div>
