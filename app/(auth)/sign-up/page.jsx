@@ -87,6 +87,7 @@ useEffect(()=>{
     setLoader(true);
     try {
       const res = await createUser(email, password);
+      toast("Your account created successfully!")
       router.replace("/Welcome")
     
      

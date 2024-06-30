@@ -58,9 +58,10 @@ const SignIn = () => {
     setLoader(true);
 try{
 const res= await SignInuser(email,password)
+toast("Sign in Successfully!")
 router.replace("/dashboard")
 }catch(e){
-
+toast("Please try again!")
 }
     setLoader(false);
   };

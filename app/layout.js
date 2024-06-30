@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { UpdateContex } from "./Store/UpdateContex";
 import { useState } from "react";
+import { Toaster } from "@/components/ui/sonner";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,7 +18,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <UpdateContex.Provider value={{role,setrole}}>{children}</UpdateContex.Provider>
-        
+        <Toaster />
         </body>
     </html>
   );

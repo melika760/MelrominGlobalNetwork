@@ -41,7 +41,7 @@ const Shippingform = ({onAdd,loading}) => {
     const[destination,setdestination]=useState(null)
     const[open,setopen]=useState(false)
     const[open2,setopen2]=useState(false)
-    const[transportation,settransportation]=useState("AirFreight")
+    const[transportation,settransportation]=useState("Air")
     const[Switch,setSwitch]=useState("WithoutSwitch")
     const[transit,settransit]=useState("Withouttransit")
     const[date,setDate]=useState(Date())
@@ -67,7 +67,7 @@ onAdd({
 }
     return (
       <div className='md:p-12 p-4'>
-        <h2 className='text-primary font-bold text-xl mb-8'>Shipping Form</h2>
+        <h2 className='text-primary font-bold text-xl mb-8'>Inquiery Form</h2>
         <form className='grid md:grid-cols-2 grid-cols-1 gap-6' onSubmit={ShppingformSubmit}>
   <div>
   <div className='flex flex-col'>
@@ -153,22 +153,22 @@ onAdd({
       {DimenssionHasError && <p className='text-red-500 font-sm mb-5'>Enter Dimenssion.</p>}
       <div>
         <label htmlFor='TransportationType'>Transportation type:</label>
-        <RadioGroup defaultValue="AirFreight" onValueChange={settransportation}>
+        <RadioGroup defaultValue="Air" onValueChange={settransportation}>
   <div className="flex items-center space-x-2 p-3">
-    <RadioGroupItem value="AirFreight" id="AirFreight" />
-    <Label htmlFor="AirFreight">Air Freight</Label>
+    <RadioGroupItem value="Air" id="Air" />
+    <Label htmlFor="Air">Air Freight</Label>
   </div>
   <div className="flex items-center space-x-2 p-3">
-    <RadioGroupItem value="SeaFreight" id="SeaFreight" />
-    <Label htmlFor="SeaFreight">Sea Freight</Label>
+    <RadioGroupItem value="Sea" id="Sea" />
+    <Label htmlFor="Sea">Sea Freight</Label>
   </div>
   <div className="flex items-center space-x-2 p-3">
-    <RadioGroupItem value="RailFreight" id="RailFreight" />
-    <Label htmlFor="RailFreight">Rail Freight</Label>
+    <RadioGroupItem value="Rail" id="Rail" />
+    <Label htmlFor="Rail">Rail Freight</Label>
   </div>
   <div className="flex items-center space-x-2 p-3">
-    <RadioGroupItem value="OverlandFreight" id="OverlandFreight" />
-    <Label htmlFor="OverlandFreight">Overland Freight</Label>
+    <RadioGroupItem value="Overland" id="Overland" />
+    <Label htmlFor="Overland">Overland Freight</Label>
   </div>
 </RadioGroup>
 
@@ -250,7 +250,7 @@ onAdd({
   
   </div>
         </form>
-        <Button type="submit" className="md:w-[400px] w-[350px] md:float-right my-8 mr-12" disabled={!(CommodityIsvalid && VolumeWeightIsvalid && DimenssionIsvalid && TempratureIsvalid && GrossWeightIsvalid && HSIsvalid && SpecialIsvalid && NoteIsvalid)}  onClick={ShppingformSubmit}>
+        <Button type="submit" className="md:w-[400px] w-[350px] md:float-right  mr-12" disabled={!(CommodityIsvalid && VolumeWeightIsvalid && DimenssionIsvalid && TempratureIsvalid && GrossWeightIsvalid && HSIsvalid && SpecialIsvalid && NoteIsvalid)}  onClick={ShppingformSubmit}>
           {loading? <LoaderPinwheel className='animate-spin'/>:"Submit"}</Button>
       </div>
     )
