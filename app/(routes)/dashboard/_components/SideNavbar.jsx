@@ -46,7 +46,7 @@ const SideNavbar = () => {
     },[path])
   return (
     <div className='p-5 py-14 '>
-        <div><Image src={"/logo4.png"} height={150} width={150} alt='LOGO'/>
+        <div><Link href={"/"}><Image src={"/logo4.png"} height={150} width={150} alt='LOGO'/></Link>
         </div>
       <div className='mt-5 flex flex-col gap-4'>
         {dashboardMenu.map((item,index)=>(

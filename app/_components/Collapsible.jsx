@@ -9,7 +9,7 @@ const Collapsible = ({title,children}) => {
         setIsOpen(!Isopen)
     }
   return (
-<div className="w-full p-10">
+<div className="w-[200px] p-10">
             <Button 
                 className="w-[300px] py-2 px-4  focus:outline-none focus:ring focus:ring-blue-300 transition duration-200" variant={"ghost"}
                 onClick={toggle}
