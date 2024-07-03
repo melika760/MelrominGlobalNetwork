@@ -196,7 +196,7 @@ Select Transportation Type:
 </fieldset>
 </label>
 <Button disabled={!(NameIsvalid && AddressIsvalid && PhoneIsvalid && MobileIsvalid && isAnyCheckboxChecked && ExIsvalid && desIsvalid)}>
-{loading? <LoaderPinwheel className='animate-spin'/>:"Go to Dashboard"}
+{loading? <LoaderPinwheel className='animate-spin'/>:"Save"}
 </Button>
   </div>
   </form>

@@ -32,7 +32,7 @@ console.log("Document written with ID: ", docRef.id);
     console.error("Error adding document: ", error)
 }
 setLoading(false);
-router.replace("/dashboard/profile");
+router.replace("/Forwarderdashboard");
     }
   return (
    <Forwarderprofile onAdd={AddItems} loading={loading}/>

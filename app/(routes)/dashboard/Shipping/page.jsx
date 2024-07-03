@@ -16,6 +16,7 @@ const Shipping = () => {
     const [user] = useAuthState(auth);
     const AddingData = async (formData) => {
       setLoading(true);
+
       try {
           await addDoc(collection(db, "ShippingData"), {
               Commodity: formData.Commodity,
@@ -36,7 +37,7 @@ const Shipping = () => {
           });
 
           toast("Inquiery submitted successfully!");
-          setContent(<Forwarderslist selectedCountry={formData.destination} inquiery={formData}/>)
+          setContent(<Forwarderslist selectedCountry={formData.destination} inquiery={formData} transportation={formData.transportation}/>)
       } catch (error) {
           console.log(error);
           toast("Something went wrong! Please try again");

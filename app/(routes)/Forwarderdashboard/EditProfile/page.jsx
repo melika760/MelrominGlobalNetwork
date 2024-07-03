@@ -6,13 +6,15 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
 import SupForms from '@/app/_components/Supforms';
+import ForwarderProfile from '../profile/page';
+import Forwarderprofile from '@/app/_components/Forwarderprofile';
 
-const EditProfile = () => {
+const EditProfiles = () => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
  const[user]=useAuthState(auth)
 
- const SupplierProfile = async (FormsData) => {
+ const ForwardersProfile = async (FormsData) => {
   setLoading(true);
 
   if (!user) {
@@ -22,20 +24,23 @@ const EditProfile = () => {
   }
 
   try {
-    const q = query(collection(db, "Suppliers"), where("userId", "==", user.uid));
+    const q = query(collection(db, "Forwarders"), where("userId", "==", user.uid));
     const querySnapshot = await getDocs(q);
 
     if (!querySnapshot.empty) {
       const userDoc = querySnapshot.docs[0];
-      const docRef = doc(db, "Suppliers", userDoc.id);
+      const docRef = doc(db, "Forwarders", userDoc.id);
       await updateDoc(docRef, {
-        name: FormsData.companyname || "", 
-        Address: FormsData.Address || "",
-        country: FormsData.selectedCounty || "",
-        Phone: FormsData.Phone || "",
-        Mobile: FormsData.Mobile || "",
-        transportationtype: FormsData.transportation || [],
-        role: "Supplier",
+        name: FormsData.companyname|| "",
+        Address: FormsData.Address|| "",
+        country: FormsData.selectedCounty|| "",
+        Phone: FormsData.Phone|| "",
+        Mobile: FormsData.Mobile|| "",
+        transportationtype: FormsData.transportation|| [],
+        Experience:FormsData.Ex|| "",
+        description:FormsData.des|| "",
+        role: "Forwarder",
+       
       });
 
       toast("Your profile updated successfully!")
@@ -47,16 +52,16 @@ const EditProfile = () => {
   }
 
   setLoading(false);
-  router.replace("/dashboard/profile");
+  router.replace("/Forwarderdashboard/profile");
 };
 
 
   return (<div className='md:p-10 p-2'>
        <h2 className='text-3xl font-extrabold text-primary mb-10'>Edit Profile</h2>
-  <SupForms onAdd={SupplierProfile} loading={loading}/>
+  <Forwarderprofile onAdd={ForwardersProfile} loading={loading}/>
   </div>
    
   );
-};
+}
 
-export default EditProfile;
+export default EditProfiles

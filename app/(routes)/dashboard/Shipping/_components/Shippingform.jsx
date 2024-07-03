@@ -250,7 +250,7 @@ onAdd({
   
   </div>
         </form>
-        <Button type="submit" className="md:w-[400px] w-[350px] md:float-right  mr-12" disabled={!(CommodityIsvalid && VolumeWeightIsvalid && DimenssionIsvalid && TempratureIsvalid && GrossWeightIsvalid && HSIsvalid && SpecialIsvalid && NoteIsvalid)}  onClick={ShppingformSubmit}>
+        <Button type="submit" className="md:w-[400px] w-[280px] md:float-right  mr-12" disabled={!(CommodityIsvalid && VolumeWeightIsvalid && DimenssionIsvalid && TempratureIsvalid && GrossWeightIsvalid && HSIsvalid && SpecialIsvalid && NoteIsvalid)}  onClick={ShppingformSubmit}>
           {loading? <LoaderPinwheel className='animate-spin'/>:"Submit"}</Button>
       </div>
     )

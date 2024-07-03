@@ -12,7 +12,7 @@ const fetchUserData = async (userId) => {
     const q = query(collection(db, "Suppliers"), where("userId", "==", userId));
     const querySnapshot = await getDocs(q);
     if (!querySnapshot.empty) {
-      const userDoc = querySnapshot.docs[0]; 
+      const userDoc = querySnapshot.docs[0];
       return { id: userDoc.id, ...userDoc.data() };
     } else {
       return null;
@@ -41,33 +41,49 @@ const Profile = () => {
         }
       });
     };
-
     fetchData();
   }, [auth]);
 
-  if (loading) return <div className=' flex justify-center text-blue-950 '><LoaderCircleIcon className='animate-spin'/>Loading</div>;
-  if (error) return <p>{error}</p>;
-  if (!userData) return <p>No user data found.</p>;
+  if (loading) return (
+    <div className='flex justify-center items-center h-screen text-blue-950'>
+      <LoaderCircleIcon className='animate-spin h-8 w-8' />
+      <span className='ml-2'>Loading...</span>
+    </div>
+  );
+  
+  if (error) return <p className='text-red-600 text-center'>{error}</p>;
+  if (!userData) return <p className='text-center text-gray-500'>No user data found.</p>;
 
   return (
-    <div className='p-10' key={userData.id}>
-      <h2 className='text-3xl font-extrabold text-primary mb-5'>Your Profile</h2>
-       <div className='grid md:grid-cols-2 gap-12'>
-      <div>
-        <h2 className='text-lg'>Company Name:<span className='text-blue-900 font-semibold'> {userData.name}</span></h2>
-        <h2 className='text-lg mt-5 mb-5'>Adress: <span className='text-blue-900 font-semibold'>{userData.Address}</span></h2>
-        <h2 className='text-lg'>Transportation Type: <ul className='text-blue-900 font-semibold'>{userData.transportationtype.map((item,index)=>(<li key={index}className='mt-5'>{item}</li>))}</ul></h2>
-      </div>
-      <div >
-        <h2 className='text-lg'>Mobile: <span className='text-blue-900 font-semibold'>{userData.Mobile}</span></h2>
-        <h2 className='text-lg mt-5 mb-5'>Phone: <span className='text-blue-900 font-semibold'>{userData.Phone}</span></h2>
-        <h2 className='text-lg'>Country:<span className='text-blue-900 font-semibold'>{userData.country}</span> </h2>
-        <h2 className='mt-12 mb-5'>Do you want to change your data?</h2><Link href={"/dashboard/Editprofile"}><Button>Click here!</Button></Link>
+    <div className='p-4 sm:p-10 max-w-4xl mx-auto'>
+      <h2 className='text-2xl sm:text-3xl font-extrabold text-primary mb-6 text-center'>Your Profile</h2>
+      <div className='grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12'>
+        <div className='bg-white p-6 rounded-lg shadow-md'>
+          <h3 className='text-lg font-semibold'>Company Name:</h3>
+          <p className='text-blue-900 mb-4'>{userData.name}</p>
+          <h3 className='text-lg font-semibold'>Address:</h3>
+          <p className='text-blue-900 mb-4'>{userData.Address}</p>
+          <h3 className='text-lg font-semibold'>Transportation Type:</h3>
+          <ul className='text-blue-900'>
+            {userData.transportationtype.map((item, index) => (
+              <li key={index} className='mt-1'>{item}</li>
+            ))}
+          </ul>
+        </div>
+        <div className='bg-white p-6 rounded-lg shadow-md'>
+          <h3 className='text-lg font-semibold'>Mobile:</h3>
+          <p className='text-blue-900 mb-4'>{userData.Mobile}</p>
+          <h3 className='text-lg font-semibold'>Phone:</h3>
+          <p className='text-blue-900 mb-4'>{userData.Phone}</p>
+          <h3 className='text-lg font-semibold'>Country:</h3>
+          <p className='text-blue-900 mb-4'>{userData.country}</p>
+          <h3 className='text-lg font-semibold mt-6'>Do you want to change your data?</h3>
+          <Link href="/dashboard/Editprofile">
+            <Button className='mt-4'>Click here!</Button>
+          </Link>
+        </div>
       </div>
     </div>
-  
-    </div>
-   
   );
 };
 
