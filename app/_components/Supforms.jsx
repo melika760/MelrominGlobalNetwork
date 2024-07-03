@@ -88,7 +88,7 @@ const SupForms = ({onAdd,loading}) => {
             <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
           </Button>
         </PopoverTrigger>
-        <PopoverContent className="w-[200px] p-0">
+        <PopoverContent className="md:w-[500px] w-[200px] p-0">
         <Command>
     <CommandInput placeholder="Type a command or search..." />
     <CommandList>

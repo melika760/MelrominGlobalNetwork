@@ -3,16 +3,16 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import useInput from '../_hooks/use-input';
 import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
 import { LoaderIcon, MessageSquareX } from 'lucide-react';
-import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
-import { auth } from '@/config/firebaseConfig';
+import { useAuthState, useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { auth, db } from '@/config/firebaseConfig';
+import { collection, query, where, getDocs } from 'firebase/firestore';
 
 const SignIn = () => {
-   
   const validateEmail = (value) => {
     return {
       isValid: value.includes("@"),
@@ -51,18 +51,55 @@ const SignIn = () => {
   } = useInput(validatePassword);
 
   const router = useRouter();
-  const [SignInuser] = useSignInWithEmailAndPassword(auth);
+  const [signInUser, loading, error] = useSignInWithEmailAndPassword(auth);
+  const [user] = useAuthState(auth);
   const [loader, setLoader] = useState(false);
+
+  useEffect(() => {
+    const handleRoleRouting = async () => {
+      if (user) {
+        console.log("User ID:", user.uid);
+        try {
+          const q = query(collection(db, "users"), where("userId", "==", user.uid));
+          const querySnapshot = await getDocs(q);
+
+          if (!querySnapshot.empty) {
+            querySnapshot.forEach((doc) => {
+              const userData = doc.data();
+              console.log("User Data:", userData);
+              if (userData.role === 'Supplier') {
+                router.replace("/dashboard/profile");
+              } else if (userData.role === 'Forwarder') {
+                router.replace("/Forwarderdashboard/profile");
+              } else {
+                toast("Unknown role!");
+              }
+            });
+          } else {
+            console.warn("User data not found in Firestore for ID:", user.uid);
+            toast("User data not found!");
+          }
+        } catch (error) {
+          console.error("Error fetching user data:", error);
+          toast("Error fetching user data!");
+        }
+      }
+    };
+
+    handleRoleRouting();
+  }, [user, router]);
 
   const handleSignIn = async () => {
     setLoader(true);
-try{
-const res= await SignInuser(email,password)
-toast("Sign in Successfully!")
-router.replace("/dashboard")
-}catch(e){
-toast("Please try again!")
-}
+
+    try {
+      await signInUser(email, password);
+      toast("Sign in Successfully!");
+    } catch (e) {
+      toast("Please try again!");
+      console.error("Error signing in:", e);
+    }
+
     setLoader(false);
   };
 
@@ -83,10 +120,9 @@ toast("Please try again!")
           />
           {emailHasError && emailErrorMessages.map((msg, idx) => (
             <div key={idx} className='mx-2 my-2 flex text-red-500 text-sm'>
-                 < MessageSquareX />
-                 <p className=" ml-2">{msg}</p>
+              <MessageSquareX />
+              <p className="ml-2">{msg}</p>
             </div>
-           
           ))}
           <Input
             type='password'
@@ -97,16 +133,16 @@ toast("Please try again!")
             className={`${passwordHasError && "border-red-500"}`}
           />
           {passwordHasError && passwordErrorMessages.map((msg, idx) => (
-           <div key={idx} className='mx-2 my-2 flex text-red-500 text-sm'>
-           < MessageSquareX />
-           <p className=" ml-2">{msg}</p>
-      </div>
+            <div key={idx} className='mx-2 my-2 flex text-red-500 text-sm'>
+              <MessageSquareX />
+              <p className="ml-2">{msg}</p>
+            </div>
           ))}
           <Button onClick={handleSignIn} disabled={!passwordIsValid || !emailIsValid}>
             {loader ? <LoaderIcon className='animate-spin' /> : "Login"}
           </Button>
-          <p>Already have an account?
-            <Link href="/sign-up" className='text-blue-500'>Click here to create an account</Link>
+          <p>Don't have an account?
+            <Link href="/sign-up" className='text-blue-500'> Click here to create an account</Link>
           </p>
         </div>
       </div>

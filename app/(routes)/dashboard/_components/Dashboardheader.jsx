@@ -12,9 +12,15 @@ import {
     DropdownMenuTrigger,
   } from "@/components/ui/dropdown-menu"
 import { signOut } from 'firebase/auth'
+import { useRouter } from 'next/navigation'
   
 const Dashboardheader = () => {
     const[user]=useAuthState(auth)
+    const router=useRouter()
+    const logout=()=>{
+      signOut(auth)
+      router.replace("/")
+    }
   return (
     <div className='float-right text-primary flex items-center mr-5 mt-5 cursor-pointer'>
         
@@ -28,7 +34,7 @@ const Dashboardheader = () => {
     <DropdownMenuItem>Chat</DropdownMenuItem>
     <DropdownMenuItem>Contract</DropdownMenuItem>
     <DropdownMenuItem>Payment</DropdownMenuItem>
-    <DropdownMenuItem onClick={()=>signOut(auth)}>Log out</DropdownMenuItem>
+    <DropdownMenuItem onClick={logout}>Log out</DropdownMenuItem>
   </DropdownMenuContent>
 </DropdownMenu>
     </div>

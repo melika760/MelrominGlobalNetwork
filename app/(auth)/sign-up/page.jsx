@@ -9,9 +9,10 @@ import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
 import { LoaderIcon, MessageSquareX } from 'lucide-react';
 import { useCreateUserWithEmailAndPassword,useAuthState } from "react-firebase-hooks/auth";
-import { auth } from '@/config/firebaseConfig';
+import { auth, db } from '@/config/firebaseConfig';
 import Customedropdown from '@/app/_components/Customedropdown';
 import { UpdateContex } from '@/app/Store/UpdateContex';
+import { addDoc, collection } from 'firebase/firestore';
 
 
 const CreateAccount = () => {
@@ -87,16 +88,26 @@ useEffect(()=>{
     setLoader(true);
     try {
       const res = await createUser(email, password);
-      toast("Your account created successfully!")
-      router.replace("/Welcome")
-    
-     
+  
+      if (user) {
+        await addDoc(collection(db, "users"), {
+          role: role,   
+          email: email,
+          userId: user.uid,
+        });
+  
+        toast("Your account created successfully!");
+        router.replace("/Welcome");
+      } else {
+        throw new Error("User creation failed");
+      }
     } catch (e) {
       console.log(e);
       toast("Failed to create account!");
     }
     setLoader(false);
   };
+  
 
   return (
     <div className='flex items-baseline justify-center my-20'>
