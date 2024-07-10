@@ -1,6 +1,9 @@
+"use client"
 import React from 'react'
 import SideNavbar from './_components/SideNavbar'
 import Dashboardheader from './_components/Dashboardheader'
+import withAuth from '@/app/_utils/withAuth'
+import withRole from '@/app/_utils/withRole'
 
 const Dashboardlayout = ({children}) => {
   return (
@@ -17,4 +20,4 @@ const Dashboardlayout = ({children}) => {
   )
 }
 
-export default Dashboardlayout
+export default withAuth(withRole("Supplier")(Dashboardlayout))

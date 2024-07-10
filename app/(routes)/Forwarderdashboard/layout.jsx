@@ -1,6 +1,9 @@
+"use client"
 import React from 'react'
 import Navbar from './_components/Navbar';
 import ForwarderHeader from './_components/ForwarderHeader';
+import withAuth from '@/app/_utils/withAuth';
+import withRole from '@/app/_utils/withRole';
 
 
 const Forwarderlayout = ({children}) => {
@@ -18,4 +21,4 @@ const Forwarderlayout = ({children}) => {
   )
 }
 
-export default Forwarderlayout;
+export default withAuth(withRole("Forwarder")(Forwarderlayout)) ;

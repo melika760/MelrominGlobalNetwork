@@ -1,11 +1,13 @@
-import React from 'react'
 
-const forwarderdashboard = () => {
+import withAuth from '@/app/_utils/withAuth'
+import withRole from '@/app/_utils/withRole'
+import React from 'react'
+import ForwardersProfile from './profile/page'
+
+const Forwarderdashboard = () => {
   return (
-    <div>
-      OK
-    </div>
+   <ForwardersProfile/>
   )
 }
 
-export default forwarderdashboard
+export default Forwarderdashboard;

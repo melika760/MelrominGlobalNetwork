@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import SupForms from '@/app/_components/Supforms';
 import globalapi from '@/app/_utils/globalapi';
 
+
 const EditProfile = () => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
@@ -38,4 +39,4 @@ try{
   );
 };
 
-export default EditProfile;
+export default EditProfile ;
