@@ -42,8 +42,8 @@ const Shippingform = ({onAdd,loading}) => {
     const[open,setopen]=useState(false)
     const[open2,setopen2]=useState(false)
     const[transportation,settransportation]=useState("Air")
-    const[Switch,setSwitch]=useState("WithoutSwitch")
-    const[transit,settransit]=useState("Withouttransit")
+    const[Switch,setSwitch]=useState("No")
+    const[transit,settransit]=useState("No")
     const[date,setDate]=useState(Date())
 const ShppingformSubmit=(event)=>{
   event.preventDefault();
@@ -213,24 +213,24 @@ onAdd({
       </Popover>
     <div className='mt-8 mb-5 flex flex-row gap-12 justify-between'>
         <div><p>Switch:</p>
-        <RadioGroup defaultValue="WithoutSwitch" onValueChange={setSwitch}>
+        <RadioGroup defaultValue="No" onValueChange={setSwitch}>
   <div className="flex items-center space-x-2 p-3">
-    <RadioGroupItem value="WithSwitch" id="withSwitch" />
+    <RadioGroupItem value="Yes" id="withSwitch" />
     <Label htmlFor="withSwitch">Yes</Label>
   </div>
   <div className="flex items-center space-x-2 p-3">
-    <RadioGroupItem value="WithoutSwitch" id="WithoutSwitch" />
+    <RadioGroupItem value="No" id="WithoutSwitch" />
     <Label htmlFor="WithoutSwitch">No</Label>
   </div></RadioGroup></div>
 
   <div className='ml-20'><p>Transit:</p>
-        <RadioGroup defaultValue="Withouttransit" onValueChange={settransit}>
+        <RadioGroup defaultValue="No" onValueChange={settransit}>
   <div className="flex items-center space-x-2 p-3">
-    <RadioGroupItem value="Transit" id="Transit" />
+    <RadioGroupItem value="Yes" id="Transit" />
     <Label htmlFor="Transit">Yes</Label>
   </div>
   <div className="flex items-center space-x-2 p-3">
-    <RadioGroupItem value="Withouttransit" id="Withouttransit" />
+    <RadioGroupItem value="No" id="Withouttransit" />
     <Label htmlFor="Withouttransit">No</Label>
   </div></RadioGroup></div>  
   
