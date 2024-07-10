@@ -1,36 +1,10 @@
 "use client"
 import React, { useEffect, useState } from 'react';
-import { auth, db } from "@/config/firebaseConfig";
-import { addDoc, collection, getDocs, query, where } from "firebase/firestore";
+import { auth} from "@/config/firebaseConfig";
 import { ArrowBigDown, ArrowBigUp } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { toast } from 'sonner';
-
-const getForwardersByCountry = async (country, transportation) => {
-    try {
-        const q = query(collection(db, "Forwarders"), where("country", "==", country));
-        const getForwarders = await getDocs(q);
-        const forwarders = [];
-        const transportationArray = Array.isArray(transportation) ? transportation : [transportation];
-
-        getForwarders.forEach((doc) => {
-            const data = doc.data();
-            if (Array.isArray(data.transportationtype)) {
-                if (transportationArray.some(t => 
-                    data.transportationtype.some(tt => tt.toLowerCase().includes(t.toLowerCase()))
-                )) {
-                    forwarders.push({ id: doc.id, ...data });
-                }
-            }
-        });
-        return forwarders;
-    } catch (error) {
-        console.error("Error fetching forwarders:", error);
-        throw error;
-    }
-};
-
+import globalapi from '@/app/_utils/globalapi';
 const Forwarderslist = ({ selectedCountry, inquiry, transportation }) => {
     const [forwarders, setForwarders] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -41,7 +15,7 @@ const Forwarderslist = ({ selectedCountry, inquiry, transportation }) => {
     useEffect(() => {
         const fetchForwarders = async () => {
             try {
-                const data = await getForwardersByCountry(selectedCountry, transportation);
+                const data = await globalapi.getForwardersByCountry(selectedCountry, transportation);
                 setForwarders(data);
             } catch (error) {
                 setError(error.message);
@@ -55,13 +29,7 @@ const Forwarderslist = ({ selectedCountry, inquiry, transportation }) => {
 
     const sendData = async (forwarder) => {
         try {
-            await addDoc(collection(db, "Quotes"), {
-                userId: user.uid,
-                forwarderId: forwarder.id,
-                forwarderName: forwarder.name,
-                ...inquiry
-            });
-            toast("Your data sent to forwarder successfully!");
+            await globalapi.sendDatastofrwd(forwarder,user,inquiry)
         } catch (error) {
             console.log(error);
         }

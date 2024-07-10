@@ -1,9 +1,8 @@
 "use client";
 import { InfoIcon } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
-import { auth, db } from "@/config/firebaseConfig";
+import { auth } from "@/config/firebaseConfig";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { collection, getDocs, query, updateDoc, where, doc } from "firebase/firestore";
 import {
   Sheet,
   SheetContent,
@@ -13,7 +12,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import Shippingform from './Shippingform';
-import { toast } from 'sonner';
+import globalapi from '@/app/_utils/globalapi';
 
 const ShippingHistory = () => {
   const [shippingData, setShippingData] = useState([]);
@@ -22,17 +21,8 @@ const ShippingHistory = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        if (!user) {
-          throw new Error("User not authenticated");
-        }
-        const userId = user.uid;
-        const q = query(collection(db, "ShippingData"), where("userId", "==", userId));
-        const getshipping = await getDocs(q);
-        const data = [];
-        getshipping.forEach((doc) => {
-          data.push({ id: doc.id, ...doc.data() });
-        });
-        setShippingData(Array.isArray(data) ? data : []);
+ const data= await globalapi.getDatas(user)
+        setShippingData(data);
       } catch (error) {
         setShippingData([]);
       }
@@ -41,35 +31,7 @@ const ShippingHistory = () => {
   }, [user]);
 
   const UpdateData = async (formData) => {
-    try {
-      const c = query(collection(db, "ShippingData"), where("userId", "==", user.uid));
-      const changeData = await getDocs(c);
-      if (!changeData.empty) {
-        const userDoc = changeData.docs[0];
-        const docRef = doc(db, "ShippingData", userDoc.id);
-        await updateDoc(docRef, {
-          Commodity: formData.Commodity,
-          VolumeWeight: formData.VolumeWeight,
-          Dimenssion: formData.Dimenssion,
-          Temprature: formData.Temprature,
-          GrossWeight: formData.GrossWeight,
-          HsCode: formData.HS,
-          Special: formData.Special,
-          Note: formData.Note,
-          origin: formData.selectedCounty,
-          destination: formData.destination,
-          date: formData.date,
-          transportation: formData.transportation,
-          Switch: formData.Switch,
-          transit: formData.transit,
-          userId: user.uid
-        });
-        toast("Your Data changed successfully!");
-      }
-    } catch (error) {
-      toast("something went wrong please try again!");
-      console.log(error);
-    }
+    await globalapi.UpdatingInquieries(formData,user)
   };
 
   return (

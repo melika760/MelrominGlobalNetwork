@@ -1,13 +1,10 @@
 "use client";
-import React, { useState, useEffect } from 'react';
-import { collection, query, where, getDocs, updateDoc, doc } from "firebase/firestore"; // Updated imports
-import { auth, db } from '@/config/firebaseConfig';
+import React, { useState} from 'react';
+import { auth} from '@/config/firebaseConfig';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useRouter } from 'next/navigation';
-import { toast } from 'sonner';
-import SupForms from '@/app/_components/Supforms';
-import ForwarderProfile from '../profile/page';
 import Forwarderprofile from '@/app/_components/Forwarderprofile';
+import globalapi from '@/app/_utils/globalapi';
 
 const EditProfiles = () => {
   const router = useRouter();
@@ -24,29 +21,7 @@ const EditProfiles = () => {
   }
 
   try {
-    const q = query(collection(db, "Forwarders"), where("userId", "==", user.uid));
-    const querySnapshot = await getDocs(q);
-
-    if (!querySnapshot.empty) {
-      const userDoc = querySnapshot.docs[0];
-      const docRef = doc(db, "Forwarders", userDoc.id);
-      await updateDoc(docRef, {
-        name: FormsData.companyname|| "",
-        Address: FormsData.Address|| "",
-        country: FormsData.selectedCounty|| "",
-        Phone: FormsData.Phone|| "",
-        Mobile: FormsData.Mobile|| "",
-        transportationtype: FormsData.transportation|| [],
-        Experience:FormsData.Ex|| "",
-        description:FormsData.des|| "",
-        role: "Forwarder",
-       
-      });
-
-      toast("Your profile updated successfully!")
-    } else {
-      console.error("No document found for user ID:", user.uid);
-    }
+await globalapi.EditForwarderprofile(FormsData,user)
   } catch (error) {
     console.error("Error updating document:", error);
   }

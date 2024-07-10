@@ -3,11 +3,12 @@ import React, { useEffect, useState } from "react";
 import Shippingform from "./_components/Shippingform";
 import ShippingHistory from "./_components/ShippingHistory";
 import { Button } from "@/components/ui/button";
-import { addDoc, collection, getDocs, query, where } from "firebase/firestore";
+import { addDoc, collection } from "firebase/firestore";
 import { auth, db } from "@/config/firebaseConfig";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { toast } from "sonner";
 import Forwarderslist from "./_components/Forwarderslist";
+import globalapi from "@/app/_utils/globalapi";
 
 const Shipping = () => {
     const [loading, setLoading] = useState(false);
@@ -17,31 +18,34 @@ const Shipping = () => {
     const AddingData = async (formData) => {
       setLoading(true);
 
-      try {
-          await addDoc(collection(db, "ShippingData"), {
-              Commodity: formData.Commodity,
-              VolumeWeight: formData.VolumeWeight,
-              Dimenssion: formData.Dimenssion,
-              Temprature: formData.Temprature,
-              GrossWeight: formData.GrossWeight,
-              HsCode: formData.HS,
-              Special: formData.Special,
-              Note: formData.Note,
-              origin: formData.selectedCounty,
-              destination: formData.destination,
-              date: formData.date,
-              transportation: formData.transportation,
-              Switch: formData.Switch,
-              transit: formData.transit,
-              userId: user.uid
-          });
-
+    //   try {
+    //       await addDoc(collection(db, "ShippingData"), {
+    //           Commodity: formData.Commodity,
+    //           VolumeWeight: formData.VolumeWeight,
+    //           Dimenssion: formData.Dimenssion,
+    //           Temprature: formData.Temprature,
+    //           GrossWeight: formData.GrossWeight,
+    //           HsCode: formData.HS,
+    //           Special: formData.Special,
+    //           Note: formData.Note,
+    //           origin: formData.selectedCounty,
+    //           destination: formData.destination,
+    //           date: formData.date,
+    //           transportation: formData.transportation,
+    //           Switch: formData.Switch,
+    //           transit: formData.transit,
+    //           userId: user.uid
+    //       });
+try{globalapi.addData(formData,user)
           toast("Inquiery submitted successfully!");
-          setContent(<Forwarderslist selectedCountry={formData.destination} inquiery={formData} transportation={formData.transportation}/>)
-      } catch (error) {
-          console.log(error);
-          toast("Something went wrong! Please try again");
-      }
+          setContent(<Forwarderslist selectedCountry={formData.destination} inquiery={formData} transportation={formData.transportation}/>)}
+          catch(error){
+            toast("something went wrong!")
+          }
+    //   } catch (error) {
+    //       console.log(error);
+    //       toast("Something went wrong! Please try again");
+    //   }
       setLoading(false);
     
   };

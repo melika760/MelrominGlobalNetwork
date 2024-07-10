@@ -1,26 +1,10 @@
 "use client";
-import { auth, db } from '@/config/firebaseConfig';
-import { collection, getDocs, query, where } from 'firebase/firestore';
+import { auth } from '@/config/firebaseConfig';
 import { InfoIcon } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import Moreinfo from './_components/Moreinfo';
-
-const fetchQuotes = async (userId) => {
-  try {
-    const q = query(collection(db, "Qoutes"), where("forwarderId", "==", userId));
-    const getQuotes = await getDocs(q);
-    const quotes = [];
-    getQuotes.forEach((doc) => {
-      quotes.push({ id: doc.id, ...doc.data() });
-    });
-    return quotes;
-  } catch (error) {
-    console.log(error);
-    return [];
-  }
-};
-
+import globalapi from '@/app/_utils/globalapi';
 const Qoutes = () => {
   const [allQuotes, setQuotes] = useState([]);
   const [selectedQuote, setSelectedQuote] = useState(null);
@@ -31,7 +15,7 @@ const Qoutes = () => {
       if (user) {
         try {
           const userId = user.uid;
-          const data = await fetchQuotes(userId);
+          const data = await globalapi.fetchQuotes(userId);
           setQuotes(data);
         } catch (error) {
           console.log(error);

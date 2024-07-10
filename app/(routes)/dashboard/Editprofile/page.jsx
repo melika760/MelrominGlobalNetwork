@@ -1,11 +1,10 @@
 "use client";
-import React, { useState, useEffect } from 'react';
-import { collection, query, where, getDocs, updateDoc, doc } from "firebase/firestore"; // Updated imports
-import { auth, db } from '@/config/firebaseConfig';
+import React, { useState } from 'react';
+import { auth } from '@/config/firebaseConfig';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useRouter } from 'next/navigation';
-import { toast } from 'sonner';
 import SupForms from '@/app/_components/Supforms';
+import globalapi from '@/app/_utils/globalapi';
 
 const EditProfile = () => {
   const router = useRouter();
@@ -21,31 +20,11 @@ const EditProfile = () => {
     return;
   }
 
-  try {
-    const q = query(collection(db, "Suppliers"), where("userId", "==", user.uid));
-    const querySnapshot = await getDocs(q);
-
-    if (!querySnapshot.empty) {
-      const userDoc = querySnapshot.docs[0];
-      const docRef = doc(db, "Suppliers", userDoc.id);
-      await updateDoc(docRef, {
-        name: FormsData.companyname || "", 
-        Address: FormsData.Address || "",
-        country: FormsData.selectedCounty || "",
-        Phone: FormsData.Phone || "",
-        Mobile: FormsData.Mobile || "",
-        transportationtype: FormsData.transportation || [],
-        role: "Supplier",
-      });
-
-      toast("Your profile updated successfully!")
-    } else {
-      console.error("No document found for user ID:", user.uid);
-    }
-  } catch (error) {
-    console.error("Error updating document:", error);
-  }
-
+try{
+  await globalapi.EditSupplierprofile(FormsData,user)
+}catch(error){
+  console.log(error)
+}
   setLoading(false);
   router.replace("/dashboard/profile");
 };
