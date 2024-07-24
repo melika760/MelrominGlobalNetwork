@@ -97,13 +97,19 @@ const getForwardersByCountry = async (country, transportation) => {
         throw error;
     }
 };
-const sendDatastofrwd=async(forwarder,user,inquiry)=>{
+const sendDatastofrwd=async(forwarder,user,inquiery)=>{
     try {
+      console.log("Sending data to Firebase:", {
+        SupplierId: user.uid,
+        forwarderId: forwarder.userId,
+        forwarderName: forwarder.name,
+        ...inquiery
+    });
         await addDoc(collection(db, "Quotes"), {
-            userId: user.uid,
-            forwarderId: forwarder.id,
+            SupplierId: user.uid,
+            forwarderId: forwarder.userId,
             forwarderName: forwarder.name,
-            ...inquiry
+            ...inquiery
         });
         toast("Your data sent to forwarder successfully!");
     } catch (error) {
@@ -169,7 +175,7 @@ const EditForwarderprofile=async(FormsData,user)=>{
 }
 const fetchQuotes = async (userId) => {
   try {
-    const q = query(collection(db, "Qoutes"), where("forwarderId", "==", userId));
+    const q = query(collection(db, "Quotes"), where("forwarderId", "==", userId));
     const getQuotes = await getDocs(q);
     const quotes = [];
     getQuotes.forEach((doc) => {

@@ -5,7 +5,7 @@ import { ArrowBigDown, ArrowBigUp } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import globalapi from '@/app/_utils/globalapi';
-const Forwarderslist = ({ selectedCountry, inquiry, transportation }) => {
+const Forwarderslist = ({ selectedCountry, inquiery, transportation }) => {
     const [forwarders, setForwarders] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -25,14 +25,15 @@ const Forwarderslist = ({ selectedCountry, inquiry, transportation }) => {
         };
 
         fetchForwarders();
-    }, [selectedCountry, inquiry, transportation]);
+    }, [selectedCountry,inquiery, transportation]);
 
     const sendData = async (forwarder) => {
         try {
-            await globalapi.sendDatastofrwd(forwarder,user,inquiry)
-        } catch (error) {
-            console.log(error);
-        }
+          await globalapi.sendDatastofrwd(forwarder,user,inquiery)
+              
+          } catch (error) {
+              console.log(error);
+          }
     };
 
     const toggleMoreInfo = (index) => {

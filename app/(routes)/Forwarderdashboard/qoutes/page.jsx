@@ -52,7 +52,7 @@ const Qoutes = () => {
                   className='grid grid-cols-2 sm:grid-cols-5 gap-2 sm:gap-4 p-2 sm:p-4 border-b-2 items-center text-sm sm:text-base'
                 >
                   <p>{quote.Commodity}</p>
-                  <p>{quote.origin}</p>
+                  <p>{quote.selectedCounty}</p>
                   <p>{quote.destination}</p>
                   <p>{quote.transportation}</p>
                   <InfoIcon

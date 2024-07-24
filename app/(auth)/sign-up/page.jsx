@@ -14,6 +14,14 @@ import Customedropdown from '@/app/_components/Customedropdown';
 import { UpdateContex } from '@/app/Store/UpdateContex';
 import { addDoc, collection } from 'firebase/firestore';
 
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet"
 
 const CreateAccount = () => {
 
@@ -159,7 +167,127 @@ useEffect(()=>{
         <strong className="font-medium text-gray-900"> Accept Terms and Condition </strong>
       </div>
     </label>
-    
+    <div>
+    <Sheet>
+  <SheetTrigger><h3 className='text-primary ml-8'>Read our Terms & Conditions</h3></SheetTrigger>
+  <SheetContent className="snap-y overflow-y-scroll  md:h-[700px] h-[800px]" side="top">
+    <SheetHeader>
+      <SheetTitle className="text-center items-center">Melromin Global Network GDPR Policy</SheetTitle>
+      <SheetDescription>
+        <ul>
+          <label>
+          <strong>1. Introduction</strong>
+          <li className='mb-2'>
+          This policy outlines how Melromin Global Network collects, uses, stores, and protects the personal data of suppliers and forwarders in compliance with the General Data Protection Regulation (GDPR).
+          </li>
+          </label>
+          <label>
+          <strong>2. Data Controller</strong>
+          <li className='mb-2'>
+          Melromin Global Network,[88 Uxendon Hill,London,HA9SJ], is the data controller responsible for determining the purposes and means of processing personal data.</li>
+          </label>
+          <label>
+          <strong>3. Data We Collect</strong>
+          <li className='mb-2 mt-1'>
+          We collect personal data necessary for our business operations, including:
+          <ul className='list-disc mb-2 p-2'>
+            <li>Contact information (name, email, phone number)</li>
+            <li>Business information (company name, address, VAT number)</li>
+            <li>Financial information (for invoicing and payment purposes)</li>
+          </ul>
+        </li>
+          </label>
+          <label>
+          <strong>4. Lawful Basis for Processing</strong>
+          <li className='mb-2 mt-1'>
+          We process personal data based on the following legal grounds:
+          <ul className='list-disc mb-2 p-2'>
+            <li><strong>Contract:</strong> To fulfill our contractual obligations with suppliers and forwarders.</li>
+            <li><strong>Legitimate Interest:</strong> To operate our business efficiently and to improve our services.</li>
+          </ul>
+        </li>
+          </label>
+          <label>
+          <strong>5. Purpose of Data Processing</strong>
+          <li className='mb-2 mt-1'>
+          We collect and process personal data for the following purposes:
+          <ul className='list-disc mb-2 p-2'>
+            <li>Facilitating connections between suppliers and forwarders.</li>
+            <li>Providing customer support.</li>
+            <li>Managing business relationships.</li>
+            <li>Complying with legal and regulatory requirements.</li>
+          </ul>
+        </li>
+          </label>
+          <label>
+          <strong>6. Data Subject Rights</strong>
+          <li className='mb-2 mt-1'>
+          Individuals have the right to:
+          <ul className='list-disc mb-2 p-2'>
+            <li>Access their personal data.</li>
+            <li>Request rectification of inaccurate data.</li>
+            <li>Request erasure of their personal data.</li>
+            <li>Restrict processing of their personal data.</li>
+            <li>Data portability.</li>
+            <li>Object to processing.</li>
+          </ul>
+          To exercise these rights, please contact us at [email protected]
+        </li>
+          </label>
+          <label>
+          <strong>7. Data Security</strong>
+          <li className='mb-2 mt-1'>
+          We implement appropriate technical and organizational measures to protect personal data against unauthorized or unlawful processing and accidental loss, destruction, or damage. These measures include:
+          <ul className='list-disc mb-2 p-2'>
+            <li>Access control measures</li>
+            <li>Encryption of data</li>
+            <li>Regular security assessments</li>
+          </ul>
+        </li>
+          </label>
+          <label>
+          <strong>8. Data Retention</strong>
+          <li className='mb-2 mt-1'>
+          We retain personal data for as long as necessary to fulfill the purposes for which it was collected or as required by law.
+        </li>
+          </label>
+          <label>
+          <strong>9. Data Breaches</strong>
+          <li className='mb-2 mt-1'>
+          In the event of a personal data breach, we will notify the relevant supervisory authority and affected individuals without undue delay.
+        </li>
+          </label>
+          <label>
+          <strong>10. Transfers of Personal Data</strong>
+          <li className='mb-2 mt-1'>
+          We may transfer personal data to third parties, such as IT service providers, within the EU. If data is transferred outside the EU, appropriate safeguards will be in place
+        </li>
+          </label>
+          <label>
+          <strong>11. Changes to This Policy</strong>
+          <li className='mb-2 mt-1'>
+          We may update this policy from time to time. Any changes will be posted on our website.
+        </li>
+          </label>
+          <label>
+          <strong>Additional Considerations</strong>
+          <li>
+          <ul className='list-disc p-2 mb-2'>
+            <li><strong>Privacy Policy:</strong> Consider creating a separate privacy policy for website visitors.</li>
+            <li><strong>Data Protection Impact Assessments (DPIAs):</strong>  Conduct DPIAs for high-risk processing activities.</li>
+            <li><strong>Employee Training:</strong> Ensure employees are aware of their GDPR obligations.</li>
+            <li><strong>Data Subject Access Requests (DSARs):</strong>Establish procedures for handling DSARs.</li>
+          </ul>
+        </li>
+          </label>
+        </ul>
+      </SheetDescription>
+      
+    </SheetHeader>
+  </SheetContent>
+</Sheet>
+
+    </div>
   </div>
 </fieldset>
        </div>

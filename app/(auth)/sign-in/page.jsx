@@ -108,7 +108,7 @@ const SignIn = () => {
       <div className='flex flex-col items-center p-10 bg-slate-100 border border-gray-200'>
         <Image src={"/logo2.png"} width={200} height={200} alt='Logo' />
         
-        <h2 className='font-bold text-3xl'>Login</h2>
+        <h2 className='font-bold text-3xl mb-2'>Login</h2>
         <h2 className='text-gray-500'>Enter your email and password to login.</h2>
         <div className='w-full flex flex-col gap-5 mt-7'>
           <Input

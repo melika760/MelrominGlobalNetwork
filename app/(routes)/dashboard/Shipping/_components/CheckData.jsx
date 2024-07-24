@@ -5,14 +5,18 @@ import Shippingform from './Shippingform';
 import globalapi from '@/app/_utils/globalapi';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '@/config/firebaseConfig';
-
+import moment from 'moment';
 const CheckData = ({datas,back}) => {
   const [change,setchange]=useState(false)
   const[loading,setloading]=useState(false)
   const [user] = useAuthState(auth);
   const UpdateData = async (formData) => {
     setloading(true)
-    await globalapi.UpdatingInquieries(formData,user)
+try{
+  await globalapi.UpdatingInquieries(formData,user)
+}catch(error){
+  console.log(error)
+}
     setloading(false)
   };
   return (
@@ -49,7 +53,7 @@ const CheckData = ({datas,back}) => {
             <h3 className='text-lg font-semibold'>Special condition:</h3>
             <p className='text-blue-900 mb-4'>{datas.Special}</p>
             <h3 className='text-lg font-semibold'>Date:</h3>
-            <p className='text-blue-900 mb-4'>{datas.date}</p>
+            <p className='text-blue-900 mb-4'>{moment(datas.date).format("MMMM Do YYYY")}</p>
             <h3 className='text-lg font-semibold'>Transportation:</h3>
             <p className='text-blue-900 mb-4'>{datas.transportation}</p>
             <h3 className='text-lg font-semibold'>Notes:</h3>

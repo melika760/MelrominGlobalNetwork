@@ -1,4 +1,3 @@
-// src/components/Moreinfo.js
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
