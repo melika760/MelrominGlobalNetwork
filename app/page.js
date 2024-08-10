@@ -12,7 +12,7 @@ export default function Home() {
     <Header/>
     <Hero/>
     <Aboutus/>
-    <Icons/>
+    {/* <Icons/> */}
     <Works/>
     <Getstarted/>
    

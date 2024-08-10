@@ -40,15 +40,15 @@ const Chat = ({ supplierId }) => {
   };
 
   return (
-    <div className="chat-container">
-      <div className="messages">
+    <div className="h-[100vh] flex flex-col">
+      <div className="flex-1 overflow-y-scroll p-4">
         {messages.map(message => (
-          <div key={message.id} className={`message ${message.from === user.uid ? 'sent' : 'received'}`}>
+          <div key={message.id} className={`mb-4 ${message.from === user.uid ? 'sent' : 'received'}`}>
             <p>{message.text}</p>
           </div>
         ))}
       </div>
-      <div className="new-message">
+      <form className="flex p-4">
         <input
           type="text"
           value={newMessage}
@@ -56,7 +56,7 @@ const Chat = ({ supplierId }) => {
           placeholder="Type a message..."
         />
         <button onClick={sendMessage}>Send</button>
-      </div>
+      </form>
     </div>
   );
 };

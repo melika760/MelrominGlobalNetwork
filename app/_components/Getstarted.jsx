@@ -9,7 +9,7 @@ const Getstarted = () => {
       <h2 className="text-3xl font-bold sm:text-4xl text-blue-950">Get Started</h2>
     </div>
 
-    <div className="mt-8 grid md:grid-cols-2 grid-cols-1 md:gap-20 gap-10">
+    <div className="mt-8 grid lg:grid-cols-2 grid-cols-1 lg:gap-20 gap-10">
     <div className='border shadow-lg bg-gray-100 md:py-20 py-10 md:px-20 px-5 rounded-md'>
 <h2 className='font-bold text-lg'>Suppliers:</h2>
 <ul className='my-7'>

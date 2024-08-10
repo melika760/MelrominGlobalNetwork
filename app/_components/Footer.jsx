@@ -12,12 +12,12 @@ const Footer = () => {
       <p className="mt-4 text-center text-sm text-gray-500">
         Copyright &copy; 2024. All rights reserved.
       </p>
-      <h2 className='font-bold md:text-center text-lg mt-12'>Contact Us</h2>
+      <h2 className='font-bold lg:text-center text-lg mt-12'>Contact Us</h2>
   
-      <ul className="mt-6 grid grid-cols-1 md:grid-cols-3 justify-items-center text-center gap-4 md:gap-8">
+      <ul className="mt-6 grid grid-cols-1 lg:grid-cols-3 lg:justify-items-center lg:text-center gap-4 md:gap-8">
 
         <li>
-          <span className='text-lg font-semibold flex text-blue-950'><MailOpen className='mr-2'/>Email:</span>Melrominglobal@gmail.com
+          <span className='text-lg font-semibold flex text-blue-950'><MailOpen className='mr-2'/>Email:</span>info@melrominglobalnetwork.co.uk
         </li>
   
         <li>

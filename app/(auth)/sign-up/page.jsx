@@ -231,7 +231,7 @@ useEffect(()=>{
             <li>Data portability.</li>
             <li>Object to processing.</li>
           </ul>
-          To exercise these rights, please contact us at [email protected]
+          To exercise these rights, please contact us at info@melrominglobalnetwork.co.uk
         </li>
           </label>
           <label>
