@@ -10,10 +10,10 @@ const Chats = () => {
   const [user] = useAuthState(auth);
  return(<div className='flex h-screen'>
 <div className='flex-shrink-0 w-3/12'>
-<Users user={user}/>
+<Users userData={user}/>
 </div>
-<div className='flex-grow-0 w-3/12'>
-<Chatroom/>
+<div className='flex-grow-0  w-9/12'>
+<Chatroom user={user}/>
 </div>
  </div>)
 };
