@@ -2,15 +2,34 @@ import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
 import React from 'react';
-
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth, db } from '@/config/firebaseConfig';
+import {collection,serverTimestamp,addDoc} from "firebase/firestore"
 const Moreinfo = ({ quote, onBack }) => {
   const router = useRouter();
-
+const[user]=useAuthState(auth)
   if (!quote) return null;
 
-  const startChat = () => {
-    router.push(`/Forwarderdashboard/chat/${quote.forwarderId}`);
-  };
+  const startChat =async(user) => {
+    try{    
+      const usersData = {
+        [quote.id]:"Supplier",
+        [quote.forwarderId]:"userfwd",
+      };
+      const chatroomData = {
+        users: [quote.id,quote.forwarderId],
+        usersData,
+        timestamp: serverTimestamp(),
+        lastMessage: null,
+      };
+  
+      const chatroomRef = await addDoc(collection(db, 'chatrooms'), chatroomData);
+      console.log('Chatroom created with ID:', chatroomRef.id);
+    } catch (error) {
+      console.error('Error creating or checking chatroom:', error);
+    }
+    }
+
 
   return (
     <div className='p-12'>
