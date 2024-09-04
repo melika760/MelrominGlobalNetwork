@@ -32,8 +32,8 @@ const MessageInput = () => {
     <SheetHeader>
       <SheetTitle className="text-center items-center">Ready for making contract?</SheetTitle>
       <SheetDescription className="m-12 p-12">
-      <Label htmlfor="TotalAmount">Enter Final Agreed Amount:<Input placeholder="$..." type="text" className="m-3"/></Label>
-      <Label htmlfor="DeliveryDate">Select Agreed Delivery Date:<Popover>
+      <Label htmlFor="TotalAmount">Enter Final Agreed Amount:<Input placeholder="$..." type="text" className="m-3"/></Label>
+      <Label htmlFor="DeliveryDate">Select Agreed Delivery Date:<Popover>
         <PopoverTrigger asChild>
           <Button
             variant={"outline"}

@@ -32,7 +32,7 @@ const[user]=useAuthState(auth)
 
 
   return (
-    <div className='p-12'>
+    <div className='md:p-12'>
       <ArrowLeft className='text-primary cursor-pointer' onClick={onBack}/>
       <div className='p-4 sm:p-10 max-w-4xl mx-auto'>
         <div className='flex items-center'>

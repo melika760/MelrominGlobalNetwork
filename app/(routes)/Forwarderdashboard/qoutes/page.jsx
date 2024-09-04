@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import Moreinfo from './_components/Moreinfo';
 import globalapi from '@/app/_utils/globalapi';
+
 const Qoutes = () => {
   const [allQuotes, setQuotes] = useState([]);
   const [selectedQuote, setSelectedQuote] = useState(null);
@@ -34,35 +35,41 @@ const Qoutes = () => {
   };
 
   return (
-    <div>
+    <div className='min-h-screen bg-gray-50 p-4 pt-12 lg:p-12'>
       {!selectedQuote ? (
-        <div className='p-12'>
-          <div className='grid grid-cols-2 sm:grid-cols-5 gap-2 sm:gap-4 p-2 sm:p-4 border-b-2 bg-gray-100'>
-            <h3 className='font-bold text-sm sm:text-base'>Commodity</h3>
-            <h3 className='font-bold text-sm sm:text-base'>Origin</h3>
-            <h3 className='font-bold text-sm sm:text-base'>Destination</h3>
-            <h3 className='font-bold text-sm sm:text-base'>Transportation</h3>
-            <h3 className='font-bold text-sm sm:text-base'>More</h3>
+        <div className='bg-white shadow-md rounded-lg'>
+          <div className='md:flex hidden items-center justify-between p-4 border-b bg-gray-200'>
+            <h3 className='font-semibold text-sm sm:text-base text-gray-700'>Commodity</h3>
+            <h3 className='font-semibold text-sm sm:text-base text-gray-700'>Origin</h3>
+            <h3 className='font-semibold text-sm sm:text-base text-gray-700'>Destination</h3>
+            <h3 className='font-semibold text-sm sm:text-base text-gray-700'>Transportation</h3>
+            <h3 className='font-semibold text-sm sm:text-base text-gray-700'>More</h3>
           </div>
           <div>
             {allQuotes.length > 0 ? (
               allQuotes.map((quote) => (
                 <div
                   key={quote.id}
-                  className='grid grid-cols-2 sm:grid-cols-5 gap-2 sm:gap-4 p-2 sm:p-4 border-b-2 items-center text-sm sm:text-base'
+                  className='md:flex grid grid-cols-1 items-center md:justify-between gap-4 p-4 border-b hover:bg-gray-50 transition-colors duration-300'
                 >
-                  <p>{quote.Commodity}</p>
-                  <p>{quote.selectedCounty}</p>
-                  <p>{quote.destination}</p>
-                  <p>{quote.transportation}</p>
-                  <InfoIcon
-                    className='text-primary cursor-pointer'
+                  <p className='text-sm sm:text-base text-gray-800'><span className='font-semibold text-sm sm:text-base text-gray-700 md:hidden sm:block'>Commodity:</span> {quote.Commodity}</p>
+                  <p className='text-sm sm:text-base text-gray-800'><span className='font-semibold text-sm sm:text-base text-gray-700 md:hidden sm:block'>Origin:</span> {quote.selectedCounty}</p>
+                  <p className='text-sm sm:text-base text-gray-800'><span className='font-semibold text-sm sm:text-base text-gray-700 md:hidden sm:block'>Destination:</span> {quote.destination}</p>
+                  <p className='text-sm sm:text-base text-gray-800'><span className='font-semibold text-sm sm:text-base text-gray-700 md:hidden sm:block'>Transportation:</span> {quote.transportation}</p>
+                  <span className='font-semibold text-sm sm:text-base text-gray-700 md:hidden sm:flex'>More info:<span>   <InfoIcon
+                    className='text-primary cursor-pointer text-lg sm:text-xl'
                     onClick={() => handleMoreInfoClick(quote)}
-                  />
+                  /></span>
+                 </span>
+                 <span>   <InfoIcon
+                    className='text-primary cursor-pointer text-lg sm:text-xl'
+                    onClick={() => handleMoreInfoClick(quote)}
+                  /></span>
+  
                 </div>
               ))
             ) : (
-              <p className='text-center text-gray-500'>No shipping data available.</p>
+              <p className='text-center text-gray-500 p-4'>No shipping data available.</p>
             )}
           </div>
         </div>
