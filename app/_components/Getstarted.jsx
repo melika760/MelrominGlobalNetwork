@@ -3,7 +3,7 @@ import React from 'react'
 
 const Getstarted = () => {
   return (
-    <section className='my-20'>
+    <section className='my-20'id='start'>
   <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
     <div className="mx-auto max-w-lg text-center">
       <h2 className="text-3xl font-bold sm:text-4xl text-blue-950">Get Started</h2>

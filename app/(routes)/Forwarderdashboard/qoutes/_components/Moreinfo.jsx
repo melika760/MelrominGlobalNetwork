@@ -13,8 +13,10 @@ const[user]=useAuthState(auth)
   const startChat =async(user) => {
     try{    
       const usersData = {
-        [quote.id]:"Supplier",
-        [quote.forwarderId]:"userfwd",
+       Supplier: [quote.id],
+        userfwd :[quote.forwarderId],
+        Commodity:quote.Commodity,
+        Status:"Active"
       };
       const chatroomData = {
         users: [quote.id,quote.forwarderId],
@@ -24,7 +26,6 @@ const[user]=useAuthState(auth)
       };
   
       const chatroomRef = await addDoc(collection(db, 'chatrooms'), chatroomData);
-      console.log('Chatroom created with ID:', chatroomRef.id);
     } catch (error) {
       console.error('Error creating or checking chatroom:', error);
     }
