@@ -13,8 +13,8 @@ const[user]=useAuthState(auth)
   const startChat =async(user) => {
     try{    
       const usersData = {
-       Supplier: [quote.id],
-        userfwd :[quote.forwarderId],
+       Supplier: quote.id,
+        userfwd :quote.forwarderId,
         Commodity:quote.Commodity,
         Status:"Active"
       };

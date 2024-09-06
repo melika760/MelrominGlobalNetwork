@@ -114,24 +114,42 @@ const MessageInput = ({ sendMessage, message, setMessage,image,setImage }) => {
   <Input type="text" className="flex-1 border-none p-2 outline-none" placeholder="Type a message..." value={message}
         onChange={(e) => setMessage(e.target.value)}/>
   <Send className='text-gray-500 cursor-pointer ml-2' onClick={() => sendMessage()}/>
-  <dialog id='my_modal_3' className='modal'>
-        <div className='modal-box'>
-          <form method='dialog'>
-            {imagePreview && <img src={imagePreview} alt='Uploaded' className='max-h-60 w-60 mb-4' />}
-            <input type='file' accept='image/*' onChange={handleFileChange} />
-            <div onClick={()=>{handleUpload()}} className='btn btn-sm btn-primary'>
-              Upload
-            </div>
-            <progress value={uploadProgress} max='100'></progress>
-          </form>
-          <button
-            onClick={() => document.getElementById('my_modal_3').close()}
-            className='btn btn-sm btn-circle btn-ghost absolute right-2 top-2'
-          >
-            ✕
-          </button>
-        </div>
-      </dialog>
+      <dialog id="my_modal_3" className="modal ">
+  <div className="modal-box relative p-6 bg-white rounded-lg shadow-lg max-w-lg w-full">
+    <form method="dialog" className="space-y-4">
+      {imagePreview && (
+        <img
+          src={imagePreview}
+          alt="Uploaded"
+          className="mx-auto max-h-60 w-auto object-cover rounded-md border border-gray-200 mb-4"
+        />
+      )}
+      <input 
+        type="file" 
+        accept="image/*" 
+        onChange={handleFileChange} 
+        className="block w-full text-sm text-gray-700 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-100 file:text-blue-700 hover:file:bg-blue-200 focus:outline-none"
+      />
+      <div 
+        onClick={handleUpload} 
+        className="btn btn-sm btn-primary w-full py-2 mt-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors duration-300"
+      >
+        Upload
+      </div>
+      {uploadProgress > 0 && (
+        <progress value={uploadProgress} max="100" className="progress progress-primary w-full h-3 rounded-lg mt-2"></progress>
+      )}
+    </form>
+    <button
+      onClick={() => document.getElementById('my_modal_3').close()}
+      className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 text-gray-500 hover:text-gray-700 transition-transform transform hover:scale-110"
+    >
+      ✕
+    </button>
+  </div>
+</dialog>
+
+
     </div>
   )
 }

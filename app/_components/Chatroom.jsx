@@ -1,6 +1,6 @@
 "use client"
 import React, { useState, useEffect, useRef } from 'react';
-import { collection, addDoc, query, where, onSnapshot, orderBy,serverTimestamp } from 'firebase/firestore';
+import { collection, addDoc, query, where, onSnapshot, orderBy,serverTimestamp,doc,updateDoc } from 'firebase/firestore';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth, db } from '@/config/firebaseConfig';
 import MessageCard from './MessageCard';
@@ -34,7 +34,7 @@ useEffect(() => {
         id: doc.id,
         ...doc.data(),
       }));
-      //console.log(messages);
+      console.log(messages);
       setMessages(messages);
     }
   );
@@ -54,7 +54,7 @@ useEffect(() => {
     // Add a new message to the Firestore collection
     const newMessage = {
       chatRoomId:chatRoomId,
-      sender: me.id,
+      sender: me.uid,
       content: message,
       time: serverTimestamp(),
       image: image,
@@ -83,14 +83,14 @@ useEffect(() => {
 
   return (
     <div className='flex flex-col h-screen'>
-      {/* Messages container with overflow and scroll */}
+  
       <div ref={messagesContainerRef} className='flex-1 overflow-y-auto p-10'>
         {messages?.map((message) => (
           <MessageCard key={message.id} message={message} me={me} other={other}/>
         ))}
       </div>
 
-      {/* Input box at the bottom */}
+
       <MessageInput sendMessage={sendMessage} message={message} setMessage={setMessage} image={image} setImage={setImage}/>
     </div>
   );

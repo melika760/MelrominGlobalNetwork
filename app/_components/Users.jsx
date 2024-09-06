@@ -4,7 +4,7 @@ import { collection, onSnapshot, query,where,getDocs} from 'firebase/firestore';
 import { db,auth} from '@/config/firebaseConfig';
 import { useRouter } from 'next/navigation';
 import UserCard from './UserCard';
-import { format, formatRelative,isToday } from 'date-fns';
+
 const Users = ({userData, setSelectedChatroom}) => {
   const[loading,setLoading]=useState(false);
   const[UserChatrooms,setUserChatrooms]=useState([])
@@ -40,18 +40,11 @@ const Users = ({userData, setSelectedChatroom}) => {
   
     return () => unsubscribeChatrooms();
   }, [userData]);
-  const formatChatTime = (timestamp) => {
-    const date = timestamp.toDate();
-    if (isToday(date)) {
-      return format(date, 'p'); 
-    }
-    return format(date, 'MMM d, yyyy');
-  };
+
   const openChat = async (chatroom) => {
     const data = {
       id: chatroom.id,
       myData: userData,
-      // otherData: chatroom.usersData[chatroom.users.find((id) => id !== userData.uid)],
       otherData: chatroom.usersData,
     }
     setSelectedChatroom(data);
@@ -63,7 +56,7 @@ const Users = ({userData, setSelectedChatroom}) => {
      {UserChatrooms.map((chatroom)=>{
       console.log(chatroom.usersData.Commodity)
       return(  <div key={chatroom.id} onClick={()=>{openChat(chatroom)}}>
-        <UserCard name={chatroom.usersData?.Commodity || 'Unknown Commodity'} time={chatroom.timestamp ?  formatChatTime(chatroom.timestamp) : 'Unknown time'} latestMessage={chatroom.lastMessage}/>
+        <UserCard name={chatroom.usersData?.Commodity || 'Unknown Commodity'}  latestMessage={chatroom.lastMessage}/>
              </div>)
      }
     
