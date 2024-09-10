@@ -42,16 +42,14 @@ useEffect(() => {
   return unsubscribe;
 }, [chatRoomId]);
 
-//put messages in db
+
  const sendMessage = async () => {
     const messagesCollection = collection(db, 'messages');
-    // Check if the message is not empty
   if (message == '' && image == '') {
     return;
   }
 
   try {
-    // Add a new message to the Firestore collection
     const newMessage = {
       chatRoomId:chatRoomId,
       sender: me.uid,
@@ -63,17 +61,15 @@ useEffect(() => {
     await addDoc(messagesCollection, newMessage);
     setMessage('');
     setImage('');
-    //send to chatroom by chatroom id and update last message
     const chatroomRef = doc(db, 'chatrooms', chatRoomId);
     await updateDoc(chatroomRef, { lastMessage: message ? message : "Image",timestamp:serverTimestamp() });
 
-    // Clear the input field after sending the message
+
     
   } catch (error) {
     console.error('Error sending message:', error.message);
   }
 
-  // Scroll to the bottom after sending a message
   if (messagesContainerRef.current) {
     messagesContainerRef.current.scrollTop = messagesContainerRef.current.scrollHeight;
   }

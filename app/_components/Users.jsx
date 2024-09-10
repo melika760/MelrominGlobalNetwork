@@ -1,6 +1,6 @@
 "use client"
 import React,{useState,useEffect} from 'react'
-import { collection, onSnapshot, query,where,getDocs} from 'firebase/firestore';
+import { collection, onSnapshot, query,where,getDocs, orderBy} from 'firebase/firestore';
 import { db,auth} from '@/config/firebaseConfig';
 import { useRouter } from 'next/navigation';
 import UserCard from './UserCard';
@@ -20,7 +20,7 @@ const Users = ({userData, setSelectedChatroom}) => {
     setLoading(true);
     const chatroomsQuery = query(
       collection(db, 'chatrooms'),
-      where('users', 'array-contains', userData.uid) 
+      where('users', 'array-contains', userData.uid),orderBy("timestamp","desc") 
     );
   
     const unsubscribeChatrooms = onSnapshot(
@@ -59,7 +59,6 @@ const formatTimeAgo = (timestamp) => {
     <div className='shadow-lg h-screen overflow-auto mt-4 mb-20'>
       <h2 className='text-center font-bold text-gray-800'>Chats</h2>
      {UserChatrooms.map((chatroom)=>{
-      console.log(chatroom.usersData.Commodity)
       return(  <div key={chatroom.id} onClick={()=>{openChat(chatroom)}}>
         <UserCard name={chatroom.usersData?.Commodity || 'Unknown Commodity'} time={formatTimeAgo(chatroom.timestamp)} latestMessage={chatroom.lastMessage}/>
              </div>)

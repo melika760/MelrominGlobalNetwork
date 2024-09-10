@@ -1,5 +1,5 @@
 import { Input } from '@/components/ui/input'
-import { CalendarIcon, Paperclip, ScrollText, Send } from 'lucide-react'
+import { CalendarIcon, Image, Paperclip, ScrollText, Send, Smile } from 'lucide-react'
 import { storage } from '@/config/firebaseConfig'
 import{ ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage'
 import React, { useState } from 'react'
@@ -22,12 +22,15 @@ import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 import { format } from "date-fns"
 import { Calendar } from "@/components/ui/calendar"
+import EmojiPicker from 'emoji-picker-react';
 
 const MessageInput = ({ sendMessage, message, setMessage,image,setImage }) => {
   const[date,setDate]=useState(Date())
   const [file, setFile] = useState(null);
   const [uploadProgress, setUploadProgress] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
+  const [showEmojiPicker, setShowEmojiPicker] = useState(false); 
+  const[contractimg,setcontractimg]=useState(null)
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
     setFile(selectedFile);
@@ -39,7 +42,27 @@ const MessageInput = ({ sendMessage, message, setMessage,image,setImage }) => {
     };
     reader.readAsDataURL(selectedFile);
   };
-
+const handleuploads=async()=>{
+  if (!file) {
+    console.error('No file selected.');
+    return;
+  }
+  const storageRef = ref(storage, `Contracts/${file.name}`);
+  const uploadTask = uploadBytesResumable(storageRef, file);
+  uploadTask.on(
+    'state_changed',
+    () => {
+      getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+        console.log('File available at', downloadURL);
+        // Reset file state and update message with download URL
+        setFile(null);
+        setcontractimg(downloadURL);
+    
+      });
+    }
+  );
+  
+}
   const handleUpload = async () => {
     if (!file) {
       console.error('No file selected.');
@@ -72,12 +95,16 @@ const MessageInput = ({ sendMessage, message, setMessage,image,setImage }) => {
       }
     );
   };
+  const handleEmojiClick = (emojiData, event) => {
+    setMessage((prevMessage) => prevMessage + emojiData.emoji);
+  };
   return (
-    <div className='flex items-center p-4 border-t border-gray-200'>
-    <Paperclip className='text-gray-500 cursor-pointer mr-2 text-xs' onClick={() => document.getElementById('my_modal_3').showModal()}/>
+    <div className='flex items-center p-4 border-t border-gray-200 relative'>
+   
+ {image ? <Image className='text-green-600 cursor-pointer mr-2 text-xs'/>: <Paperclip className='text-gray-500 cursor-pointer mr-2 text-xs' onClick={() => document.getElementById('my_modal_3').showModal()}/>}
     <Sheet>
   <SheetTrigger><h3 className='text-primary'><ScrollText className='text-gray-500 cursor-pointer mr-2 text-xs'/></h3></SheetTrigger>
-  <SheetContent className="snap-y   md:h-[500px] h-[400px]" side="top">
+  <SheetContent className="snap-y   md:h-[600px] h-[400px]" side="top">
     <SheetHeader>
       <SheetTitle className="text-center items-center">Ready for making contract?</SheetTitle>
       <SheetDescription className="m-12 p-12">
@@ -104,16 +131,49 @@ const MessageInput = ({ sendMessage, message, setMessage,image,setImage }) => {
           />
         </PopoverContent>
       </Popover></Label>
-    
+      <div className='space-y-2'>   
+       <Label>
+      Upload your Official Contract:
+      <input type="file" className="m-3 block w-full text-sm text-gray-700 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-100 file:text-blue-700 hover:file:bg-blue-200 focus:outline-none outline-none"
+    accept="image/*" 
+    onChange={handleFileChange}
+    />
+    </Label>
+    {imagePreview && (
+        <img
+          src={imagePreview}
+          alt="Uploaded"
+          className=" max-h-60 w-auto object-cover rounded-md border border-gray-200 mb-4"
+        />
+      )}
+           <div 
+        onClick={()=>handleuploads()} 
+        className="btn btn-sm btn-primary w-[100px] text-center py-2 mt-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors duration-300"
+      >
+        Upload
+      </div>
+  
+      </div>
+   
       </SheetDescription>
       
     </SheetHeader>
   </SheetContent>
 </Sheet>
-    
+<button onClick={() => setShowEmojiPicker(!showEmojiPicker)}>
+        <Smile className='text-gray-500 cursor-pointer mr-2 text-xs'/>
+      </button>
   <Input type="text" className="flex-1 border-none p-2 outline-none" placeholder="Type a message..." value={message}
         onChange={(e) => setMessage(e.target.value)}/>
   <Send className='text-gray-500 cursor-pointer ml-2' onClick={() => sendMessage()}/>
+  {showEmojiPicker && (
+        <div className='absolute right-0 bottom-full p-2'>
+          <EmojiPicker
+            onEmojiClick={handleEmojiClick}
+            disableAutoFocus={true}
+          />
+        </div>
+      )}
       <dialog id="my_modal_3" className="modal ">
   <div className="modal-box relative p-6 bg-white rounded-lg shadow-lg max-w-lg w-full">
     <form method="dialog" className="space-y-4">
@@ -131,8 +191,8 @@ const MessageInput = ({ sendMessage, message, setMessage,image,setImage }) => {
         className="block w-full text-sm text-gray-700 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-100 file:text-blue-700 hover:file:bg-blue-200 focus:outline-none"
       />
       <div 
-        onClick={handleUpload} 
-        className="btn btn-sm btn-primary w-full py-2 mt-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors duration-300"
+        onClick={()=>handleUpload()} 
+        className="btn btn-sm btn-primary text-center w-full py-2 mt-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors duration-300"
       >
         Upload
       </div>
