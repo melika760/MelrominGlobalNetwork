@@ -7,11 +7,11 @@ import MessageCard from './MessageCard';
 import MessageInput from './MessageInput';
 
 function Chatroom({ user ,selectedChatroom}) {
-  console.log(selectedChatroom)
+  
   const me = selectedChatroom?.myData
   const other = selectedChatroom?.otherData
   const chatRoomId = selectedChatroom?.id
-
+ 
   const [message, setMessage] = useState([]);
   const [messages, setMessages] = useState([]);
   const messagesContainerRef = useRef(null);
@@ -34,7 +34,7 @@ useEffect(() => {
         id: doc.id,
         ...doc.data(),
       }));
-      console.log(messages);
+      // console.log(messages);
       setMessages(messages);
     }
   );
@@ -65,7 +65,7 @@ useEffect(() => {
     setImage('');
     //send to chatroom by chatroom id and update last message
     const chatroomRef = doc(db, 'chatrooms', chatRoomId);
-    await updateDoc(chatroomRef, { lastMessage: message ? message : "Image" });
+    await updateDoc(chatroomRef, { lastMessage: message ? message : "Image",timestamp:serverTimestamp() });
 
     // Clear the input field after sending the message
     

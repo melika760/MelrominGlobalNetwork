@@ -1,8 +1,8 @@
 import moment from 'moment';
 import React from 'react'
 
-const MessageCard = ({message,user}) => {
-    const isMessagefromMe=message.sender===user;
+const MessageCard = ({message,me}) => {
+    const isMessagefromMe=message.sender===me.uid;
     const formatTimeAgo = (timestamp) => {
       const date = timestamp?.toDate();
       const momentDate = moment(date);

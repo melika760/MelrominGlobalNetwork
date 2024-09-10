@@ -5,33 +5,40 @@ import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth, db } from '@/config/firebaseConfig';
 import {collection,serverTimestamp,addDoc} from "firebase/firestore"
+import moment from 'moment';
 const Moreinfo = ({ quote, onBack }) => {
   const router = useRouter();
 const[user]=useAuthState(auth)
   if (!quote) return null;
-
+  const formatTimeAgo = (timestamp) => {
+    const date = timestamp?.toDate();
+    const momentDate = moment(date);
+    return momentDate.calendar();
+  };
   const startChat =async(user) => {
     try{    
       const usersData = {
-       Supplier: quote.id,
+       Supplier: quote.SupplierId,
         userfwd :quote.forwarderId,
         Commodity:quote.Commodity,
         Status:"Active"
       };
       const chatroomData = {
-        users: [quote.id,quote.forwarderId],
+        users: [quote.SupplierId,quote.forwarderId],
         usersData,
-        timestamp: serverTimestamp(),
+        timestamp:serverTimestamp() ,
         lastMessage: null,
       };
   
       const chatroomRef = await addDoc(collection(db, 'chatrooms'), chatroomData);
+      router.replace("/chat")
     } catch (error) {
       console.error('Error creating or checking chatroom:', error);
+      alert(error)
     }
     }
 
-
+const dates=formatTimeAgo(quote.date)
   return (
     <div className='md:p-12'>
       <ArrowLeft className='text-primary cursor-pointer' onClick={onBack}/>
@@ -62,7 +69,7 @@ const[user]=useAuthState(auth)
             <h3 className='text-lg font-semibold'>Transit:</h3>
             <p className='text-blue-900 mb-4'>{quote.transit}</p>
             <h3 className='text-lg font-semibold'>Date:</h3>
-            <p className='text-blue-900 mb-4'>{quote.date}</p>
+            <p className='text-blue-900 mb-4'>{dates}</p>
             <h3 className='text-lg font-semibold mt-6'>Do you want to start chat?</h3>
             <Button className='mt-4' onClick={startChat}>Click here!</Button>
           </div>

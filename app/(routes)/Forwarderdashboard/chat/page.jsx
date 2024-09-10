@@ -1,8 +1,7 @@
 "use client"
-import React, { useState, useEffect } from 'react';
-import { collection, addDoc, query, where, onSnapshot, orderBy } from 'firebase/firestore';
+import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { auth, db } from '@/config/firebaseConfig';
+import { auth } from '@/config/firebaseConfig';
 import Users from '@/app/_components/Users';
 import Chatroom from '@/app/_components/Chatroom';
 
