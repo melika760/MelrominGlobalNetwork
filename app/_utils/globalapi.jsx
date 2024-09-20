@@ -49,21 +49,11 @@ const getContracts=async(user)=>{
           throw new Error("User not authenticated");
         }
         const userId = user.uid;
-  //       const q = query(collection(db, "contracts"), where("userId", "==", userId));
-  //       const getshipping = await getDocs(q);
-  //       const data = [];
-  //       getshipping.forEach((doc) => {
-  //         data.push({ id: doc.id, ...doc.data() });
-  //       });
-  //       return(Array.isArray(data) ? data : [])
-  // }
-  // catch(error){
-  //   console.log(error)
-  // }
+
   const contractsRef = collection(db, "contracts");
   const q = query(
     contractsRef,
-    where("userId", "==", userId),
+  where('users', 'array-contains', user.uid)
   
   );
 

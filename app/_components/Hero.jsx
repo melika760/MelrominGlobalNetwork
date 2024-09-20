@@ -10,7 +10,7 @@ const Hero = () => {
       <div className="relative overflow-hidden rounded-lg sm:h-80 lg:order-last md:h-full ">
         <div className=' w-full  h-full  z-0'>
         <Image src="/hero.png" className='object-contain w-full -rotate-45 ' width={550} height={250}/>
-        <Image src="/hero-bg.png" className=' max-sm:hidden absolute -top-24  -right-1/3 -z-10 w-full h-screen  overflow-hidden' width={350} height={390}/>
+        {/* <Image src="/hero-bg.png" className=' max-sm:hidden absolute -top-24  -right-1/3 -z-10 w-full h-screen  overflow-hidden' width={350} height={390}/> */}
         </div>
      
       </div>

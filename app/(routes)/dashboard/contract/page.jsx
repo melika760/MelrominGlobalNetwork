@@ -1,10 +1,9 @@
+import Contracts from '@/app/_components/Contracts'
 import React from 'react'
 
 const contract = () => {
   return (
-    <div>
-      
-    </div>
+  <Contracts/>
   )
 }
 

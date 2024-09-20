@@ -12,17 +12,19 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet"
 
+
+import { format } from "date-fns"
+import { Calendar as CalendarIcon } from "lucide-react"
+ 
+import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
+import { Calendar } from "@/components/ui/calendar"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover"
 import { Label } from '@/components/ui/label'
-import { Button } from '@/components/ui/button'
-import { format } from "date-fns"
-import { Calendar as CalendarIcon } from "lucide-react"
-import { cn } from "@/lib/utils"
-import { Calendar } from "@/components/ui/calendar"
 import EmojiPicker from 'emoji-picker-react';
 import { collection, addDoc } from 'firebase/firestore'
 import useInputs from './_hooks/use-inputs'
@@ -96,9 +98,8 @@ const handleuploads = async () => {
         contractImageURL: imageURL,
         createdAt: new Date(),
         Commodity:selectedChatroom.otherData.Commodity,
+        users:[selectedChatroom.otherData.Supplier,selectedChatroom.otherData.userfwd],
         Status:selectedChatroom.otherData.Status,
-        Supplier:selectedChatroom.otherData.Supplier,
-        userfwd:selectedChatroom.otherData.userfwd,
         userId:user.uid
       })
       console.log('Contract submitted with ID: ', docRef.id)
@@ -153,7 +154,8 @@ const handleuploads = async () => {
       <SheetDescription className="m-12 p-12">
       <Label htmlFor="TotalAmount">Enter Final Agreed Amount:<Input placeholder="$..." type="text" className="m-3 mt-5 mb-5"onChange={AmountChange} onBlur={AmountBlur} value={enteredAmount}/></Label>
       <Label htmlFor="DeliveryDate">Select Agreed Delivery Date:
-        <Popover>
+      </Label>
+      <Popover>
         <PopoverTrigger asChild>
           <Button
             variant={"outline"}
@@ -175,7 +177,6 @@ const handleuploads = async () => {
           />
         </PopoverContent>
       </Popover>
-      </Label>
       <div className='space-y-2'>   
        <Label>
       Upload your Official Contract:
