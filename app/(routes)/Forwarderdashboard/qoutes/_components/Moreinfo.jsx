@@ -4,40 +4,93 @@ import { ArrowLeft } from 'lucide-react';
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth, db } from '@/config/firebaseConfig';
-import {collection,serverTimestamp,addDoc} from "firebase/firestore"
+import { collection, query, where, getDocs, addDoc, serverTimestamp } from 'firebase/firestore';
 import moment from 'moment';
+import { toast } from 'sonner';
 const Moreinfo = ({ quote, onBack }) => {
   const router = useRouter();
 const[user]=useAuthState(auth)
-  if (!quote) return null;
-  const formatTimeAgo = (timestamp) => {
-    const date = timestamp?.toDate();
-    const momentDate = moment(date);
-    return momentDate.calendar();
-  };
-  const startChat =async(user) => {
-    try{    
-      const usersData = {
-       Supplier: quote.SupplierId,
-        userfwd :quote.forwarderId,
-        Commodity:quote.Commodity,
-        Status:"Active"
-      };
-      const chatroomData = {
-        users: [quote.SupplierId,quote.forwarderId],
-        usersData,
-        timestamp:serverTimestamp() ,
-        lastMessage: null,
-      };
+const formatTimeAgo = (timestamp) => {
+  if (!timestamp || !timestamp.toDate) {
+    // Handle the case where timestamp is null or not a Firestore Timestamp
+    return "No timestamp available";
+  }
   
-      const chatroomRef = await addDoc(collection(db, 'chatrooms'), chatroomData);
-      router.replace("/chat")
+  const date = timestamp.toDate();
+  const momentDate = moment(date);
+  return momentDate.calendar();
+};
+  // const startChat =async(user) => {
+  //   try{    
+  //     const usersData = {
+  //      Supplier: quote.SupplierId,
+  //       userfwd :quote.forwarderId,
+  //       Commodity:quote.Commodity,
+  //       Status:"Active"
+  //     };
+  //     const chatroomData = {
+  //       users: [quote.SupplierId,quote.forwarderId],
+  //       usersData,
+  //       timestamp:serverTimestamp() ,
+  //       lastMessage: null,
+  //     };
+  
+  //     const chatroomRef = await addDoc(collection(db, 'chatrooms'), chatroomData);
+  //     router.replace("/chat")
+  //   } catch (error) {
+  //     console.error('Error creating or checking chatroom:', error);
+  //     alert(error)
+  //   }
+  //   }
+  const startChat = async () => {
+    try {
+      // Sort the user IDs to ensure consistency
+      const sortedUsers = [quote.SupplierId, quote.forwarderId].sort();
+  
+      // Query for an existing chatroom with both users and the same commodity
+      const q = query(
+        collection(db, 'chatrooms'),
+        where('users', '==', sortedUsers),  // Match both users
+        where('usersData.Commodity', '==', quote.Commodity)  // Match commodity
+      );
+      
+      const querySnapshot = await getDocs(q);
+      let chatroomId;
+  
+      // Check if chatroom exists
+      if (!querySnapshot.empty) {
+        querySnapshot.forEach(doc => {
+          chatroomId = doc.id;  // Existing chatroom found
+        });
+      }
+  
+      if (!chatroomId) {
+        // Create a new chatroom if none exists
+        const chatroomData = {
+          users: sortedUsers,  // Store the sorted array of users
+          usersData: {
+            Supplier: quote.SupplierId,
+            userfwd: quote.forwarderId,
+            Commodity: quote.Commodity,
+            Status: "Active"
+          },
+          timestamp: serverTimestamp(),
+          lastMessage: null
+        };
+  
+        const chatroomRef = await addDoc(collection(db, 'chatrooms'), chatroomData);
+        chatroomId = chatroomRef.id;
+      }
+  toast("Your chat is already exist!")
+      // Route to the chat page with the chatroomId
+      router.replace(`/Forwarderdashboard/chat?chatroomId=${chatroomId}`);
     } catch (error) {
       console.error('Error creating or checking chatroom:', error);
-      alert(error)
+      alert(error.message);
     }
-    }
-
+  };
+  
+  
 const dates=formatTimeAgo(quote.date)
   return (
     <div className='md:p-12'>

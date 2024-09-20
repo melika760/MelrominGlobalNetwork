@@ -38,7 +38,7 @@ const Qoutes = () => {
     <div className='min-h-screen bg-gray-50 p-4 pt-12 lg:p-12'>
       {!selectedQuote ? (
         <div className='bg-white shadow-md rounded-lg'>
-          <div className='md:flex hidden items-center justify-between p-4 border-b bg-gray-200'>
+          <div className='md:grid-cols-5 md:grid hidden items-center justify-between p-4 border-b bg-gray-200'>
             <h3 className='font-semibold text-sm sm:text-base text-gray-700'>Commodity</h3>
             <h3 className='font-semibold text-sm sm:text-base text-gray-700'>Origin</h3>
             <h3 className='font-semibold text-sm sm:text-base text-gray-700'>Destination</h3>
@@ -50,7 +50,7 @@ const Qoutes = () => {
               allQuotes.map((quote) => (
                 <div
                   key={quote.id}
-                  className='md:flex grid grid-cols-1 items-center md:justify-between gap-4 p-4 border-b hover:bg-gray-50 transition-colors duration-300'
+                  className='md:grid-cols-5 grid grid-cols-1 items-center md:justify-between gap-4 p-4 border-b hover:bg-gray-50 transition-colors duration-300'
                 >
                   <p className='text-sm sm:text-base text-gray-800'><span className='font-semibold text-sm sm:text-base text-gray-700 md:hidden sm:block'>Commodity:</span> {quote.Commodity}</p>
                   <p className='text-sm sm:text-base text-gray-800'><span className='font-semibold text-sm sm:text-base text-gray-700 md:hidden sm:block'>Origin:</span> {quote.selectedCounty}</p>
