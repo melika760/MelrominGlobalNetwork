@@ -7,6 +7,7 @@ import React, { useEffect, useState } from 'react'
 
 import { useAuthState } from 'react-firebase-hooks/auth';
 import moment from 'moment';
+import Image from 'next/image';
 const Contract = () => {
     const[contracts,setcontracts]=useState([])
     const [moreInfo, setMoreInfo] = useState({});
@@ -31,6 +32,9 @@ const Contract = () => {
         const momentDate = moment(agreedDate);
         return momentDate.format("MMM Do YY");
       };
+      const toggleMoreInfo = (index) => {
+        setMoreInfo(prev => ({ ...prev, [index]: !prev[index] }));
+    };
   return (
     <section className="md:p-12 p-4">
       <h2 className="text-primary font-bold text-xl mb-8">Contracts List</h2>
@@ -47,7 +51,7 @@ const Contract = () => {
                         contracts.map((contract, index) => (
                             <div key={index} className='flex flex-col justify-between'>
                                 <div className='grid grid-cols-4 gap-4 p-4 border-b-2 items-center relative'>
-                                    <p>{contract.selectedChatroom.Commodity}</p>
+                                    <p>{contract.Commodity}</p>
                                     <p>{contract.finalAmount}</p>
                                     <p>{formatTimeAgo(contract.agreedDate)}</p>
                                     <Button onClick={() => toggleMoreInfo(index)} className="w-[55px]" variant={"ghost"}>
@@ -58,8 +62,9 @@ const Contract = () => {
                                 <div>
                                     {moreInfo[index] &&
                                         <div className='p-4'>
-                                            <p className='mb-5'></p>
-                                            <p></p>
+                                            <p className='mb-5'>{contract.Status}</p>
+                                            <Image src={contract.contractImageURL} alt='OfficialContract' className='w-[100px]' width={50} height={50}/>
+                                        <Button className="w-[155px] mt-5">Go to payment!</Button>
                                         </div>
                                     }
                                 </div>

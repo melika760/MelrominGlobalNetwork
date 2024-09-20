@@ -87,14 +87,18 @@ const handleuploads = async () => {
     }
   )
 }
+
   const submitContractData = async (imageURL) => {
-    try {
+    try {console.log(selectedChatroom.otherData.Status)
       const docRef = await addDoc(collection(db, 'contracts'), {
         finalAmount: enteredAmount,
         agreedDate: date,
         contractImageURL: imageURL,
         createdAt: new Date(),
-        selectedChatroom:selectedChatroom.otherData,
+        Commodity:selectedChatroom.otherData.Commodity,
+        Status:selectedChatroom.otherData.Status,
+        Supplier:selectedChatroom.otherData.Supplier,
+        userfwd:selectedChatroom.otherData.userfwd,
         userId:user.uid
       })
       console.log('Contract submitted with ID: ', docRef.id)
