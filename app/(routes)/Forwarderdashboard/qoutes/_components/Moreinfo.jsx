@@ -12,36 +12,12 @@ const Moreinfo = ({ quote, onBack }) => {
 const[user]=useAuthState(auth)
 const formatTimeAgo = (timestamp) => {
   if (!timestamp || !timestamp.toDate) {
-    // Handle the case where timestamp is null or not a Firestore Timestamp
     return "No timestamp available";
   }
-  
   const date = timestamp.toDate();
   const momentDate = moment(date);
   return momentDate.calendar();
 };
-  // const startChat =async(user) => {
-  //   try{    
-  //     const usersData = {
-  //      Supplier: quote.SupplierId,
-  //       userfwd :quote.forwarderId,
-  //       Commodity:quote.Commodity,
-  //       Status:"Active"
-  //     };
-  //     const chatroomData = {
-  //       users: [quote.SupplierId,quote.forwarderId],
-  //       usersData,
-  //       timestamp:serverTimestamp() ,
-  //       lastMessage: null,
-  //     };
-  
-  //     const chatroomRef = await addDoc(collection(db, 'chatrooms'), chatroomData);
-  //     router.replace("/chat")
-  //   } catch (error) {
-  //     console.error('Error creating or checking chatroom:', error);
-  //     alert(error)
-  //   }
-  //   }
   const startChat = async () => {
     try {
       // Sort the user IDs to ensure consistency

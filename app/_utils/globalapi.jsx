@@ -43,6 +43,22 @@ const getDatas=async(user)=>{
     }
     catch(error){}
 }
+const getContracts=async(user)=>{
+  try{
+      if (!user) {
+          throw new Error("User not authenticated");
+        }
+        const userId = user.uid;
+        const q = query(collection(db, "contracts"), where("userId", "==", userId));
+        const getshipping = await getDocs(q);
+        const data = [];
+        getshipping.forEach((doc) => {
+          data.push({ id: doc.id, ...doc.data() });
+        });
+        return(Array.isArray(data) ? data : [])
+  }
+  catch(error){}
+}
 const UpdatingInquieries=async(formData,user)=>{
     try {
         const c = query(collection(db, "ShippingData"), where("userId", "==", user.uid));
@@ -195,5 +211,6 @@ export default{
     sendDatastofrwd,
     EditSupplierprofile,
     EditForwarderprofile,
-    fetchQuotes
+    fetchQuotes,
+    getContracts
 }

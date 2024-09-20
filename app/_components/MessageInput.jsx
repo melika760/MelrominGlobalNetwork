@@ -1,6 +1,6 @@
 import { Input } from '@/components/ui/input'
-import { CalendarIcon, Image, Paperclip, ScrollText, Send, Smile } from 'lucide-react'
-import { storage } from '@/config/firebaseConfig'
+import { Image, Paperclip, ScrollText, Send, Smile } from 'lucide-react'
+import { storage,db, auth } from '@/config/firebaseConfig'
 import{ ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage'
 import React, { useState } from 'react'
 import {
@@ -19,18 +19,30 @@ import {
 } from "@/components/ui/popover"
 import { Label } from '@/components/ui/label'
 import { Button } from '@/components/ui/button'
-import { cn } from '@/lib/utils'
 import { format } from "date-fns"
+import { Calendar as CalendarIcon } from "lucide-react"
+import { cn } from "@/lib/utils"
 import { Calendar } from "@/components/ui/calendar"
 import EmojiPicker from 'emoji-picker-react';
+import { collection, addDoc } from 'firebase/firestore'
+import useInputs from './_hooks/use-inputs'
+import { useAuthState } from 'react-firebase-hooks/auth'
 
-const MessageInput = ({ sendMessage, message, setMessage,image,setImage }) => {
+const MessageInput = ({ sendMessage, message, setMessage,image,setImage,selectedChatroom}) => {
   const[date,setDate]=useState(Date())
   const [file, setFile] = useState(null);
+  const [file2, setFile2] = useState(null);
   const [uploadProgress, setUploadProgress] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
   const [showEmojiPicker, setShowEmojiPicker] = useState(false); 
-  const[contractimg,setcontractimg]=useState(null)
+  const[contractimg,setContractImg]=useState(null)
+ const{
+  value:enteredAmount,
+  ValueIsvalid:AmountIsValid,
+  hasError:AmountHasError,
+  Changehandler:AmountChange,
+  Blurhandler:AmountBlur
+  }=useInputs(value=>value.trim()!="")
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
     setFile(selectedFile);
@@ -42,27 +54,54 @@ const MessageInput = ({ sendMessage, message, setMessage,image,setImage }) => {
     };
     reader.readAsDataURL(selectedFile);
   };
-const handleuploads=async()=>{
-  if (!file) {
-    console.error('No file selected.');
-    return;
+  const [user]=useAuthState(auth)
+  const handleFileChanges = (e) => {
+    const selectedFile = e.target.files[0];
+    setFile2(selectedFile);
+
+    // Display image preview
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setImagePreview(reader.result);
+    };
+    reader.readAsDataURL(selectedFile);
+  };
+
+const handleuploads = async () => {
+  if (!file2) {
+    console.error('No file selected.')
+    return
   }
-  const storageRef = ref(storage, `Contracts/${file.name}`);
-  const uploadTask = uploadBytesResumable(storageRef, file);
+
+  const storageRef = ref(storage, `Contracts/${file2.name}`)
+  const uploadTask = uploadBytesResumable(storageRef, file2)
+
   uploadTask.on(
     'state_changed',
-    () => {
-      getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-        console.log('File available at', downloadURL);
-        // Reset file state and update message with download URL
-        setFile(null);
-        setcontractimg(downloadURL);
-    
-      });
+    async () => {
+      const downloadURL = await getDownloadURL(uploadTask.snapshot.ref)
+      console.log('File available at', downloadURL)
+      setFile2(null)
+      setContractImg(downloadURL)
+      await submitContractData(downloadURL) // Save to Firestore
     }
-  );
-  
+  )
 }
+  const submitContractData = async (imageURL) => {
+    try {
+      const docRef = await addDoc(collection(db, 'contracts'), {
+        finalAmount: enteredAmount,
+        agreedDate: date,
+        contractImageURL: imageURL,
+        createdAt: new Date(),
+        selectedChatroom:selectedChatroom.otherData,
+        userId:user.uid
+      })
+      console.log('Contract submitted with ID: ', docRef.id)
+    } catch (e) {
+      console.error('Error adding contract: ', e)
+    }
+  }
   const handleUpload = async () => {
     if (!file) {
       console.error('No file selected.');
@@ -104,17 +143,18 @@ const handleuploads=async()=>{
  {image ? <Image className='text-green-600 cursor-pointer mr-2 text-xs'/>: <Paperclip className='text-gray-500 cursor-pointer mr-2 text-xs' onClick={() => document.getElementById('my_modal_3').showModal()}/>}
     <Sheet>
   <SheetTrigger><h3 className='text-primary'><ScrollText className='text-gray-500 cursor-pointer mr-2 text-xs'/></h3></SheetTrigger>
-  <SheetContent className="snap-y   md:h-[600px] h-[400px]" side="top">
+  <SheetContent className="snap-y   md:h-[800px] h-[400px]" side="top">
     <SheetHeader>
       <SheetTitle className="text-center items-center">Ready for making contract?</SheetTitle>
       <SheetDescription className="m-12 p-12">
-      <Label htmlFor="TotalAmount">Enter Final Agreed Amount:<Input placeholder="$..." type="text" className="m-3"/></Label>
-      <Label htmlFor="DeliveryDate">Select Agreed Delivery Date:<Popover>
+      <Label htmlFor="TotalAmount">Enter Final Agreed Amount:<Input placeholder="$..." type="text" className="m-3 mt-5 mb-5"onChange={AmountChange} onBlur={AmountBlur} value={enteredAmount}/></Label>
+      <Label htmlFor="DeliveryDate">Select Agreed Delivery Date:
+        <Popover>
         <PopoverTrigger asChild>
           <Button
             variant={"outline"}
             className={cn(
-              "w-full justify-start text-left font-normal m-3",
+              "w-full justify-start text-left font-normal m-3 mt-5 mb-5",
             !date && "text-muted-foreground"
             )}
           >
@@ -130,27 +170,29 @@ const handleuploads=async()=>{
             initialFocus
           />
         </PopoverContent>
-      </Popover></Label>
+      </Popover>
+      </Label>
       <div className='space-y-2'>   
        <Label>
       Upload your Official Contract:
-      <input type="file" className="m-3 block w-full text-sm text-gray-700 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-100 file:text-blue-700 hover:file:bg-blue-200 focus:outline-none outline-none"
-    accept="image/*" 
-    onChange={handleFileChange}
-    />
-    </Label>
-    {imagePreview && (
+      {imagePreview && (
         <img
           src={imagePreview}
           alt="Uploaded"
           className=" max-h-60 w-auto object-cover rounded-md border border-gray-200 mb-4"
         />
       )}
+      <input type="file" className="m-3 mt-5 block w-full text-sm text-gray-700 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-100 file:text-blue-700 hover:file:bg-blue-200 focus:outline-none outline-none"
+    accept="image/*" 
+    onChange={handleFileChanges}
+    />
+    </Label>
+ 
            <div 
         onClick={()=>handleuploads()} 
-        className="btn btn-sm btn-primary w-[100px] text-center py-2 mt-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors duration-300"
+        className="btn btn-sm btn-primary w-[200px]  cursor-pointer float-end text-center py-2 mt-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors duration-300"
       >
-        Upload
+        Submit contract
       </div>
   
       </div>
@@ -192,7 +234,7 @@ const handleuploads=async()=>{
       />
       <div 
         onClick={()=>handleUpload()} 
-        className="btn btn-sm btn-primary text-center w-full py-2 mt-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors duration-300"
+        className="btn cursor-pointer btn-sm btn-primary text-center w-full py-2 mt-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors duration-300"
       >
         Upload
       </div>

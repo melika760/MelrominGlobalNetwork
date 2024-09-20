@@ -1,8 +1,7 @@
 "use client"
 import React, { useState, useEffect, useRef } from 'react';
 import { collection, addDoc, query, where, onSnapshot, orderBy,serverTimestamp,doc,updateDoc } from 'firebase/firestore';
-import { useAuthState } from 'react-firebase-hooks/auth';
-import { auth, db } from '@/config/firebaseConfig';
+import { db } from '@/config/firebaseConfig';
 import MessageCard from './MessageCard';
 import MessageInput from './MessageInput';
 
@@ -87,7 +86,7 @@ useEffect(() => {
       </div>
 
 
-      <MessageInput sendMessage={sendMessage} message={message} setMessage={setMessage} image={image} setImage={setImage}/>
+      <MessageInput sendMessage={sendMessage} message={message} setMessage={setMessage} image={image} setImage={setImage} selectedChatroom={selectedChatroom}/>
     </div>
   );
 }
