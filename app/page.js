@@ -8,7 +8,7 @@ import Icons from "./_components/Icons";
 import Works from "./_components/works";
 export default function Home() {
   return (
-   <div className="md:px-20">
+   <div>
     <Header/>
     <Hero/>
     <Aboutus/>

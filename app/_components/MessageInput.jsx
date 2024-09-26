@@ -30,6 +30,7 @@ import { collection, addDoc, getDoc, getDocs, query, where } from 'firebase/fire
 import useInputs from './_hooks/use-inputs'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { toast } from 'sonner'
+import { useRouter } from 'next/navigation'
 
 const MessageInput = ({ sendMessage, message, setMessage,image,setImage,selectedChatroom}) => {
   const[date,setDate]=useState(Date())
@@ -40,6 +41,7 @@ const MessageInput = ({ sendMessage, message, setMessage,image,setImage,selected
   const [showEmojiPicker, setShowEmojiPicker] = useState(false); 
   const[contractimg,setContractImg]=useState(null)
   const[disable,setdisable]=useState(false)
+  const router=useRouter()
  const{
   value:enteredAmount,
   ValueIsvalid:AmountIsValid,
@@ -254,7 +256,7 @@ const MessageInput = ({ sendMessage, message, setMessage,image,setImage,selected
     </SheetHeader>
   </SheetContent>
 </Sheet>} 
-{disable && <h3 className='text-primary'><ScrollText className='text-green-500 cursor-pointer mr-2 text-xs'/></h3>}
+{disable && <h3 className='text-primary'><ScrollText className='text-green-500 cursor-pointer mr-2 text-xs'onClick={()=>toast("You've already made this contract!")}/></h3>}
   
 
 <button onClick={() => setShowEmojiPicker(!showEmojiPicker)}>

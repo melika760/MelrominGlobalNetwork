@@ -57,7 +57,7 @@ const formatTimeAgo = (timestamp) => {
 };
   return (
     <div className='shadow-lg h-screen overflow-auto mt-4 mb-20'>
-      <h2 className='text-center font-bold text-gray-800'>Chats</h2>
+      <h2 className='text-center font-bold text-gray-800 text-xl'>Chats</h2>
      {UserChatrooms.map((chatroom)=>{
       return(  <div key={chatroom.id} onClick={()=>{openChat(chatroom)}}>
         <UserCard name={chatroom.usersData?.Commodity || 'Unknown Commodity'} time={formatTimeAgo(chatroom.timestamp)} latestMessage={chatroom.lastMessage}/>
