@@ -16,7 +16,7 @@ const Hero = () => {
       </div>
 
       <div className="lg:py-24">
-        <h2 className="text-3xl font-bold sm:text-4xl">THE WORLDS' FIRST PARTNERSHIP BETWEEN LOGISTICS AND SUPPLY CHAIN.</h2>
+        <h2 className="md:text-2xl font-bold text-lg">THE WORLDS' FIRST PARTNERSHIP BETWEEN LOGISTICS AND SUPPLY CHAIN.</h2>
 
         <p className="mt-4 text-gray-600">
         Melromin Global Network create an environment for all the suppliers and byers to connect with freight forwarding companies around the globe!

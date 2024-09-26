@@ -65,6 +65,7 @@ const formatTimeAgo = (timestamp) => {
      }
     
 )}
+{UserChatrooms.length==0 && <p>No chat is available</p>}
      
      </div>
   )

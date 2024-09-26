@@ -44,7 +44,7 @@ const Contracts = () => {
     <section className="md:p-12 p-4">
       <h2 className="text-primary font-bold text-xl mb-8">Contracts List</h2>
       <div className='p-6'>
-                <div className='grid grid-cols-4 gap-4 p-4 border-b-2 bg-gray-100'>
+                <div className='md:grid-cols-4  gap-8 md:grid hidden items-center justify-between p-4 border-b bg-gray-200'>
                     <h3 className='font-bold'>Commodity</h3>
                     <h3 className='font-bold'>Final Amount</h3>
                     <h3 className='font-bold'>Delivery Date</h3>
@@ -55,10 +55,10 @@ const Contracts = () => {
                     {contracts.length > 0 ? (
                         contracts.map((contract, index) => (
                             <div key={index} className='flex flex-col justify-between'>
-                                <div className='grid grid-cols-4 gap-4 p-4 border-b-2 items-center relative'>
-                                    <p>{contract.Commodity}</p>
-                                    <p>{contract.finalAmount}</p>
-                                    <p>{formatTimeAgo(contract.agreedDate)}</p>
+                                <div className='md:grid-cols-4 grid grid-cols-1 items-center md:justify-between gap-4 p-4 border-b hover:bg-gray-50 transition-colors duration-300'>
+                                    <p className='text-sm sm:text-base text-gray-800'><span className='font-semibold text-sm sm:text-base text-gray-700 md:hidden sm:block'>Commodity:</span> {contract.Commodity}</p>
+                                    <p className='text-sm sm:text-base text-gray-800'><span className='font-semibold text-sm sm:text-base text-gray-700 md:hidden sm:block'>Final Amount:</span>{contract.finalAmount}</p>
+                                    <p className='text-sm sm:text-base text-gray-800'><span className='font-semibold text-sm sm:text-base text-gray-700 md:hidden sm:block'>Delivery Date:</span>{formatTimeAgo(contract.agreedDate)}</p>
                                     
                                     <Button onClick={() => toggleMoreInfo(index)} className="w-[55px]" variant={"ghost"}>
                                         {moreInfo[index] ? <ArrowBigUp className='text-primary cursor-pointer'/> : <ArrowBigDown className='text-primary cursor-pointer'/>}
@@ -69,12 +69,12 @@ const Contracts = () => {
                                     {moreInfo[index] &&
                                         <div className='p-4'>
                                                  <div className='flex justify-start space-x-10 '>
-                                            <p className='mb-5'>Status:{contract.Status}</p>
-                                            <p>Sealed the Deal at:{formatTimeAgos(contract.createdAt)}</p>
+                                            <p className='text-sm sm:text-base text-gray-800 mb-5'>Status:{contract.Status}</p>
+                                            <p className='text-sm sm:text-base text-gray-800'>Sealed the Deal:{formatTimeAgos(contract.createdAt)}</p>
                                             </div>
-                         <Image src={contract.contractImageURL} alt='OfficialContract' className='w-[100px] mt-6' width={50} height={50}/>
+                         <Image src={contract.contractImageURL} alt='OfficialContract' className='md:w-[150px] w-full mt-6  ' width={150} height={50}/>
                     
-                                        <Button className="w-[155px] mt-5">Go to payment!</Button>
+                                        <Button className="md:w-[155px] mt-5 w-[240px]">Go to payment!</Button>
                                         </div>
                                     }
                                 </div>

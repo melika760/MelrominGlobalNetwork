@@ -2,7 +2,7 @@ import { Input } from '@/components/ui/input'
 import { Image, Paperclip, ScrollText, Send, Smile } from 'lucide-react'
 import { storage,db, auth } from '@/config/firebaseConfig'
 import{ ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   Sheet,
   SheetContent,
@@ -26,7 +26,7 @@ import {
 } from "@/components/ui/popover"
 import { Label } from '@/components/ui/label'
 import EmojiPicker from 'emoji-picker-react';
-import { collection, addDoc } from 'firebase/firestore'
+import { collection, addDoc, getDoc, getDocs, query, where } from 'firebase/firestore'
 import useInputs from './_hooks/use-inputs'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { toast } from 'sonner'
@@ -59,6 +59,32 @@ const MessageInput = ({ sendMessage, message, setMessage,image,setImage,selected
     reader.readAsDataURL(selectedFile);
   };
   const [user]=useAuthState(auth)
+  useEffect(() => {
+    const checkExistingContract = async () => {
+      if (!selectedChatroom || !user) return;
+      try {
+        const q = query(
+          collection(db, 'contracts'),
+          where('Commodity', '==', selectedChatroom.otherData.Commodity),
+          where('users', 'array-contains', user.uid)
+        );
+  
+        const querySnapshot = await getDocs(q);
+        console.log('Query snapshot:', querySnapshot);
+        if (!querySnapshot.empty) {
+          setdisable(true);
+        
+        } else {
+          setdisable(false)
+        }
+      } catch (e) {
+        console.error('Error checking contract existence: ', e);
+      }
+    };
+  
+    checkExistingContract();
+  }, [selectedChatroom, user]);
+  
   const handleFileChanges = (e) => {
     const selectedFile = e.target.files[0];
     setFile2(selectedFile);
@@ -71,26 +97,42 @@ const MessageInput = ({ sendMessage, message, setMessage,image,setImage,selected
     reader.readAsDataURL(selectedFile);
   };
 
-const handleuploads = async () => {
-  if (!file2) {
-    console.error('No file selected.')
-    return
-  }
-
-  const storageRef = ref(storage, `Contracts/${file2.name}`)
-  const uploadTask = uploadBytesResumable(storageRef, file2)
-
-  uploadTask.on(
-    'state_changed',
-    async () => {
-      const downloadURL = await getDownloadURL(uploadTask.snapshot.ref)
-      console.log('File available at', downloadURL)
-      setFile2(null)
-      setContractImg(downloadURL)
-      await submitContractData(downloadURL) // Save to Firestore
+  const handleuploads = async () => {
+    if (!file2) {
+      console.error('No file selected.');
+      return;
     }
-  )
-}
+  
+    const storageRef = ref(storage, `Contracts/${file2.name}`);
+    const uploadTask = uploadBytesResumable(storageRef, file2);
+  
+    uploadTask.on(
+      'state_changed',
+      (snapshot) => {
+        const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        console.log(`Upload is ${progress}% done`);
+      },
+      (error) => {
+       
+        console.error('Error uploading file:', error.message);
+      },
+      () => {
+        setTimeout(() => {
+          getDownloadURL(uploadTask.snapshot.ref)
+            .then((downloadURL) => {
+              console.log('File available at', downloadURL);
+              setFile2(null);
+              setContractImg(downloadURL);
+              submitContractData(downloadURL);
+            })
+            .catch((error) => {
+              console.error('Error getting download URL:', error.message);
+            });
+        }, 1000);
+      }
+    );
+  };
+  
 
   const submitContractData = async (imageURL) => {
     try {
@@ -105,7 +147,6 @@ const handleuploads = async () => {
         userId:user.uid
       })
       toast("Your contract is submitted successfully!")
-      setdisable(true)
       console.log('Contract submitted with ID: ', docRef.id)
     } catch (e) {
       console.error('Error adding contract: ', e)
@@ -177,7 +218,7 @@ const handleuploads = async () => {
               mode="single"
               selected={date}
               onSelect={(newDate) => {
-                setDate(newDate); // This should update the date when a new date is selected
+                setDate(newDate);
               }}
               initialFocus
           />
