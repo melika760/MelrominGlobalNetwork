@@ -13,6 +13,7 @@ import {
   } from "@/components/ui/dropdown-menu"
 import { signOut } from 'firebase/auth'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 
 const ForwarderHeader = () => {
     const[user]=useAuthState(auth)
@@ -29,11 +30,11 @@ const ForwarderHeader = () => {
     <DropdownMenuContent>
       <DropdownMenuLabel>My Account</DropdownMenuLabel>
       <DropdownMenuSeparator />
-      <DropdownMenuItem>Profile</DropdownMenuItem>
-      <DropdownMenuItem>Qoutes</DropdownMenuItem>
-      <DropdownMenuItem>Chat</DropdownMenuItem>
-      <DropdownMenuItem>Contract</DropdownMenuItem>
-      <DropdownMenuItem>Payment</DropdownMenuItem>
+      <Link href={"/Forwarderdashboard/profile"}><DropdownMenuItem>Profile</DropdownMenuItem></Link>
+      <Link href={"/Forwarderdashboard/qoutes"}><DropdownMenuItem>Qoutes</DropdownMenuItem></Link>
+      <Link href={"/Forwarderdashboard/chat"}><DropdownMenuItem>Chat</DropdownMenuItem></Link>
+      <Link href={"/Forwarderdashboard/contract"}><DropdownMenuItem>Contract</DropdownMenuItem></Link>
+      <Link href={"/Forwarderdashboard/payment"}><DropdownMenuItem>Payment</DropdownMenuItem></Link>
       <DropdownMenuItem onClick={logout}>Log out</DropdownMenuItem>
     </DropdownMenuContent>
   </DropdownMenu>

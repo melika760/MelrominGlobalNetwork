@@ -29,6 +29,7 @@ import EmojiPicker from 'emoji-picker-react';
 import { collection, addDoc } from 'firebase/firestore'
 import useInputs from './_hooks/use-inputs'
 import { useAuthState } from 'react-firebase-hooks/auth'
+import { toast } from 'sonner'
 
 const MessageInput = ({ sendMessage, message, setMessage,image,setImage,selectedChatroom}) => {
   const[date,setDate]=useState(Date())
@@ -38,6 +39,7 @@ const MessageInput = ({ sendMessage, message, setMessage,image,setImage,selected
   const [imagePreview, setImagePreview] = useState(null);
   const [showEmojiPicker, setShowEmojiPicker] = useState(false); 
   const[contractimg,setContractImg]=useState(null)
+  const[disable,setdisable]=useState(false)
  const{
   value:enteredAmount,
   ValueIsvalid:AmountIsValid,
@@ -91,7 +93,7 @@ const handleuploads = async () => {
 }
 
   const submitContractData = async (imageURL) => {
-    try {console.log(selectedChatroom.otherData.Status)
+    try {
       const docRef = await addDoc(collection(db, 'contracts'), {
         finalAmount: enteredAmount,
         agreedDate: date,
@@ -102,6 +104,8 @@ const handleuploads = async () => {
         Status:selectedChatroom.otherData.Status,
         userId:user.uid
       })
+      toast("Your contract is submitted successfully!")
+      setdisable(true)
       console.log('Contract submitted with ID: ', docRef.id)
     } catch (e) {
       console.error('Error adding contract: ', e)
@@ -146,7 +150,7 @@ const handleuploads = async () => {
     <div className='flex items-center p-4 border-t border-gray-200 relative'>
    
  {image ? <Image className='text-green-600 cursor-pointer mr-2 text-xs'/>: <Paperclip className='text-gray-500 cursor-pointer mr-2 text-xs' onClick={() => document.getElementById('my_modal_3').showModal()}/>}
-    <Sheet>
+  {!disable &&  <Sheet>
   <SheetTrigger><h3 className='text-primary'><ScrollText className='text-gray-500 cursor-pointer mr-2 text-xs'/></h3></SheetTrigger>
   <SheetContent className="snap-y   md:h-[800px] h-[400px]" side="top">
     <SheetHeader>
@@ -170,10 +174,12 @@ const handleuploads = async () => {
         </PopoverTrigger>
         <PopoverContent className="w-auto p-0">
           <Calendar
-            mode="single"
-            selected={date}
-            onSelect={setDate}
-            initialFocus
+              mode="single"
+              selected={date}
+              onSelect={(newDate) => {
+                setDate(newDate); // This should update the date when a new date is selected
+              }}
+              initialFocus
           />
         </PopoverContent>
       </Popover>
@@ -206,7 +212,10 @@ const handleuploads = async () => {
       
     </SheetHeader>
   </SheetContent>
-</Sheet>
+</Sheet>} 
+{disable && <h3 className='text-primary'><ScrollText className='text-green-500 cursor-pointer mr-2 text-xs'/></h3>}
+  
+
 <button onClick={() => setShowEmojiPicker(!showEmojiPicker)}>
         <Smile className='text-gray-500 cursor-pointer mr-2 text-xs'/>
       </button>
@@ -221,6 +230,7 @@ const handleuploads = async () => {
           />
         </div>
       )}
+   
       <dialog id="my_modal_3" className="modal ">
   <div className="modal-box relative p-6 bg-white rounded-lg shadow-lg max-w-lg w-full">
     <form method="dialog" className="space-y-4">
