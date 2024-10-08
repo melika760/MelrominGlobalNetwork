@@ -56,7 +56,7 @@ const Qoutes = () => {
                   <p className='text-sm sm:text-base text-gray-800'><span className='font-semibold text-sm sm:text-base text-gray-700 md:hidden sm:block'>Origin:</span> {quote.selectedCounty}</p>
                   <p className='text-sm sm:text-base text-gray-800'><span className='font-semibold text-sm sm:text-base text-gray-700 md:hidden sm:block'>Destination:</span> {quote.destination}</p>
                   <p className='text-sm sm:text-base text-gray-800'><span className='font-semibold text-sm sm:text-base text-gray-700 md:hidden sm:block'>Transportation:</span> {quote.transportation}</p>
-                  <span className='font-semibold text-sm sm:text-base text-gray-700 md:hidden sm:flex'>More info:
+                  <span className='font-semibold text-sm sm:text-base text-gray-700 md:hidden sm:flex'>More info
                  </span>
                  <span>   <InfoIcon
                     className='text-primary cursor-pointer text-lg sm:text-xl'

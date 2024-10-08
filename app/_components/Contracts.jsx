@@ -42,7 +42,7 @@ const Contracts = () => {
     };
   return (
     <section className="md:p-12 p-4">
-      <h2 className="text-primary font-bold text-xl mb-8">Contracts List</h2>
+      <h2 className="text-blue-800 text-center font-bold text-xl mb-8 p-4">Contracts List</h2>
       <div className='p-6'>
                 <div className='md:grid-cols-4  gap-8 md:grid hidden items-center justify-between p-4 border-b bg-gray-200'>
                     <h3 className='font-bold'>Commodity</h3>

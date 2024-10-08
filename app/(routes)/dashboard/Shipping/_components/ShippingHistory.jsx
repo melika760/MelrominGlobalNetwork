@@ -30,7 +30,7 @@ const[edit,setEdit]=useState(null);
 <div>
  {!edit ? 
  (<div className='p-4 sm:p-6'>
-    <div className='grid grid-cols-2 sm:grid-cols-5 gap-2 sm:gap-4 p-2 sm:p-4 border-b-2 bg-gray-100'>
+    <div className='md:grid-cols-5 md:grid hidden items-center justify-between p-4 border-b bg-gray-200'>
       <h3 className='font-bold text-sm sm:text-base'>Commodity</h3>
       <h3 className='font-bold text-sm sm:text-base'>Origin</h3>
       <h3 className='font-bold text-sm sm:text-base'>Destination</h3>
@@ -43,13 +43,13 @@ const[edit,setEdit]=useState(null);
          
             <div
             key={index}
-            className='grid grid-cols-2 sm:grid-cols-5 gap-2 sm:gap-4 p-2 sm:p-4 border-b-2 items-center text-sm sm:text-base'
+            className='md:grid-cols-5 grid grid-cols-1 items-center md:justify-between gap-4 p-4 border-b hover:bg-gray-50 transition-colors duration-300'
           >
-            <p>{item.Commodity}</p>
-            <p>{item.origin}</p>
-            <p>{item.destination}</p>
-            <p>{item.transportation}</p>
-            <InfoIcon className='text-primary cursor-pointer' onClick={()=>ChangeContent(item)}/>
+            <p className='text-sm sm:text-base text-gray-800'><span className='font-semibold text-sm sm:text-base text-gray-700 md:hidden sm:block'>Commodity:</span> {item.Commodity}</p>
+            <p className='text-sm sm:text-base text-gray-800'><span className='font-semibold text-sm sm:text-base text-gray-700 md:hidden sm:block'>Origin:</span> {item.origin}</p>
+            <p className='text-sm sm:text-base text-gray-800'><span className='font-semibold text-sm sm:text-base text-gray-700 md:hidden sm:block'>Destination:</span> {item.destination}</p>
+            <p className='text-sm sm:text-base text-gray-800'><span className='font-semibold text-sm sm:text-base text-gray-700 md:hidden sm:block'>Transportation:</span> {item.transportation}</p>
+          <div className='flex space-x-2'><p className='font-semibold text-sm sm:text-base text-gray-700 md:hidden sm:block'>More info:</p> <InfoIcon className='text-primary cursor-pointer sm:text-sm' onClick={()=>ChangeContent(item)}/></div> 
            
           </div>
          

@@ -21,12 +21,14 @@ try{
   };
   return (
     <div className='p-4'>
-      <ArrowLeft onClick={back} className='cursor-pointer text-primary text-xl font-bold'/>
+      <div className='flex  space-x-40'><ArrowLeft onClick={back} className='cursor-pointer text-blue-800 text-xl font-bold'/>
+      {/* <h2 className='text-2xl sm:text-3xl font-extrabold text-blue-800 mb-6 text-center'>Details</h2> */}
+      </div>
       
      {!change &&<div className=' sm:p-10 max-w-4xl mx-auto'>
-        <h2 className='text-2xl sm:text-3xl font-extrabold text-primary mb-6 text-center'>Details</h2>
+       
         <div className='grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12'>
-          <div className='bg-white p-6 rounded-lg shadow-md'>
+          <div className='bg-white p-6 rounded-lg '>
             <h3 className='text-lg font-semibold'>Commodity:</h3>
             <p className='text-blue-900 mb-4'>{datas.Commodity}</p>
             <h3 className='text-lg font-semibold'>Origin:</h3>
@@ -43,9 +45,9 @@ try{
             <h3 className='text-lg font-semibold'>Switch:</h3>
             <p className='text-blue-900 mb-4'>{datas.Switch}</p>
             <h3 className='text-lg font-semibold'>Transit:</h3>
-            <p className='text-blue-900 mb-4'>{datas.transit}</p>
+            <p className='text-blue-900 '>{datas.transit}</p>
           </div>
-          <div className='bg-white p-6 rounded-lg shadow-md'>
+          <div className='bg-white p-6 rounded-lg'>
             <h3 className='text-lg font-semibold'>Temprature:</h3>
             <p className='text-blue-900 mb-4'>{datas.Temprature}</p>
             <h3 className='text-lg font-semibold'>HS code:</h3>
