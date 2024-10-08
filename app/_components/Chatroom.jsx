@@ -79,7 +79,7 @@ useEffect(() => {
   return (
     <div className='flex flex-col h-screen'>
   
-      <div ref={messagesContainerRef} className='flex-1 overflow-y-auto p-10'>
+      <div ref={messagesContainerRef} className='flex-1 overflow-y-auto p-10 max-sm:p-2'>
         {messages?.map((message) => (
           <MessageCard key={message.id} message={message} me={me} other={other}/>
         ))}

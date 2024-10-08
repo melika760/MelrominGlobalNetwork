@@ -73,7 +73,7 @@ const dates=formatTimeAgo(quote.date)
       <ArrowLeft className='text-primary cursor-pointer' onClick={onBack}/>
       <div className='p-4 sm:p-10 max-w-4xl mx-auto'>
         <div className='flex items-center'>
-          <h2 className='text-2xl sm:text-3xl font-extrabold text-primary mb-6 text-center'>More Data</h2>
+          <h2 className='text-2xl sm:text-3xl font-extrabold text-blue-800 mb-6 text-center'>More Data</h2>
         </div>
         <div className='grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12'>
           <div className='bg-white p-6 rounded-lg shadow-md'>

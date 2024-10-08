@@ -32,7 +32,7 @@ await globalapi.EditForwarderprofile(FormsData,user)
 
 
   return (<div className='md:p-10 p-2'>
-       <h2 className='text-3xl font-extrabold text-primary mb-10'>Edit Profile</h2>
+       <h2 className='text-3xl font-extrabold text-blue-800 mb-10'>Edit Profile</h2>
   <Forwarderprofile onAdd={ForwardersProfile} loading={loading}/>
   </div>
    
