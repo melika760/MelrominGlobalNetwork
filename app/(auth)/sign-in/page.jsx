@@ -104,8 +104,8 @@ const SignIn = () => {
   };
 
   return (
-    <div className='flex items-baseline justify-center my-20'>
-      <div className='flex flex-col items-center p-10 bg-slate-100 border border-gray-200'>
+    <div className='flex items-baseline justify-center my-20 max-md:my-0'>
+      <div className='flex flex-col items-center p-10 bg-slate-100 border border-gray-200 rounded-md'>
         <Image src={"/logo2.png"} width={200} height={200} alt='Logo' />
         
         <h2 className='font-bold text-3xl mb-2'>Login</h2>

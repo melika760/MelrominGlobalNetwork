@@ -118,8 +118,8 @@ useEffect(()=>{
   
 
   return (
-    <div className='flex items-baseline justify-center my-20'>
-      <div className='flex flex-col items-center p-10 bg-slate-100 border border-gray-200'>
+    <div className='flex items-baseline justify-center my-20 max-md:my-0 '>
+      <div className='flex flex-col items-center p-10 bg-slate-100 border border-gray-200 rounded-md'>
         <Image src={"/logo2.png"} width={200} height={200} alt='Logo' className='mb-5 object-contain' />
         
         <h2 className='font-bold text-3xl'>Create an Account</h2>
@@ -170,13 +170,13 @@ useEffect(()=>{
     <div>
     <Sheet>
   <SheetTrigger><h3 className='text-primary ml-8'>Read our Terms & Conditions</h3></SheetTrigger>
-  <SheetContent className="snap-y overflow-y-scroll  md:h-[700px] h-[800px]" side="top">
+  <SheetContent className="snap-y overflow-y-scroll  md:h-[700px] h-[400px]" side="top">
     <SheetHeader>
       <SheetTitle className="text-center items-center">Melromin Global Network GDPR Policy</SheetTitle>
       <SheetDescription>
         <ul>
           <label>
-          <strong>1. Introduction</strong>
+          <strong >1. Introduction</strong>
           <li className='mb-2'>
           This policy outlines how Melromin Global Network collects, uses, stores, and protects the personal data of suppliers and forwarders in compliance with the General Data Protection Regulation (GDPR).
           </li>
