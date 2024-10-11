@@ -55,7 +55,7 @@ const Contracts = () => {
                     {contracts.length > 0 ? (
                         contracts.map((contract, index) => (
                             <div key={index} className='flex flex-col justify-between'>
-                                <div className='md:grid-cols-4 grid grid-cols-1 items-center md:justify-between gap-4 p-4 border-b hover:bg-gray-50 transition-colors duration-300'>
+                                <div className='md:grid-cols-4 grid grid-cols-1 items-center md:justify-between gap-8 p-4 border-b hover:bg-gray-50 transition-colors duration-300'>
                                     <p className='text-sm sm:text-base text-gray-800'><span className='font-semibold text-sm sm:text-base text-gray-700 md:hidden sm:block'>Commodity:</span> {contract.Commodity}</p>
                                     <p className='text-sm sm:text-base text-gray-800'><span className='font-semibold text-sm sm:text-base text-gray-700 md:hidden sm:block'>Final Amount:</span>{contract.finalAmount}</p>
                                     <p className='text-sm sm:text-base text-gray-800'><span className='font-semibold text-sm sm:text-base text-gray-700 md:hidden sm:block'>Delivery Date:</span>{formatTimeAgo(contract.agreedDate)}</p>

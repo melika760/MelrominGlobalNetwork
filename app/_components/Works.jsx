@@ -5,7 +5,7 @@ const Works = () => {
     <section>
     <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
       <div className="max-w-3xl">
-        <h2 className="text-3xl font-bold sm:text-4xl">
+        <h2 className="text-3xl font-bold sm:text-4xl text-blue-950">
        How it works?!
         </h2>
       </div>

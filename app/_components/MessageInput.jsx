@@ -195,9 +195,9 @@ const MessageInput = ({ sendMessage, message, setMessage,image,setImage,selected
       <div className="modal-box relative p-6 bg-white rounded-lg shadow-lg max-w-lg w-full">
         <h2>Ready for making contract?</h2>
         <form method="dialog" className="space-y-4">
-        <Label htmlFor="TotalAmount">Enter Final Agreed Amount:<Input placeholder="$..." type="text" className="m-3 mt-5 mb-5"onChange={AmountChange} onBlur={AmountBlur} value={enteredAmount}/></Label>
+        <Label htmlFor="TotalAmount">Enter Final Agreed Amount:<Input placeholder="$..." type="text" className="mt-5 mb-5"onChange={AmountChange} onBlur={AmountBlur} value={enteredAmount}/></Label>
       <Label htmlFor="DeliveryDate">Select Agreed Delivery Date:
-        <Input placeholder="Enter your delivery date MM/DD/YY" value={date} onChange={e=>setDate(e.target.value)}/>
+        <Input placeholder="Enter your delivery date MM/DD/YY" className="mt-5 mb-5" value={date} onChange={e=>setDate(e.target.value)}/>
       </Label>
   
       <div className='space-y-2'>   
@@ -210,7 +210,7 @@ const MessageInput = ({ sendMessage, message, setMessage,image,setImage,selected
           className=" max-h-60 w-auto object-cover rounded-md border border-gray-200 mb-4"
         />
       )}
-      <input type="file" className="m-3 mt-5 block w-full text-sm text-gray-700 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-100 file:text-blue-700 hover:file:bg-blue-200 focus:outline-none outline-none"
+      <input type="file" className="m-3 mt-5 mb-5 block w-full text-sm text-gray-700 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-100 file:text-blue-700 hover:file:bg-blue-200 focus:outline-none outline-none"
     accept="image/*" 
     onChange={handleFileChanges}
     />
@@ -218,7 +218,7 @@ const MessageInput = ({ sendMessage, message, setMessage,image,setImage,selected
  
            <div 
         onClick={()=>handleuploads()} 
-        className="btn btn-sm btn-primary w-[200px]  cursor-pointer text-center py-2 mt-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors duration-300"
+        className="btn btn-sm btn-primary md:w-[400px] w-full items-center cursor-pointer text-center py-2 mt-5 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors duration-300"
       >
         Submit contract
       </div>

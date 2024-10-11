@@ -34,7 +34,6 @@ const getDatas=async(user)=>{
           }
           const userId = user.uid;
           const q = query(collection(db, "ShippingData"), where("userId", "==", userId));
-          const getshipping = await getDocs(q);
           const data = [];
           getshipping.forEach((doc) => {
             data.push({ id: doc.id, ...doc.data() });
@@ -42,6 +41,23 @@ const getDatas=async(user)=>{
           return(Array.isArray(data) ? data : [])
     }
     catch(error){}
+}
+const getUsers=async(user)=>{
+  try{
+      if (!user) {
+          throw new Error("User not authenticated");
+        }
+        const userId = user.uid;
+        const q = query(collection(db, "users"), where("userId", "==", userId));
+        const getshipping = await getDocs(q);
+        console.log(getshipping)
+        const data = [];
+        getshipping.forEach((doc) => {
+          data.push({ id: doc.id, ...doc.data() });
+        });
+        return(Array.isArray(data) ? data : [])
+  }
+  catch(error){}
 }
 const getContracts=async(user)=>{
   try{
@@ -222,5 +238,6 @@ export default{
     EditSupplierprofile,
     EditForwarderprofile,
     fetchQuotes,
-    getContracts
+    getContracts,
+    getUsers
 }
