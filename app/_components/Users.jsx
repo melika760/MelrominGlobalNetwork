@@ -49,6 +49,7 @@ const Users = ({userData, setSelectedChatroom}) => {
       otherData: chatroom.usersData,
     }
     setSelectedChatroom(data);
+    // router.push(`chat?chatroomId=${data.id}`)
 }
 const formatTimeAgo = (timestamp) => {
   const date = timestamp?.toDate();

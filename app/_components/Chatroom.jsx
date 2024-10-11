@@ -4,8 +4,9 @@ import { collection, addDoc, query, where, onSnapshot, orderBy,serverTimestamp,d
 import { db } from '@/config/firebaseConfig';
 import MessageCard from './MessageCard';
 import MessageInput from './MessageInput';
+import { ArrowLeft } from 'lucide-react';
 
-function Chatroom({ user ,selectedChatroom}) {
+function Chatroom({ user ,selectedChatroom,onBack}) {
   
   const me = selectedChatroom?.myData
   const other = selectedChatroom?.otherData
@@ -78,7 +79,7 @@ useEffect(() => {
 
   return (
     <div className='flex flex-col h-screen'>
-  
+    <ArrowLeft className='text-primary cursor-pointer hidden max-sm:block' onClick={onBack}/>
       <div ref={messagesContainerRef} className='flex-1 overflow-y-auto p-10 max-sm:p-2'>
         {messages?.map((message) => (
           <MessageCard key={message.id} message={message} me={me} other={other}/>

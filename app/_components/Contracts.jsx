@@ -42,7 +42,7 @@ const Contracts = () => {
     };
   return (
     <section className="md:p-12 p-4">
-      <h2 className="text-blue-800 text-center font-bold text-xl mb-8 p-4">Contracts List</h2>
+      <h2 className="text-blue-800 text-center font-bold text-xl mb-8 p-4">Contracts</h2>
       <div className='p-6'>
                 <div className='md:grid-cols-4  gap-8 md:grid hidden items-center justify-between p-4 border-b bg-gray-200'>
                     <h3 className='font-bold'>Commodity</h3>
@@ -71,10 +71,13 @@ const Contracts = () => {
                                                  <div className='flex justify-start space-x-10 '>
                                             <p className='text-sm sm:text-base text-gray-800 mb-5'>Status:{contract.Status}</p>
                                             <p className='text-sm sm:text-base text-gray-800'>Sealed the Deal:{formatTimeAgos(contract.createdAt)}</p>
+                                            
                                             </div>
-                         <Image src={contract.contractImageURL} alt='OfficialContract' className='md:w-[150px] w-full mt-6  ' width={150} height={50}/>
+                  <div className='flex flex-col justify-center'>
+                  <Image src={contract.contractImageURL} alt='OfficialContract' className='md:w-[150px] w-full mt-6  ' width={150} height={50}/>
                     
-                                        <Button className="md:w-[155px] mt-5 w-[240px]">Go to payment!</Button>
+                    <Button className="md:w-[155px] mt-5 w-[240px]">Go to payment!</Button>
+                  </div>
                                         </div>
                                     }
                                 </div>

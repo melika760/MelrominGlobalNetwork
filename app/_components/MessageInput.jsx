@@ -16,6 +16,7 @@ const MessageInput = ({ sendMessage, message, setMessage,image,setImage,selected
   const [file, setFile] = useState(null);
   const [file2, setFile2] = useState(null);
   const [uploadProgress, setUploadProgress] = useState(null);
+  const [uploadProgres, setUploadProgres] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
   const [showEmojiPicker, setShowEmojiPicker] = useState(false); 
   const[contractimg,setContractImg]=useState(null)
@@ -91,7 +92,7 @@ const MessageInput = ({ sendMessage, message, setMessage,image,setImage,selected
       'state_changed',
       (snapshot) => {
         const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        console.log(`Upload is ${progress}% done`);
+        setUploadProgres(progress)
       },
       (error) => {
        
@@ -127,8 +128,10 @@ const MessageInput = ({ sendMessage, message, setMessage,image,setImage,selected
         Status:selectedChatroom.otherData.Status,
         userId:user.uid
       })
+      document.getElementById('my_modal_4').close()
+      setdisable(true)
       toast("Your contract is submitted successfully!")
-      console.log('Contract submitted with ID: ', docRef.id)
+
     } catch (e) {
       console.error('Error adding contract: ', e)
     }
@@ -215,7 +218,9 @@ const MessageInput = ({ sendMessage, message, setMessage,image,setImage,selected
     onChange={handleFileChanges}
     />
     </Label>
- 
+    {uploadProgres > 0 && (
+        <progress value={uploadProgres} max="100" className="progress progress-primary w-full h-3 rounded-lg mt-2"></progress>
+      )}
            <div 
         onClick={()=>handleuploads()} 
         className="btn btn-sm btn-primary md:w-[400px] w-full items-center cursor-pointer text-center py-2 mt-5 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors duration-300"
