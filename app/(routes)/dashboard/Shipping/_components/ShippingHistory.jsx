@@ -24,8 +24,6 @@ const[edit,setEdit]=useState(null);
   const ChangeContent=(item)=>{
    setEdit(item)
       }
-
-
   return (
 <div>
  {!edit ? 

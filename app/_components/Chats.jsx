@@ -6,12 +6,13 @@ import Users from "@/app/_components/Users";
 import Chatroom from "@/app/_components/Chatroom";
 import { useSearchParams } from "next/navigation";
 
+
 const Chats = () => {
     const [user] = useAuthState(auth);
     const [selectedChatroom, setSelectedChatroom] = useState(null);
     const [isMobile, setIsMobile] = useState(false);
-    const searchParams = useSearchParams();
-    const chatroomId = searchParams.get("chatroomId");
+   const searchparam=useSearchParams()
+   const chatroomId=searchparam.get("chatroomId")
   
     
     useEffect(() => {

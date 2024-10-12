@@ -21,11 +21,11 @@ const Footer = () => {
         </li>
   
         <li>
-        <span className='text-lg font-semibold flex text-blue-950'><PhoneCall className='mr-2'/>Phone Number:</span> 07943953717
+        <span className='text-lg font-semibold flex text-blue-950'><PhoneCall className='mr-2'/>Phone Number:</span> 07709875252
         </li>
   
         <li>
-         <span className='text-lg font-semibold flex text-blue-950'><MapPin className='mr-2'/>Address:</span> 62 Warren Road,Twickenham,London 
+         <span className='text-lg font-semibold flex text-blue-950'><MapPin className='mr-2'/>Address:</span> 88 Uxendon Hill,London 
         </li>
   
       </ul>
@@ -35,7 +35,7 @@ const Footer = () => {
   
         <li>
           <a
-            href="#"
+            href="https://www.instagram.com/melrominglobalnetwork/"
             rel="noreferrer"
             target="_blank"
             className="text-gray-700 transition hover:text-gray-700/75"

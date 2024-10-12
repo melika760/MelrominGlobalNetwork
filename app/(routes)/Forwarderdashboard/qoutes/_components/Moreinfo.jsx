@@ -59,7 +59,7 @@ const formatTimeAgo = (timestamp) => {
       }
   toast("Your chat is already exist!")
       // Route to the chat page with the chatroomId
-      router.replace(`/Forwarderdashboard/chat`);
+      router.replace(`/Forwarderdashboard/chat?chatroomId=${chatroomId}`);
     } catch (error) {
       console.error('Error creating or checking chatroom:', error);
       alert(error.message);

@@ -70,13 +70,13 @@ const Contracts = () => {
                                         <div className='p-4'>
                                                  <div className='flex justify-start space-x-10 '>
                                             <p className='text-sm sm:text-base text-gray-800 mb-5'>Status:{contract.Status}</p>
-                                            <p className='text-sm sm:text-base text-gray-800'>Sealed the Deal:{formatTimeAgos(contract.createdAt)}</p>
+                                            <p className='text-sm sm:text-base text-gray-800'>Made the Contract at: {formatTimeAgos(contract.createdAt)}</p>
                                             
                                             </div>
                   <div className='flex flex-col justify-center'>
                   <Image src={contract.contractImageURL} alt='OfficialContract' className='md:w-[150px] w-full mt-6  ' width={150} height={50}/>
                     
-                    <Button className="md:w-[155px] mt-5 w-[240px]">Go to payment!</Button>
+                    <Button className="md:w-[155px] mt-5 w-full">Go to payment!</Button>
                   </div>
                                         </div>
                                     }

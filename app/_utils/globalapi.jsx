@@ -34,13 +34,14 @@ const getDatas=async(user)=>{
           }
           const userId = user.uid;
           const q = query(collection(db, "ShippingData"), where("userId", "==", userId));
+          const getshipping = await getDocs(q);
           const data = [];
           getshipping.forEach((doc) => {
             data.push({ id: doc.id, ...doc.data() });
           });
           return(Array.isArray(data) ? data : [])
     }
-    catch(error){}
+    catch(error){console.log(error)}
 }
 const getUsers=async(user)=>{
   try{

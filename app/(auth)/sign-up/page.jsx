@@ -118,12 +118,12 @@ useEffect(()=>{
   
 
   return (
-    <div className='flex items-baseline justify-center my-20 max-md:my-0 '>
-      <div className='flex flex-col items-center p-10 bg-slate-100 border border-gray-200 rounded-md'>
+    <div className='flex items-baseline justify-center my-20 '>
+      <div className='flex flex-col items-center p-10 bg-slate-100 border border-gray-200 rounded-md m-4 shadow-lg'>
         <Image src={"/logo2.png"} width={200} height={200} alt='Logo' className='mb-5 object-contain' />
         
-        <h2 className='font-bold text-3xl'>Create an Account</h2>
-        <h2 className='text-gray-500'>Enter your email and password to create an account</h2>
+        <h2 className='font-bold text-3xl max-md:text-xl'>Create an Account</h2>
+        <h2 className='text-gray-500 text-center mt-3'>Enter your email and password to create an account</h2>
         <div className='w-full flex flex-col gap-5 mt-7'>
           <Input
             placeholder="Email"
