@@ -5,6 +5,7 @@ import { ArrowBigDown, ArrowBigUp } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import globalapi from '@/app/_utils/globalapi';
+import Image from 'next/image';
 const Forwarderslist = ({ selectedCountry, inquiery, transportation }) => {
     const [forwarders, setForwarders] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -74,8 +75,11 @@ const Forwarderslist = ({ selectedCountry, inquiery, transportation }) => {
                                 </div>
                             </div>
                         ))
-                    ) : (
-                        <p className='text-center text-gray-500'>No suitable forwarders found.</p>
+                    ) : (<div className="flex flex-col justify-center text-center items-center">
+        <Image src="/img8.png" className='object-contain ' width={300} height={100}/>
+        <p className='text-center text-gray-500'>No suitable forwarders found.</p>
+      </div>
+                        
                     )}
                 </div>
             </div>
