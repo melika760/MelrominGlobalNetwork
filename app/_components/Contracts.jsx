@@ -95,7 +95,7 @@ const Contracts = () => {
           </>
         ) : (
           <div className="flex flex-col justify-center text-center items-center mt-3">
-            <Image src="/Contract3.JPG" className='object-contain rounded-full' width={300} height={100} />
+            <Image src="/Contract3.png" className='object-contain rounded-full' width={300} height={100} />
             <p className='text-center text-gray-500 mt-3'>No contract data available.</p>
           </div>
         )}
