@@ -55,7 +55,7 @@ const[edit,setEdit]=useState(null);
        
         ))
       ) : (<div className="flex flex-col justify-center text-center items-center">
-        <Image src="/img8.JPG" className='object-contain ' width={300} height={100}/>
+        <Image src="/img8.png" className='object-contain ' width={300} height={100}/>
           <p className='text-center text-gray-500'>No shipping data available.</p>
       </div>
       
