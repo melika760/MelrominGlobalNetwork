@@ -38,7 +38,7 @@ const Footer = () => {
             href="https://www.instagram.com/melrominglobalnetwork/"
             rel="noreferrer"
             target="_blank"
-            className="text-gray-700 transition hover:text-gray-700/75"
+            className="text-gray-700 transition hover:text-gray-700/75 animate-pulse"
           >
             <span className="sr-only">Instagram</span>
             <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -56,7 +56,7 @@ const Footer = () => {
             href="https://www.linkedin.com/in/melika-tafazoli/"
             rel="noreferrer"
             target="_blank"
-            className="text-gray-700 transition hover:text-gray-700/75"
+            className="text-gray-700 transition hover:text-gray-700/75 animate-pulse"
           >
             <span className="sr-only">Linkedin</span>
         <Linkedin/>
