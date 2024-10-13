@@ -5,6 +5,7 @@ import { db,auth} from '@/config/firebaseConfig';
 import { useRouter } from 'next/navigation';
 import UserCard from './UserCard';
 import moment from 'moment';
+import Image from 'next/image';
 
 const Users = ({userData, setSelectedChatroom}) => {
   const[loading,setLoading]=useState(false);
@@ -49,7 +50,7 @@ const Users = ({userData, setSelectedChatroom}) => {
       otherData: chatroom.usersData,
     }
     setSelectedChatroom(data);
-    // router.push(`chat?chatroomId=${data.id}`)
+
 }
 const formatTimeAgo = (timestamp) => {
   const date = timestamp?.toDate();
@@ -66,7 +67,10 @@ const formatTimeAgo = (timestamp) => {
      }
     
 )}
-{UserChatrooms.length==0 && <p>No chat is available</p>}
+{UserChatrooms.length==0 &&  <div className="flex flex-col justify-center text-center items-center mt-8 ">
+                      <Image src="/Chat.JPG" className='object-contain rounded-xl' width={300} height={100}/>
+                        <p className='text-center text-gray-500'>No Chat available.</p>
+                    </div>}
      
      </div>
   )

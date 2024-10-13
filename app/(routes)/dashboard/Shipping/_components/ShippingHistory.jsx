@@ -5,6 +5,7 @@ import { auth } from "@/config/firebaseConfig";
 import { useAuthState } from "react-firebase-hooks/auth";
 import globalapi from '@/app/_utils/globalapi';
 import CheckData from './CheckData';
+import Image from 'next/image';
 
 const ShippingHistory = () => {
   const [shippingData, setShippingData] = useState([]);
@@ -53,8 +54,11 @@ const[edit,setEdit]=useState(null);
          
        
         ))
-      ) : (
-        <p className='text-center text-gray-500'>No shipping data available.</p>
+      ) : (<div className="flex flex-col justify-center text-center items-center">
+        <Image src="/img8.JPG" className='object-contain ' width={300} height={100}/>
+          <p className='text-center text-gray-500'>No shipping data available.</p>
+      </div>
+      
       )}
     </div>
    
