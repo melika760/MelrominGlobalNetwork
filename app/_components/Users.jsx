@@ -59,7 +59,7 @@ const formatTimeAgo = (timestamp) => {
 };
   return (
     <div className='shadow-lg h-screen overflow-auto mt-4 mb-20'>
-      <h2 className='text-center font-bold text-blue-800 text-xl'>Chats</h2>
+      <h2 className='text-center font-bold text-blue-950 text-xl'>Chats</h2>
      {UserChatrooms.map((chatroom)=>{
       return(  <div key={chatroom.id} onClick={()=>{openChat(chatroom)}}>
         <UserCard name={chatroom.usersData?.Commodity || 'Unknown Commodity'} time={formatTimeAgo(chatroom.timestamp)} latestMessage={chatroom.lastMessage}/>
@@ -68,7 +68,7 @@ const formatTimeAgo = (timestamp) => {
     
 )}
 {UserChatrooms.length==0 &&  <div className="flex flex-col justify-center text-center items-center mt-8 ">
-                      <Image src="/Chat.JPG" className='object-contain rounded-xl' width={300} height={100}/>
+                      <Image src="/chat2.JPG" className='object-contain rounded-full' width={300} height={100}/>
                         <p className='text-center text-gray-500'>No Chat available.</p>
                     </div>}
      

@@ -172,7 +172,7 @@ const MessageInput = ({ sendMessage, message, setMessage,image,setImage,selected
     setMessage((prevMessage) => prevMessage + emojiData.emoji);
   };
   return (
-    <div className='flex items-center p-4 border-t border-gray-200 relative'>
+    <div className='flex items-center p-4 border-t border-gray-200 relative bg-fixed'>
    
  {image ? <Image className='text-green-600 cursor-pointer mr-2 text-xs'/>: <Paperclip className='text-gray-500 cursor-pointer mr-2 text-xs' onClick={() => document.getElementById('my_modal_3').showModal()}/>}
 

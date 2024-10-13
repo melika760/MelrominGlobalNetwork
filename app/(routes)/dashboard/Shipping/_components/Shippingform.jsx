@@ -67,7 +67,7 @@ onAdd({
 }
     return (
       <div className='md:p-12 p-4'>
-        <h2 className='text-blue-800 font-bold text-xl mb-8'>Inquiery Form</h2>
+        <h2 className='text-blue-950 font-bold text-xl mb-8'>Inquiery Form</h2>
         <form className='grid md:grid-cols-2 grid-cols-1 gap-6' onSubmit={ShppingformSubmit}>
   <div>
   <div className='flex flex-col'>
