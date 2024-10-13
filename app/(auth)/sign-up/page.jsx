@@ -14,15 +14,6 @@ import Customedropdown from '@/app/_components/Customedropdown';
 import { UpdateContex } from '@/app/Store/UpdateContex';
 import { addDoc, collection } from 'firebase/firestore';
 
-import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet"
-
 const CreateAccount = () => {
 
  const [selectedValue, setSelectedValue] = useState(null);
@@ -165,16 +156,16 @@ useEffect(()=>{
 
       <div>
         <strong className="font-medium text-gray-900"> Accept Terms and Condition </strong>
+       
       </div>
     </label>
+    <h3 className='text-primary ml-8 cursor-pointer'onClick={()=>document.getElementById("my_modal_1").showModal()}>Read our Terms & Conditions</h3>
     <div>
-    <Sheet>
-  <SheetTrigger><h3 className='text-primary ml-8'>Read our Terms & Conditions</h3></SheetTrigger>
-  <SheetContent className="snap-y overflow-y-scroll  md:h-[700px] h-[400px]" side="top">
-    <SheetHeader>
-      <SheetTitle className="text-center items-center">Melromin Global Network GDPR Policy</SheetTitle>
-      <SheetDescription>
-        <ul>
+  
+<dialog id="my_modal_1" className="modal ">
+ <div className="modal-box relative p-6 bg-white rounded-lg shadow-lg max-w-lg w-full">
+  <h2>Melromin Global Network GDPR Policy</h2>
+ <ul>
           <label>
           <strong >1. Introduction</strong>
           <li className='mb-2'>
@@ -281,12 +272,14 @@ useEffect(()=>{
         </li>
           </label>
         </ul>
-      </SheetDescription>
-      
-    </SheetHeader>
-  </SheetContent>
-</Sheet>
-
+        <button
+      onClick={() => document.getElementById('my_modal_1').close()}
+      className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 text-gray-500 hover:text-gray-700 transition-transform transform hover:scale-110"
+    >
+      ✕
+    </button>
+ </div>
+</dialog>
     </div>
   </div>
 </fieldset>

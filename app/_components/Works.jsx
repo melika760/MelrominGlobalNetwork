@@ -12,16 +12,15 @@ const Works = () => {
   
       <div className="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-16">
         <div className="relative h-64 overflow-hidden sm:h-80 lg:h-full">
-       <Image className=' h-full w-full object-cover rounded-md shadow-md' src="/transportation-1.jpg" alt='transportation' width={500} height={200}/>
+       {/* <Image className=' h-full w-full object-cover rounded-md shadow-md' src="/transportation-1.jpg" alt='transportation' width={500} height={200}/> */}
+       <Image className=' h-full w-full object-cover rounded-md shadow-md' src="/img7.JPG" alt='transportation' width={500} height={200}/>
         </div>
   
         <div className="lg:py-16">
-        <h2 className='text-primary font-medium'> PROVIDING WORLD-CLASS BENEFITS TO FREIGHT FORWARDERS AND THE SUPPLY CHAIN</h2>
-          <article className="space-y-4 text-gray-600">
-            <p>
-            By removing the third-party forwarder, we help the freight cost to be reduced which is beneficiary to the suppliers and the byers.
-By gathering all the suppliers and byers who potentially are in need of transportation and logistics services to send or receive their shipments we are creating a sales environment for the freight forwarding and transportation companies according to their capabilities and the quality if their services.
-t!
+        <h2 className=' font-medium'> World-Class Solutions for <span className="text-blue-800 font-bold">Freight Forwarders</span> and the <span className="text-blue-800 font-bold">Supply Chain</span></h2>
+          <article className="space-y-4 text-gray-700">
+            <p className="leading-8">
+            By eliminating third-party forwarders, we reduce freight costs, benefiting both suppliers and buyers. Our platform connects suppliers and buyers who need transportation and logistics services, creating a competitive marketplace for freight forwarding and transportation companies. Companies can showcase their capabilities and service quality to meet the needs of their customers
             </p>
           </article>
         </div>

@@ -7,7 +7,7 @@ const Aboutus = () => {
       <div className="grid grid-cols-1 lg:h-screen lg:grid-cols-2">
         <div className="relative z-10 lg:py-16">
           <div className="relative h-64 sm:h-80 lg:h-full">
-        <Image src="/Networking.png"className='absolute inset-3 h-full w-full object-contain  scale-105' width={550} height={250}/>
+        <Image src="/Networking.png"className='absolute inset-3 h-full w-full object-contain scale-105 max-sm:scale-120' width={550} height={250}/>
           </div>
         </div>
   
@@ -20,11 +20,11 @@ const Aboutus = () => {
             <h2 className="text-2xl font-bold sm:text-3xl text-blue-950">
               Who We Are?
             </h2>
-  
+            <p className='text-blue-950 mt-3 font-bold text-lg'>Impartially Managed to Benefit Every Member</p>
             <p className="mt-4 text-gray-600">
-            Being a worldwide non-exclusive network, Melromin is neutrally managed and operated to benefit every member on its network.Melromin is continuously striving to add new, innovative, and high-value membership benefits.Every member of Melromin network, on each transportation service contract, is automatically covered by the most generous and extensive financial protection program in the industry, which allows your company to conduct business with other members with complete security and peace of mind.
-            </p>
-  <p className='text-blue-950 mt-3 font-bold text-lg'>NEUTRALLY MANAGED TO BENEFIT ALL MEMBERS</p>
+            As a global, non-exclusive network, Melromin is independently managed to serve the interests of all its members. We are committed to continuously enhancing our platform by introducing innovative, high-value benefits to our membership. Every Melromin member is automatically protected by the most comprehensive financial security program in the industry on all transportation service contracts. This ensures that your business dealings within our network are conducted with absolute confidence and peace of mind.
+           </p>
+  
 
           </div>
         </div>

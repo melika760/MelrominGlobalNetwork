@@ -1,11 +1,11 @@
 "use client"
-import { Inter } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.css";
 import { UpdateContex } from "./Store/UpdateContex";
 import { useState } from "react";
 import { Toaster } from "@/components/ui/sonner";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Poppins({ subsets: ["latin"],weight:['500'] });
 
 // export const metadata = {
 //   title: "Create Next App",

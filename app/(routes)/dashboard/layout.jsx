@@ -20,4 +20,4 @@ const Dashboardlayout = ({children}) => {
   )
 }
 
-export default withAuth(withRole("Supplier")(Dashboardlayout))
+export default withAuth((Dashboardlayout))
