@@ -10,7 +10,7 @@ const Hero = () => {
     <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-16">
       <div className="relative overflow-hidden rounded-lg sm:h-80 lg:order-last md:h-full ">
         <div className=' w-full  h-full  z-0'>
-        <Image src="/img2.JPG" className='object-contain w-full ' width={500} height={50}/>
+        <Image src="/img2.JPG" className='object-contain w-full ' width={500} height={50} alt="Hero"/>
         </div>
      
       </div>
