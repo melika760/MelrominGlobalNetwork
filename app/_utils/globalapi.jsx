@@ -1,4 +1,4 @@
-import { addDoc, collection, getDocs, query, updateDoc, where, doc} from "firebase/firestore";
+import { addDoc, collection, getDocs, query, updateDoc, where, doc, getDoc} from "firebase/firestore";
 import {  db } from "@/config/firebaseConfig";
 import { toast } from 'sonner';
 const addData=async(formData,user)=>{
@@ -23,10 +23,31 @@ const addData=async(formData,user)=>{
    }catch(error){
     console.log(error)
    }
-       
-  
-
 }
+const addPayment=async(formData,user)=>{
+  try{
+    const paymentDocRef =  await addDoc(collection(db, "Payments"), {
+       amount: formData.finalAmount,
+       status: formData.Status,
+       userId: user.uid
+   });
+   return paymentDocRef.id;
+  } catch (error) {
+    console.log('Error adding payment:', error);
+    throw new Error('Payment processing failed');
+  }
+}
+const getPaymentAmount = async (documentId) => {
+  const docRef = doc(db, 'Payments', documentId);
+  const docSnap = await getDoc(docRef);
+
+  if (docSnap.exists()) {
+    return docSnap.data().amount;
+  } else {
+    console.log('No such document!');
+    return null;
+  }
+};
 const getDatas=async(user)=>{
     try{
         if (!user) {
@@ -65,7 +86,6 @@ const getContracts=async(user)=>{
       if (!user) {
           throw new Error("User not authenticated");
         }
-        const userId = user.uid;
 
   const contractsRef = collection(db, "contracts");
   const q = query(
@@ -240,5 +260,7 @@ export default{
     EditForwarderprofile,
     fetchQuotes,
     getContracts,
-    getUsers
+    getUsers,
+    addPayment,
+    getPaymentAmount
 }

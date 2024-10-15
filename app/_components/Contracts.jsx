@@ -9,10 +9,13 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import moment from 'moment';
 import Image from 'next/image';
 
-const Contracts = () => {
+
+
+const Contracts = ({path}) => {
   const [contracts, setContracts] = useState([]);
   const [moreInfo, setMoreInfo] = useState({});
   const [user] = useAuthState(auth);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -42,6 +45,18 @@ const Contracts = () => {
   const toggleMoreInfo = (index) => {
     setMoreInfo(prev => ({ ...prev, [index]: !prev[index] }));
   };
+  const AddingData=async(formData)=>{
+    setLoading(true)
+try{
+  const paymentId =await globalapi.addPayment(formData,user)
+  setLoading(false)
+  window.location.href = `${path}/payment?paymentId=${paymentId}`;
+}
+catch (error) {
+  console.log('Error processing payment:', error);
+  setLoading(false);
+}
+  }
 
   return (
     <section className="md:p-12 p-4">
@@ -84,7 +99,7 @@ const Contracts = () => {
                         </div>
                         <div className='flex flex-col justify-center'>
                           <Image src={contract.contractImageURL} alt='OfficialContract' className='md:w-[150px] w-full mt-6' width={150} height={50} />
-                          <Button className="md:w-[155px] mt-5 w-full">Go to payment!</Button>
+                         <Button className="md:w-[155px] mt-5 w-full" onClick={()=>AddingData(contract)}>Go to payment!</Button> 
                         </div>
                       </div>
                     )}

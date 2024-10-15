@@ -3,7 +3,7 @@ import React from 'react'
 
 const contract = () => {
   return (
-  <Contracts/>
+  <Contracts path={"/dashboard"}/>
   )
 }
 

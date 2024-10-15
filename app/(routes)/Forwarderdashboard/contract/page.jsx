@@ -4,7 +4,7 @@ import Contracts from "@/app/_components/Contracts"
 const Contract = () => {
 
   return (
-   <Contracts/>
+   <Contracts path={"/Forwarderdashboard"}/>
   )
 }
 
