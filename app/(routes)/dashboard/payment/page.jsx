@@ -52,7 +52,8 @@ const Payment = () => {
   }
 
   // Convert amount to a number in cents
-  const amountInCents = parseFloat(paymentData.amount.replace('$', '').replace(',', '')) * 100;
+  const amounts= parseFloat(paymentData.amount.replace('$', '').replace(',', ''));
+  const amountInCents=amounts*100
 
   return (
     <div>
@@ -63,7 +64,11 @@ const Payment = () => {
       </div>
 
       {amountInCents > 0 && (
-        <Elements stripe={stripePromise}>
+        <Elements stripe={stripePromise}   options={{
+          mode: "payment",
+          amount: amountInCents,
+          currency: "usd",
+        }}>
           <Checkout amount={amountInCents} />
         </Elements>
       )}
