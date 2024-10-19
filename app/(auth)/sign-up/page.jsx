@@ -12,7 +12,7 @@ import { useCreateUserWithEmailAndPassword,useAuthState } from "react-firebase-h
 import { auth, db } from '@/config/firebaseConfig';
 import Customedropdown from '@/app/_components/Customedropdown';
 import { UpdateContex } from '@/app/Store/UpdateContex';
-import { addDoc, collection } from 'firebase/firestore';
+import { addDoc, collection, doc, setDoc } from 'firebase/firestore';
 
 const CreateAccount = () => {
 
@@ -87,25 +87,29 @@ useEffect(()=>{
     setLoader(true);
     try {
       const res = await createUser(email, password);
-  
-      if (user) {
-        await addDoc(collection(db, "users"), {
-          role: role,   
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      if (res.user && res.user.uid) {
+       
+        console.log(res.user)
+        await setDoc(doc(db, "users", res.user.uid), {
+          role: role,
           email: email,
-          userId: user.uid,
+          userId: res.user.uid,
         });
-  
-        toast("Your account created successfully!");
+        toast.success("Your account was created successfully!");
         router.replace("/Welcome");
       } else {
-        throw new Error("User creation failed");
+        throw new Error("User creation failed.");
       }
     } catch (e) {
-      console.log(e);
-      toast("Failed to create account!");
+      console.error("Error during sign-up:", e.message);
+      toast.error(`Failed to create account: ${e.message}`);
+    } finally {
+      setLoader(false); // Always hide the loader after the process
     }
-    setLoader(false);
   };
+  
+  
   
 
   return (

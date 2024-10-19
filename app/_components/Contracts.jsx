@@ -13,6 +13,7 @@ import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import Checkout from './Checkout';
 import Link from 'next/link';
+import { toast } from 'sonner';
 
 if (process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY === undefined) {
   throw new Error("NEXT_PUBLIC_STRIPE_PUBLIC_KEY is not defined");
@@ -23,8 +24,8 @@ const Contracts = ({path}) => {
   const [contracts, setContracts] = useState([]);
   const [moreInfo, setMoreInfo] = useState({});
   const [user] = useAuthState(auth);
-  const [loading, setLoading] = useState(false);
-  const[page,setpage]=useState("#")
+ const[amount,setamount]=useState(100)
+ 
 
   useEffect(() => {
     const fetchData = async () => {
@@ -40,6 +41,7 @@ const Contracts = ({path}) => {
     fetchData();
   }, [user]);
 
+
   const formatTimeAgo = (agreedDate) => {
     const momentDate = moment(agreedDate);
     return momentDate.format("MMM Do YY");
@@ -54,15 +56,18 @@ const Contracts = ({path}) => {
   const toggleMoreInfo = (index) => {
     setMoreInfo(prev => ({ ...prev, [index]: !prev[index] }));
   };
- const changepage=(finalAmount)=>{
+
+ const changepage=async(finalAmount,status)=>{
   if(path==="/dashboard"){
-    
+    const num= parseFloat(finalAmount)
+    setamount(num)
     document.getElementById("paymentModal").showModal()
+    await globalapi.UpdateContract(user)
   }else{
-setpage(`${path}/payment`)
+toast(`Your Payment Status is:${status}!If you have any problem contact us`)
   }
  }
-const amount=45.5*100
+
   return (
     <section className="md:p-12 p-4">
       <h2 className="text-blue-950 text-center font-bold text-xl mb-8 p-4">Contracts</h2>
@@ -78,7 +83,7 @@ const amount=45.5*100
             <div>
               {contracts.map((contract, index) => (
                 <div key={index} className='flex flex-col justify-between'>
-                  <div className='md:grid-cols-4 grid grid-cols-1 items-center md:justify-between gap-8 p-4 border-b hover:bg-gray-50 transition-colors duration-300'>
+                  <div className={`md:grid-cols-4 grid grid-cols-1 items-center md:justify-between gap-8 p-4 border-b hover:bg-gray-50 transition-colors duration-300 ${contract.Status === "Pending" ? "border-b-yellow-500" : contract.Status === "Active" ? "border-b-red-900" : contract.Status === "Success" ? "border-b-green-500" : "border-b-gray-500"}`}>
                     <p className='text-sm sm:text-base text-gray-800'>
                       <span className='font-semibold text-sm sm:text-base text-gray-700 md:hidden sm:block'>Commodity:</span> 
                       {contract.Commodity}
@@ -91,8 +96,8 @@ const amount=45.5*100
                       <span className='font-semibold text-sm sm:text-base text-gray-700 md:hidden sm:block'>Delivery Date:</span> 
                       {formatTimeAgo(contract.agreedDate)}
                     </p>
-                    <Button onClick={() => toggleMoreInfo(index)} className="w-[55px]" variant={"ghost"}>
-                      {moreInfo[index] ? <ArrowBigUp className='text-primary cursor-pointer' /> : <ArrowBigDown className='text-primary cursor-pointer' />}
+                    <Button onClick={() => toggleMoreInfo(index)} className='w-[55px] ' variant={"ghost"}>
+                      {moreInfo[index] ? <ArrowBigUp className={` cursor-pointer ${contract.Status === "Pending" ? "text-yellow-500" : contract.Status === "Active" ? "text-red-900" : contract.Status === "Success" ? "text-green-500" : "text-gray-500"}`} /> : <ArrowBigDown className={` cursor-pointer ${contract.Status === "Pending" ? "text-yellow-500" : contract.Status === "Active" ? "text-red-900" : contract.Status === "Success" ? "text-green-500" : "text-gray-500"}`} />}
                     </Button>
                   </div>
                   <div>
@@ -104,7 +109,7 @@ const amount=45.5*100
                         </div>
                         <div className='flex flex-col justify-center'>
                           <Image src={contract.contractImageURL} alt='OfficialContract' className='md:w-[150px] w-full mt-6' width={150} height={50} />
-                       <Link href={page}> <Button className="md:w-[155px] mt-5 w-full" onClick={()=>changepage()}>Go to payment!</Button></Link>  
+                       <Link href={page}> <Button className="md:w-[155px] mt-5 w-full" onClick={()=>changepage(contract.finalAmount)}>Go to payment!</Button></Link>  
                         </div>
                         <dialog className='modal'id='paymentModal'>
                           <div className='modal-box relative p-6 bg-white rounded-lg shadow-lg max-w-lg w-ful'>
@@ -121,11 +126,11 @@ const amount=45.5*100
         stripe={stripePromise}
         options={{
           mode: "payment",
-          amount: parseFloat(contract.finalAmount) * 100,
+          amount: amount,
           currency: "usd",
         }}
       >
-        <Checkout amount={parseFloat(contract.finalAmount) * 100} />
+        <Checkout amount={amount} />
       </Elements>
       <button
       onClick={() => document.getElementById('paymentModal').close()}

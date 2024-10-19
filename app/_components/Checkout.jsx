@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useStripe, useElements, CardElement, PaymentElement } from '@stripe/react-stripe-js';
+import { useStripe, useElements, PaymentElement } from '@stripe/react-stripe-js';
 
 const Checkout = ({ amount }) => {
     const stripe = useStripe();
@@ -14,11 +14,19 @@ const Checkout = ({ amount }) => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(amount ),
+          body: JSON.stringify({amount: amount*100 }),
         })
           .then((res) => res.json())
-          .then((data) => setClientSecret(data.clientSecret));
-      }, [amount]);
+          .then((data) => {
+            if (data.clientSecret) {
+                setClientSecret(data.clientSecret);
+            } else {
+                throw new Error("Failed to get clientSecret from response");
+            }
+        })
+        .catch((error) => {
+            console.error("Error fetching clientSecret:", error);
+        })}, [amount]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();

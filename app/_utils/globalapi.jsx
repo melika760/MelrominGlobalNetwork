@@ -84,6 +84,19 @@ const getContracts=async(user)=>{
   console.error("Error fetching contracts:", error);
 }
 }
+const UpdateContract=async(user)=>{
+  try{
+    const c=query(collection(db,"contracts"),where('users', 'array-contains', user.uid))
+    const changeData=await getDocs(c);
+    const userDoc = changeData.docs[0];
+    const docRef = doc(db, "contracts", userDoc.id);
+    await updateDoc(docRef, {Status:"Pending"})
+    toast("Your Data changed successfully!");
+} catch (error) {
+  toast("something went wrong please try again!");
+  console.log(error);
+}
+}
 const UpdatingInquieries=async(formData,user)=>{
     try {
         const c = query(collection(db, "ShippingData"), where("userId", "==", user.uid));
@@ -239,5 +252,6 @@ export default{
     fetchQuotes,
     getContracts,
     getUsers,
+    UpdateContract
    
 }

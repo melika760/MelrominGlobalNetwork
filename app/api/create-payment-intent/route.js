@@ -6,10 +6,13 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 export async function POST(request) {
   try {
     const { amount } = await request.json();
+    if (!amount || typeof amount !== 'number' || amount <= 0) {
+        throw new Error('Invalid amount');
+      }
 
     const paymentIntent = await stripe.paymentIntents.create({
       amount: amount,
-      currency: "usd",
+      currency: "GBP",
       automatic_payment_methods: { enabled: true },
     });
 

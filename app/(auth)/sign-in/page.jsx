@@ -94,10 +94,10 @@ const SignIn = () => {
 
     try {
       await signInUser(email, password);
-      toast("Sign in Successfully!");
+      toast.success("Sign in Successfully!");
     } catch (e) {
-      toast("Please try again!");
-      console.error("Error signing in:", e);
+      console.error("Error during sign-up:", e.message);
+      toast.error(`Failed to create account: ${e.message}`);
     }
 
     setLoader(false);
