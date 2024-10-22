@@ -241,6 +241,44 @@ const fetchQuotes = async (userId) => {
     return [];
   }
 };
+const addPayment = async (formData, user) => {
+  try {
+    // Create a query to check if payment data already exists for this user
+    const paymentQuery = query(
+      collection(db, "Payment"),
+      where("userId", "==", user.uid)
+    );
+
+    const querySnapshot = await getDocs(paymentQuery);
+
+    // Check if a document with the same userId exists
+    if (!querySnapshot.empty) {
+      // Payment details already exist
+      const existingPayment = querySnapshot.docs[0].data();
+
+      // Display toast with existing payment details
+      toast(`Your payment details are: 
+        Full Name: ${existingPayment.FullName},
+        Sort Code: ${existingPayment.SortCode}, 
+        Account Number: ${existingPayment.AccountNumber}.
+        If you want to change, please contact us.`);
+    } else {
+      // If no payment details exist, add the new payment document
+      await addDoc(collection(db, "Payment"), {
+        FullName: formData.enteredName,
+        SortCode: formData.enteredSort,
+        AccountNumber: formData.enteredAccount,
+        userId: user.uid,
+      });
+
+      // Notify user that payment details were added
+      toast.success("Payment details added successfully.");
+    }
+  } catch (error) {
+    console.error("Error adding or checking payment:", error);
+    toast.error("An error occurred while processing payment.");
+  }
+};
 export default{
     addData,
     getDatas,
@@ -252,6 +290,7 @@ export default{
     fetchQuotes,
     getContracts,
     getUsers,
-    UpdateContract
+    UpdateContract,
+    addPayment
    
 }

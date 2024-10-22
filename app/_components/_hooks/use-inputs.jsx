@@ -10,12 +10,16 @@ SetenteredValue(event.target.value)
 function Blurhandler(){
     setIstouched(true);
 }
+function reset(){
+    SetenteredValue("")
+    setIstouched(false)
+}
 return({
 value:enteredValue,
 ValueIsvalid,
 hasError,
 Changehandler,
-Blurhandler
+Blurhandler,reset
 })
 }
 export default useInputs;
