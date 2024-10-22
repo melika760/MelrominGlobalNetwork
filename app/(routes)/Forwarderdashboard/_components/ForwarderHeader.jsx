@@ -33,8 +33,8 @@ const ForwarderHeader = () => {
       <Link href={"/Forwarderdashboard/profile"}><DropdownMenuItem>Profile</DropdownMenuItem></Link>
       <Link href={"/Forwarderdashboard/qoutes"}><DropdownMenuItem>Qoutes</DropdownMenuItem></Link>
       <Link href={"/Forwarderdashboard/chat"}><DropdownMenuItem>Chat</DropdownMenuItem></Link>
-      <Link href={"/Forwarderdashboard/contract"}><DropdownMenuItem>Contract</DropdownMenuItem></Link>
-      <Link href={"/Forwarderdashboard/payment"}><DropdownMenuItem>Payment</DropdownMenuItem></Link>
+      <Link href={"/Forwarderdashboard/contract"}><DropdownMenuItem>Contract & Payment</DropdownMenuItem></Link>
+     
       <DropdownMenuItem onClick={logout}>Log out</DropdownMenuItem>
     </DropdownMenuContent>
   </DropdownMenu>
