@@ -28,16 +28,11 @@ const SideNavbar = () => {
         },
         {
             id:4,
-            name:"Contract",
+            name:"Contract & Payment",
             path:"/dashboard/contract",
             icon:ScrollText
-        },
-        {
-            id:5,
-            name:"Payment",
-            path:"/dashboard/payment",
-            icon:Tags
-        },
+        }
+    
     ]
     const path=usePathname()
     const[activepath,setactivepath]=useState(path)

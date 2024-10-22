@@ -28,16 +28,11 @@ const Navbar = () => {
         },
         {
             id:4,
-            name:"Contract",
+            name:"Contract & Payment",
             path:"/Forwarderdashboard/contract",
             icon:ScrollText
         },
-        {
-            id:5,
-            name:"Payment",
-            path:"/Forwarderdashboard/payment",
-            icon:Tags
-        },
+     
     ]
     const path=usePathname()
     const[activepath,setactivepath]=useState(path)

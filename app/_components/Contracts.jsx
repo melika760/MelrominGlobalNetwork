@@ -109,7 +109,7 @@ toast(`Your Payment Status is:${status}!If you have any problem contact us`)
                         </div>
                         <div className='flex flex-col justify-center'>
                           <Image src={contract.contractImageURL} alt='OfficialContract' className='md:w-[150px] w-full mt-6' width={150} height={50} />
-                      <Button className="md:w-[155px] mt-5 w-full" onClick={()=>changepage(contract.finalAmount,contract.Status)}>Go to payment!</Button>
+                      <Button className="md:w-[155px] mt-5 w-full" onClick={()=>changepage(contract.finalAmount,contract.Status)}>{path==="/Forwarderdashboard"?"Check Payment Status":"Go to Payment!"}</Button>
                         </div>
                         <dialog className='modal'id='paymentModal'>
                           <div className='modal-box relative p-6 bg-white rounded-lg shadow-lg max-w-lg w-ful'>
