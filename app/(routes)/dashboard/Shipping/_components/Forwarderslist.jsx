@@ -46,9 +46,9 @@ const Forwarderslist = ({ selectedCountry, inquiery, transportation }) => {
 
     return (
         <div className="md:p-12 p-4">
-            <h2 className="text-primary font-bold text-xl mb-8">Forwarders List</h2>
+            <h2 className="text-blue-800 font-bold text-xl mb-8">Forwarders List</h2>
             <div className='p-6'>
-                <div className='md:grid-cols-3 md:grid hidden items-center justify-between p-4 border-b bg-gray-200'>
+                <div className='md:grid-cols-4 md:grid hidden items-center justify-between p-4 border-b bg-gray-200'>
                     <h3 className='font-bold'>Forwarder</h3>
                     <h3 className='font-bold'>Country</h3>
                     <h3 className='font-bold'>More</h3>
@@ -56,7 +56,7 @@ const Forwarderslist = ({ selectedCountry, inquiery, transportation }) => {
                 <div>
                     {forwarders.length > 0 ? (
                         forwarders.map((forwarder, index) => (
-                            <div key={index} className='flex flex-col justify-between'>
+                            <div key={index} className='flex flex-col justify-between items-center'>
                                 <div className='md:grid-cols-4 grid grid-cols-1 items-center md:justify-between gap-4 p-4 border-b hover:bg-gray-50 transition-colors duration-300 relative'>
                                     <p className='text-sm sm:text-base text-gray-800'><span className='font-semibold text-sm sm:text-base text-gray-700 md:hidden sm:block'>Forwarders' name:</span>{forwarder.name}</p>
                                     <p className='text-sm sm:text-base text-gray-800'><span className='font-semibold text-sm sm:text-base text-gray-700 md:hidden sm:block'>Country:</span>{forwarder.country}</p>
