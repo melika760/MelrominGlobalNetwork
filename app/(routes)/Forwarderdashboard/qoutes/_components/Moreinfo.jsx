@@ -11,12 +11,9 @@ const Moreinfo = ({ quote, onBack }) => {
   const router = useRouter();
 const[user]=useAuthState(auth)
 const formatTimeAgo = (timestamp) => {
-  if (!timestamp || !timestamp.toDate) {
-    return "No timestamp available";
-  }
-  const date = timestamp.toDate();
-  const momentDate = moment(date);
-  return momentDate.calendar();
+  
+  const momentDate = moment(timestamp);
+  return momentDate.format('LL');;
 };
   const startChat = async () => {
     try {
@@ -68,6 +65,7 @@ const formatTimeAgo = (timestamp) => {
   
   
 const dates=formatTimeAgo(quote.date)
+
   return (
     <div className='md:p-12'>
       <ArrowLeft className='text-primary cursor-pointer' onClick={onBack}/>
