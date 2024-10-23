@@ -17,15 +17,15 @@ const Footer = () => {
       <ul className="mt-6 grid grid-cols-1 lg:grid-cols-3 lg:justify-items-center lg:text-center gap-4 md:gap-8">
 
         <li>
-          <span className='text-lg font-semibold flex text-blue-950'><MailOpen className='mr-2'/>Email:</span>info@melrominglobalnetwork.co.uk
+          <span className='text-lg font-semibold flex text-blue-950 max-sm:text-md'><MailOpen className='mr-2 max-sm:w-4 '/>Email:</span>info@melrominglobalnetwork.co.uk
         </li>
   
         <li>
-        <span className='text-lg font-semibold flex text-blue-950'><PhoneCall className='mr-2'/>Phone Number:</span> 07709875252
+        <span className='text-lg font-semibold flex text-blue-950 max-sm:text-md'><PhoneCall className='mr-2 max-sm:w-4 '/>Phone Number:</span> 07709875252
         </li>
   
         <li>
-         <span className='text-lg font-semibold flex text-blue-950'><MapPin className='mr-2'/>Address:</span> 88 Uxendon Hill,London 
+         <span className='text-lg font-semibold flex text-blue-950 max-sm:text-md'><MapPin className='mr-2 max-sm:w-4 '/>Address:</span> 88 Uxendon Hill,London 
         </li>
   
       </ul>

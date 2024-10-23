@@ -21,7 +21,7 @@ const Hero = () => {
         <p className="mt-4 text-gray-600">
         Melromin Global Network fosters a dynamic environment that connects suppliers and buyers with freight forwarding companies worldwide.
         </p>
-        <Link href={"#start"} className="max-sm:flex max-sm:justify-center"><Button className="mt-10 w-[150] max-sm:w-full">Explore Now!</Button></Link>
+        <Link href={"#start"} className="max-sm:flex max-sm:justify-center"><Button className="mt-10 w-[150] max-sm:w-full text-primary" variant={"secondary"} >Explore Now!</Button></Link>
 
       </div>
     </div>

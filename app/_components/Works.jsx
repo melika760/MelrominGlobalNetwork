@@ -13,12 +13,12 @@ const Works = () => {
       <div className="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-16">
         <div className="relative h-64 overflow-hidden sm:h-80 lg:h-full">
        {/* <Image className=' h-full w-full object-cover rounded-md shadow-md' src="/transportation-1.jpg" alt='transportation' width={500} height={200}/> */}
-       <Image className=' h-full w-full object-cover rounded-md shadow-md' src="/img7.png" alt='transportation' width={500} height={200}/>
+       <Image className=' h-full w-full object-cover rounded-md  shadow-md' src="/img7.png" alt='transportation' width={500} height={200}/>
         </div>
   
-        <div className="lg:py-16">
+        <div className="lg:py-16 max-sm:p-4">
         <h2 className=' font-medium'> World-Class Solutions for <span className="text-blue-800 font-bold">Freight Forwarders</span> and the <span className="text-blue-800 font-bold">Supply Chain</span></h2>
-          <article className="space-y-4 text-gray-700">
+          <article className="space-y-4 text-gray-700 ">
             <p className="leading-8">
             By eliminating third-party forwarders, we reduce freight costs, benefiting both suppliers and buyers. Our platform connects suppliers and buyers who need transportation and logistics services, creating a competitive marketplace for freight forwarding and transportation companies. Companies can showcase their capabilities and service quality to meet the needs of their customers
             </p>
