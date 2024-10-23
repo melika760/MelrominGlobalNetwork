@@ -22,13 +22,8 @@ const MessageInput = ({ sendMessage, message, setMessage,image,setImage,selected
   const[contractimg,setContractImg]=useState(null)
   const[disable,setdisable]=useState(false)
   const router=useRouter()
- const{
-  value:enteredAmount,
-  ValueIsvalid:AmountIsValid,
-  hasError:AmountHasError,
-  Changehandler:AmountChange,
-  Blurhandler:AmountBlur
-  }=useInputs(value=>value.trim()!="")
+  const[enteredAmount,setenteredamount]=useState(null)
+
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
     setFile(selectedFile);
@@ -198,7 +193,7 @@ const MessageInput = ({ sendMessage, message, setMessage,image,setImage,selected
       <div className="modal-box relative p-6 bg-white rounded-lg shadow-lg max-w-lg w-full">
         <h2>Ready for making contract?</h2>
         <form method="dialog" className="space-y-4">
-        <Label htmlFor="TotalAmount">Enter Final Agreed Amount:<Input placeholder="$..." type="text" className="mt-5 mb-5"onChange={AmountChange} onBlur={AmountBlur} value={enteredAmount}/></Label>
+        <Label htmlFor="TotalAmount">Enter Final Agreed Amount:<Input placeholder="100000" type="text" className="mt-5 mb-5"onChange={e=>setenteredamount(e.target.value)}  value={enteredAmount}/></Label>
       <Label htmlFor="DeliveryDate">Select Agreed Delivery Date:
         <Input placeholder="Enter your delivery date MM/DD/YY" className="mt-5 mb-5" value={date} onChange={e=>setDate(e.target.value)}/>
       </Label>
