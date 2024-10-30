@@ -48,17 +48,17 @@ const Hero = () => {
       Melromin Global Network fosters a dynamic environment that connects suppliers and buyers with freight forwarding companies worldwide.
       </p>
 
-      <div className="mt-8 flex flex-wrap gap-4 text-center">
+      <div className="mt-8 flex  gap-4 text-center">
         <a
           href="#start"
-          className="block w-full rounded bg-blue-500 px-12 py-3 text-sm font-medium text-white shadow hover:bg-blue-500 focus:outline-none focus:ring active:bg-rose-500 sm:w-auto"
+          className="block w-full rounded bg-blue-500 px-12 py-3 text-sm font-medium text-white shadow hover:bg-blue-500 focus:outline-none focus:ring active:bg-primary sm:w-auto max-sm:px-3"
         >
           Get Started
         </a>
 
         <a
           href="#work"
-          className="block w-full rounded bg-white px-12 py-3 text-sm font-medium text-primary shadow hover:text-primary focus:outline-none focus:ring active:text-rose-500 sm:w-auto"
+          className="block w-full rounded bg-white px-12 py-3 text-sm font-medium text-primary shadow hover:text-primary focus:outline-none focus:ring active:text-primary sm:w-auto max-sm:px-3"
         >
           Learn More
         </a>
