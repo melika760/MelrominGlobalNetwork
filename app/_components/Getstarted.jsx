@@ -16,7 +16,7 @@ const Getstarted = () => {
     <li className='flex py-2'><LogIn className='mr-2 h-5 w-4 '/> Sign up on our site</li>
     <li className='flex py-2'><ReceiptText className='mr-2 h-5 w-4'/> Fill out the inquiery form</li>
     <li className='flex py-2'><MessageSquareText className='mr-2 h-5 w-5 max-sm:w-6'/>Pick your favorite forwarders and start chatting with them</li>
-    <li className='flex py-2'><ScrollText className='mr-2 h-5 w-5 max-sm:w-6'/>Seal the deal and arrange payment right on our site </li>
+    <li className='flex py-2'><ScrollText className='mr-2 h-5 w-5 max-sm:w-6'/>Seal the deal and arrange payment right here </li>
 </ul>
 <p className='font-bold text-lg text-black'>Bingo! We guarantee your shipment will arrive on time.</p>
     </div>
