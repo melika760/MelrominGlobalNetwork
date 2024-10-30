@@ -11,8 +11,9 @@ export default function Home() {
    <div>
     <Header/>
     <Hero/>
-    <Aboutus/>
     <Works/>
+    <Aboutus/>
+   
     <Getstarted/>
    
     <Footer/>
