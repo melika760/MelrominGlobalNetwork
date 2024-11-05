@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-import { Handshake, MapPinned, Repeat2, Umbrella, Warehouse } from 'lucide-react'
+import { Handshake, MapPinned, Repeat2, Warehouse } from 'lucide-react'
 const Aboutus = () => {
   return (
     <section id="work">
@@ -22,13 +22,13 @@ const Aboutus = () => {
               How it works?
             </h2>
             <p className="mt-4 text-gray-600">  Melromin offers a user-friendly platform to simplify freight forwarding for suppliers and forwarders such as:</p>
-            <ul className="mt-4 text-gray-600 list-none">
+            <ul className="mt-4 text-gray-600 list-none leading-relaxed space-y-4">
 
 
-<li className='flex gap-2'> <Handshake color="#1a6bc1" />enabling efficient connections</li>
-<li className='flex gap-2'><Repeat2 color="#1a6bc1"/>seamless transactions</li>
-<li className='flex gap-2'><MapPinned color="#1a6bc1"/>real-time shipment tracking</li>
-<li className='flex gap-2'><Warehouse color="#1a6bc1" className='w-9' />Access a full range of services like insurance and warehousing, along with data insights to optimize operations.</li>
+<li className='flex gap-2 '> <Handshake color="#1a6bc1"  className='w-9'/>enabling efficient connections</li>
+<li className='flex gap-2 '><Repeat2 color="#1a6bc1" className='w-9'/>seamless transactions</li>
+<li className='flex gap-2 '><MapPinned color="#1a6bc1" className='w-9'/>real-time shipment tracking</li>
+
            </ul>
            <p className="mt-4 text-gray-600">  For suppliers, Melromin reduces costs and expands market reach; for forwarders, it boosts visibility and customer satisfaction.</p>
 
