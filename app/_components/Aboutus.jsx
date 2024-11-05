@@ -8,7 +8,7 @@ const Aboutus = () => {
       <div className="grid grid-cols-1 lg:h-screen lg:grid-cols-2">
         <div className="relative z-10 lg:py-16">
           <div className="relative h-64 sm:h-80 lg:h-full">
-        <Image src="/Networking.png"className='absolute inset-3 h-full w-full object-contain scale-105 max-sm:scale-120 animate-spin ' width={550} height={250}/>
+        <Image src="/Networking.png"className='absolute inset-3 h-full w-full object-contain scale-105 max-sm:scale-120  ' width={550} height={250}/>
           </div>
         </div>
   
