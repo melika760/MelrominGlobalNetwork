@@ -31,7 +31,7 @@ const Hero = () => {
   className="relative bg-[url(/network3.png)] bg-cover bg-center bg-no-repeat  "
 >
   <div
-    className=" absolute inset-0 bg-white/65 sm:bg-transparent sm:from-white/95 sm:to-white/15 ltr:sm:bg-gradient-to-r rtl:sm:bg-gradient-to-l"
+    className=" absolute inset-0 bg-white/75 sm:bg-transparent sm:from-white/95 sm:to-white/15 ltr:sm:bg-gradient-to-l rtl:sm:bg-gradient-to-r"
   ></div>
 
   <div

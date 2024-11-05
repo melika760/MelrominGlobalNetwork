@@ -37,7 +37,7 @@ const Works = () => {
      
       </div>
       <div className="lg:py-24">
-        <h2 className="text-3xl font-extrabold sm:text-4xl  text-blue-900 "> Who We Are?!</h2>
+        <h2 className="text-3xl font-extrabold sm:text-4xl  text-blue-900 "> Who We Are</h2>
 
         <p className="mt-4 text-gray-600">
 

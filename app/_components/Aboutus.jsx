@@ -19,7 +19,7 @@ const Aboutus = () => {
   
           <div className="p-0 sm:p-16 lg:p-24">
             <h2 className="text-3xl font-extrabold sm:text-4xl  text-blue-900">
-              How it works?
+              How It Works
             </h2>
             <p className="mt-4 text-gray-600">  Melromin offers a user-friendly platform to simplify freight forwarding for suppliers and forwarders such as:</p>
             <ul className="mt-4 text-gray-600 list-none leading-relaxed space-y-4">
