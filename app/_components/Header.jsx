@@ -35,9 +35,9 @@ const Header = () => {
   <Image src="/logo.png" width={150} height={70} className='object-contain mt-5 md:w-[150px] w-[110px]'/>
   </div>
   {user?<div className='flex justify-start space-x-0'><Button variant={"ghost"} onClick={()=>signOut(auth)}>Logout</Button><Link href={path}><UserCircle2 className='mt-2 text-primary'/></Link></div>:<div className='flex justify-between gap-3'>
-  <Link href={"/sign-in"}><Button variant={"ghost"} className="sm:text-sm text-blue-800">Login</Button></Link>
-  <span className='text-blue-800 text-xl'>|</span>
-<Link href="/sign-up"><Button variant={"ghost"} className="sm:text-sm text-blue-800">Signup</Button></Link>
+  <Link href={"/sign-in"}><Button variant={"ghost"} className="sm:text-sm text-primary">Login</Button></Link>
+  <span className='text-primary text-xl'>|</span>
+<Link href="/sign-up"><Button variant={"ghost"} className="sm:text-sm text-primary">Signup</Button></Link>
 
 </div>}
 
