@@ -39,6 +39,18 @@ animation: cubic-bezier(0.165, 0.84, 0.44, 1);
      .animate-Zoom-in-out {
        animation: Zoom-in-out 1s ease-in;
      }
+@keyframes fade-in{
+     from{
+opacity: 0;
+
+     }to{
+opacity: 1;
+     }
+         }
+       
+         .animate-fade-in {
+           animation: fade-in 1s ease-in;
+         }
   }
   
 @layer base {
