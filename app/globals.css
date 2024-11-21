@@ -1,7 +1,31 @@
 @tailwind base;
   @tailwind components;
   @tailwind utilities;
-
+  @layer utilities {
+    @keyframes turnleft{
+     from{
+transform: translateX(-100%);
+     }to{
+transform: translateX(0);
+     }
+    }
+  
+    .animate-turnleft {
+      animation: turnleft 1s ease-in-out;
+    }
+    @keyframes Zoom-in-out{
+  0%,100%{
+    transform: scale(1);
+  }50%{
+    transform: scale(1.3);
+  }
+     }
+   
+     .animate-Zoom-in-out {
+       animation: Zoom-in-out 1s ease-in;
+     }
+  }
+  
 @layer base {
   :root {
     --background: 0 0% 100%;

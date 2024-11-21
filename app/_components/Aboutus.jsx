@@ -1,14 +1,30 @@
-import React from 'react'
+"use client"
+import React, { useEffect } from 'react'
 import Image from 'next/image'
 import { Handshake, MapPinned, Repeat2, Warehouse } from 'lucide-react'
 const Aboutus = () => {
+  useEffect(()=>{
+    const observer=new IntersectionObserver((enteries)=>{
+      enteries.forEach((entry)=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add("animate-Zoom-in-out")
+          observer.unobserve(entry.target)
+        }
+      })
+    },
+    { threshold: 0.1 })
+    const elements = document.querySelectorAll('.scroll-animate');
+    elements.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  },[])
   return (
     <section id="work">
     <div className="mx-auto max-w-screen-2xl px-8 py-16  max-sm:px-6 lg:px-8">
       <div className="grid grid-cols-1 lg:h-screen lg:grid-cols-2">
         <div className="relative z-10 lg:py-16">
           <div className="relative h-64 sm:h-80 lg:h-full">
-        <Image src="/Networking.png"className='absolute inset-3 h-full w-full object-contain scale-105 max-sm:scale-120  ' width={550} height={250}/>
+        <Image 
+        src="/Networking.png"className='scroll-animate absolute inset-3 h-full w-full object-contain scale-105 max-sm:scale-120 animate-Zoom-in-out ' width={550} height={250}/>
           </div>
         </div>
   

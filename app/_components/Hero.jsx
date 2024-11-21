@@ -13,8 +13,8 @@ const Hero = () => {
   <div
     className="relative mx-auto max-w-screen-xl px-4 py-32 sm:px-6 lg:flex lg:h-screen lg:items-center lg:px-8"
   >
-    <div className="max-w-xl  ltr:sm:text-left rtl:sm:text-right ">
-      <h1 className="text-3xl font-extrabold sm:text-5xl  bg-gradient-to-r from-blue-900 via-blue-500 to-purple-500 bg-clip-text text-transparent ">
+    <div className="max-w-xl  animate-turnleft ltr:sm:text-left rtl:sm:text-right ">
+      <h1 className=" text-3xl font-extrabold sm:text-5xl  bg-gradient-to-r from-blue-900 via-blue-500 to-purple-500 bg-clip-text text-transparent ">
       The World’s First Partnership in Logistics and Supply Chain
       
       </h1>
