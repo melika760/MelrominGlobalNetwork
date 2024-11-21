@@ -17,15 +17,15 @@ const Footer = () => {
       <ul className="mt-6 grid grid-cols-1 lg:grid-cols-3 lg:justify-items-center lg:text-center gap-4 md:gap-8">
 
         <li>
-          <span className='text-lg font-semibold flex  max-sm:text-md'><MailOpen className='mr-2 max-sm:w-4 text-primary  '/><strong className=' bg-gradient-to-r from-blue-900  to-blue-500 bg-clip-text text-transparent'>Email:</strong></span>info@melrominglobalnetwork.co.uk
+          <span className='text-lg font-semibold flex  max-sm:text-md '><MailOpen className='mr-2 max-sm:w-4 text-primary animate-custom-bounce '/><strong className=' bg-gradient-to-r from-blue-900  to-blue-500 bg-clip-text text-transparent'>Email:</strong></span>info@melrominglobalnetwork.co.uk
         </li>
   
         <li>
-        <span className='text-lg font-semibold flex  max-sm:text-md'><PhoneCall className='mr-2 max-sm:w-4 text-primary '/><strong className=' bg-gradient-to-r from-blue-900  to-blue-500 bg-clip-text text-transparent'>Phone Number:</strong></span> 07709875252
+        <span className='text-lg font-semibold flex  max-sm:text-md '><PhoneCall className='mr-2 max-sm:w-4 text-primary animate-pulse '/><strong className=' bg-gradient-to-r from-blue-900  to-blue-500 bg-clip-text text-transparent'>Phone Number:</strong></span> 07709875252
         </li>
   
         <li>
-         <span className='text-lg font-semibold flex  max-sm:text-md'><MapPin className='mr-2 max-sm:w-4 text-primary '/><strong className=' bg-gradient-to-r from-blue-900  to-blue-500 bg-clip-text text-transparent'>Address:</strong></span> 88 Uxendon Hill,London 
+         <span className='text-lg font-semibold flex  max-sm:text-md '><MapPin className='mr-2 max-sm:w-4 text-primary animate-custom-bounce'/><strong className=' bg-gradient-to-r from-blue-900  to-blue-500 bg-clip-text text-transparent'>Address:</strong></span> 88 Uxendon Hill,London 
         </li>
   
       </ul>
