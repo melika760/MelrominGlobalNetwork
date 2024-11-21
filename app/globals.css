@@ -5,14 +5,29 @@
     @keyframes turnleft{
      from{
 transform: translateX(-100%);
+animation: cubic-bezier(0.165, 0.84, 0.44, 1);
      }to{
 transform: translateX(0);
+animation: cubic-bezier(0.165, 0.84, 0.44, 1);
      }
     }
   
     .animate-turnleft {
-      animation: turnleft 1s ease-in-out;
+      animation: turnleft 2s ease-in-out;
     }
+    @keyframes turnright{
+      from{
+ transform: translateX(100%);
+ animation: cubic-bezier(0.165, 0.84, 0.44, 1);
+      }to{
+ transform: translateX(0);
+ animation: cubic-bezier(0.165, 0.84, 0.44, 1);
+      }
+     }
+   
+     .animate-turnright {
+       animation: turnright 2s ease-in-out;
+     }
     @keyframes Zoom-in-out{
   0%,100%{
     transform: scale(1);

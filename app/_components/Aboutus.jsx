@@ -1,27 +1,11 @@
-"use client";
-import React, { useEffect } from "react";
+"use client"
+import React from "react";
 import Image from "next/image";
 import { Handshake, MapPinned, Repeat2 } from "lucide-react";
+import useScroll from "./_hooks/use-scroll";
 
 const Aboutus = () => {
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("animate-Zoom-in-out");
-            observer.unobserve(entry.target); // Stop observing once animation is triggered
-          }
-        });
-      },
-      { threshold: 0.1 } // Trigger when 10% of the element is visible
-    );
-
-    const elements = document.querySelectorAll(".scroll-animate");
-    elements.forEach((el) => observer.observe(el));
-
-    return () => observer.disconnect(); // Cleanup observer on unmount
-  }, []);
+  useScroll()
 
   return (
     <section id="work">
@@ -31,7 +15,8 @@ const Aboutus = () => {
             <div className="relative h-64 sm:h-80 lg:h-full">
               <Image
                 src="/Networking.png"
-                className="scroll-animate absolute inset-3 h-full w-full object-contain scale-105 max-sm:scale-120"
+                className=" absolute inset-3 h-full w-full object-contain scale-105 max-sm:scale-120"
+                data-animation="animate-Zoom-in-out"
                 width={550}
                 height={250}
                 alt="Networking"
