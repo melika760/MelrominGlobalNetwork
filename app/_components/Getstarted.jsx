@@ -6,7 +6,7 @@ import useScroll from './_hooks/use-scroll'
 const Getstarted = () => {
   useScroll()
   return (
-    <section className='my-20'id='start'>
+    <section className='my-20 overflow-x-hidden' id='start'>
   <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
     <div className="mx-auto max-w-lg text-center">
       <h2 className="text-3xl font-extrabold sm:text-4xl  bg-gradient-to-r from-blue-900  to-blue-500 bg-clip-text text-transparent " data-animation="animate-fade-in">Get Started</h2>

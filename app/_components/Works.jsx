@@ -5,7 +5,7 @@ import useScroll from './_hooks/use-scroll'
 const Works = () => {
   useScroll()
   return (
-  <section className='mt-20'>
+  <section className='mt-20 overflow-x-hidden'>
   <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-24">
     <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-16">
     <div className="relative overflow-hidden rounded-lg sm:h-80  md:h-full  " data-animation="animate-turnleft">

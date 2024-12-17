@@ -15,7 +15,7 @@ const useScroll = () => {
               }
             });
           },
-          { threshold: 0.15 } 
+          { threshold: 0.3 } 
         );
     
         const elements = document.querySelectorAll("[data-animation]");
