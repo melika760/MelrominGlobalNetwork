@@ -28,7 +28,7 @@ const Aboutus = () => {
             <span className="hidden lg:absolute lg:inset-y-0 lg:-start-16 lg:block lg:w-16 lg:bg-gray-100"></span>
 
             <div className="p-0 sm:p-16 lg:p-24">
-              <h2 className="text-3xl font-extrabold sm:text-4xl bg-gradient-to-r from-[#6930c3]  to-[#b388eb] bg-clip-text text-transparent">
+              <h2 className="text-3xl font-extrabold sm:text-4xl text-gray-800">
                 How It Works
               </h2>
               <p className="mt-4 text-gray-600">
@@ -37,15 +37,15 @@ const Aboutus = () => {
               </p>
               <ul className="mt-4 text-gray-600 list-none leading-relaxed space-y-4">
                 <li className="flex gap-2">
-                  <Handshake color="#1a6bc1" className="w-9" />
+                  <Handshake color=" #6930c3" className="w-9" />
                   enabling efficient connections
                 </li>
                 <li className="flex gap-2">
-                  <Repeat2 color="#1a6bc1" className="w-9" />
+                  <Repeat2 color=" #6930c3" className="w-9" />
                   seamless transactions
                 </li>
                 <li className="flex gap-2">
-                  <MapPinned color="#1a6bc1" className="w-9" />
+                  <MapPinned color=" #6930c3" className="w-9" />
                   real-time shipment tracking
                 </li>
               </ul>
