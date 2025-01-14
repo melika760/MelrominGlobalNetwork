@@ -15,7 +15,7 @@ const Works = () => {
      
       </div>
       <div className="lg:py-24" data-animation="animate-turnright">
-        <h2 className="text-3xl font-extrabold sm:text-4xl  bg-gradient-to-r from-blue-900  to-blue-500 bg-clip-text text-transparent  "> Who We Are</h2>
+        <h2 className="text-3xl font-extrabold sm:text-4xl  bg-gradient-to-r from-[#6930c3]  to-[#b388eb] bg-clip-text text-transparent  "> Who We Are</h2>
 
         <p className="mt-4 text-gray-600">
 

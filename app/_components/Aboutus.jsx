@@ -28,7 +28,7 @@ const Aboutus = () => {
             <span className="hidden lg:absolute lg:inset-y-0 lg:-start-16 lg:block lg:w-16 lg:bg-gray-100"></span>
 
             <div className="p-0 sm:p-16 lg:p-24">
-              <h2 className="text-3xl font-extrabold sm:text-4xl bg-gradient-to-r from-blue-900 to-blue-500 bg-clip-text text-transparent">
+              <h2 className="text-3xl font-extrabold sm:text-4xl bg-gradient-to-r from-[#6930c3]  to-[#b388eb] bg-clip-text text-transparent">
                 How It Works
               </h2>
               <p className="mt-4 text-gray-600">
