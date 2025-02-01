@@ -16,7 +16,7 @@ Melromin Global Network is a cutting-edge digital platform designed to streamlin
 - **Payments:** Stripe API
 - **State Management:** Redux Toolkit
 - **Real-Time Communication:** Firebase Firestore (onSnapshot)
-- **Hosting & Deployment:** Vercel, Firebase Hosting
+- **Hosting & Deployment:** Netlify
 
 ## 📦 Installation & Setup
 To run the project locally:
