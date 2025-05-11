@@ -15,7 +15,7 @@ const Works = () => {
      
       </div>
       <div className="lg:py-24" data-animation="animate-turnright">
-        <h2 className="text-3xl font-extrabold sm:text-4xl  text-gray-800  "> Who We Are</h2>
+        <h2 className="text-3xl font-extrabold sm:text-4xl  text-gray-800 "> Who We Are</h2>
 
         <p className="mt-4 text-gray-800">
         As a global, non-exclusive network, Melromin is independently managed to serve the interests of all its members. We are committed to continuously enhancing our platform by introducing innovative, high-value benefits to our membership. Every Melromin member is automatically protected by the most comprehensive financial security program in the industry on all transportation service contracts. This ensures that your business dealings within our network are conducted with absolute confidence and peace of mind.
