@@ -25,7 +25,7 @@ const NewWork = () => {
                     <div className='mt-6'> <h2 className=' font-bold mb-4 text-[#6930c3]'>Suppliers:</h2>
           {Forwarders.map((item)=>(
             <ul className='mt-5 flex flex-col space-y-8'>
-                <li className='flex gap-2'><span><item.icon size={28} strokeWidth={1.5} />
+                <li className='flex gap-2 text-gray-800'><span><item.icon size={28} strokeWidth={1.5} />
           
                 </span>{item.title} </li>
             </ul>
@@ -33,7 +33,7 @@ const NewWork = () => {
                <div className='mt-6'> <h2 className='text-[#6930c3] font-bold'>Forwarders:</h2>
           {Forwarders.map((item)=>(
             <ul className='mt-5 flex flex-col space-y-8'>
-                <li className='flex gap-2'><span><item.icon size={28} strokeWidth={1.5} />
+                <li className='flex gap-2 text-gray-800'><span><item.icon size={28} strokeWidth={1.5} />
           
                 </span>{item.title} </li>
             </ul>
