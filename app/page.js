@@ -5,6 +5,7 @@ import Aboutus from "./_components/Aboutus";
 import Getstarted from "./_components/Getstarted";
 import Footer from "./_components/Footer";
 import Works from "./_components/Works";
+import NewWork from "./_components/NewWork";
 
 export default function Home() {
   return (
@@ -12,8 +13,8 @@ export default function Home() {
     <Header/>
     <Hero/>
     <Works/>
-    <Aboutus/>
-   
+    {/* <Aboutus/> */}
+   <NewWork/>
     <Getstarted/>
    
     <Footer/>
