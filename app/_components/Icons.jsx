@@ -4,7 +4,7 @@ import React from 'react'
 const Icons = () => {
     const Items=[
         {
-            Tiltle:'Global Reach',
+            Tiltle:'Worldwide Network',
             Icon:Globe
         },
         {
