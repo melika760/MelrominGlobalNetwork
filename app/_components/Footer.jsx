@@ -25,7 +25,7 @@ const Footer = () => {
         </li>
   
         <li>
-         <span className='text-lg font-semibold flex  max-sm:text-md '><MapPin className='mr-2 max-sm:w-4 text-[#6930c3] animate-custom-bounce'/><strong className=' bg-gradient-to-r from-[#6930c3]  to-[#b388eb] bg-clip-text text-transparent'>Address:</strong></span> 88 Uxendon Hill,London 
+         <span className='text-lg font-semibold flex  max-sm:text-md '><MapPin className='mr-2 max-sm:w-4 text-[#6930c3] animate-custom-bounce'/><strong className=' bg-gradient-to-r from-[#6930c3]  to-[#b388eb] bg-clip-text text-transparent'>Address:</strong></span> London,UK
         </li>
   
       </ul>
