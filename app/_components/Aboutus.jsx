@@ -31,11 +31,11 @@ const Aboutus = () => {
               <h2 className="text-3xl font-extrabold sm:text-4xl text-gray-800">
                 How It Works
               </h2>
-              <p className="mt-4 text-gray-600">
+              <p className="mt-4 text-gray-800">
                 Melromin offers a user-friendly platform to simplify freight
                 forwarding for suppliers and forwarders such as:
               </p>
-              <ul className="mt-4 text-gray-600 list-none leading-relaxed space-y-4">
+              <ul className="mt-4 text-gray-800 list-none leading-relaxed space-y-4 text-bold">
                 <li className="flex gap-2">
                   <Handshake color=" #6930c3" className="w-9" />
                   enabling efficient connections
@@ -49,7 +49,7 @@ const Aboutus = () => {
                   real-time shipment tracking
                 </li>
               </ul>
-              <p className="mt-4 text-gray-600">
+              <p className="mt-4 text-gray-800">
                 For suppliers, Melromin reduces costs and expands market reach;
                 for forwarders, it boosts visibility and customer satisfaction.
               </p>

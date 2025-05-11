@@ -9,7 +9,7 @@ const Footer = () => {
       <Image src="/logo2.png" width={180} height={80} alt='LOGO'/>
       </div>
   
-      <p className="mt-4 text-center text-sm text-gray-500">
+      <p className="mt-4 text-center text-sm text-gray-800">
         Copyright &copy; 2024. All rights reserved.
       </p>
       <h2 className='font-bold lg:text-center text-lg mt-12'>Contact Us</h2>
