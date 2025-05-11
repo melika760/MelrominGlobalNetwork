@@ -2,6 +2,7 @@
 import React from 'react'
 import Image from 'next/image'
 import useScroll from './_hooks/use-scroll'
+import Icons from './Icons'
 const Works = () => {
   useScroll()
   return (
@@ -20,7 +21,7 @@ const Works = () => {
         <p className="mt-4 text-gray-800">
         As a global, non-exclusive network, Melromin is independently managed to serve the interests of all its members. We are committed to continuously enhancing our platform by introducing innovative, high-value benefits to our membership. Every Melromin member is automatically protected by the most comprehensive financial security program in the industry on all transportation service contracts. This ensures that your business dealings within our network are conducted with absolute confidence and peace of mind.
         </p>
-       
+       {/* <Icons /> */}
       </div>
    
     </div>
