@@ -12,20 +12,20 @@ const Footer = () => {
       <p className="mt-4 text-center text-sm text-gray-800">
         Copyright &copy; 2024. All rights reserved.
       </p>
-      <h2 className='font-bold lg:text-center text-lg mt-12'>Contact Us</h2>
+
   
       <ul className="mt-6 grid grid-cols-1 lg:grid-cols-3 lg:justify-items-center lg:text-center gap-4 md:gap-8">
 
         <li>
-          <span className='text-lg font-semibold flex  max-sm:text-md '><MailOpen className='mr-2 max-sm:w-4 text-[#6930c3] animate-custom-bounce '/><strong className=' bg-gradient-to-r from-[#6930c3]  to-[#b388eb] bg-clip-text text-transparent'>Email:</strong></span>rostam@melromin.co.uk
+          <span className='text-lg font-semibold flex  max-sm:text-md '><MailOpen className='mr-2 max-sm:w-4 text-[#6930c3] animate-custom-bounce '/><strong className='text-gray-800'>Email:</strong></span>rostam@melromin.co.uk
         </li>
   
         <li>
-        <span className='text-lg font-semibold flex  max-sm:text-md '><PhoneCall className='mr-2 max-sm:w-4 text-[#6930c3] animate-pulse '/><strong className=' bg-gradient-to-r from-[#6930c3]  to-[#b388eb] bg-clip-text text-transparent'>Phone Number:</strong></span> 07709875252
+        <span className='text-lg font-semibold flex  max-sm:text-md '><PhoneCall className='mr-2 max-sm:w-4 text-[#6930c3] animate-pulse '/><strong className='text-gray-800'>Phone Number:</strong></span> 07709875252
         </li>
   
         <li>
-         <span className='text-lg font-semibold flex  max-sm:text-md '><MapPin className='mr-2 max-sm:w-4 text-[#6930c3] animate-custom-bounce'/><strong className=' bg-gradient-to-r from-[#6930c3]  to-[#b388eb] bg-clip-text text-transparent'>Address:</strong></span> London,UK
+         <span className='text-lg font-semibold flex  max-sm:text-md '><MapPin className='mr-2 max-sm:w-4 text-[#6930c3] animate-custom-bounce'/><strong className='text-gray-800'>Address:</strong></span> London,UK
         </li>
   
       </ul>

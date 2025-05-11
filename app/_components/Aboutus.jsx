@@ -35,7 +35,7 @@ const Aboutus = () => {
                 Melromin offers a user-friendly platform to simplify freight
                 forwarding for suppliers and forwarders such as:
               </p>
-              <ul className="mt-4 text-gray-800 list-none leading-relaxed space-y-4 text-bold">
+              <ul className="mt-4 text-gray-800 list-none leading-relaxed space-y-4 font-bold">
                 <li className="flex gap-2">
                   <Handshake color=" #6930c3" className="w-9" />
                   enabling efficient connections
