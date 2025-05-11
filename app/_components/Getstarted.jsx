@@ -15,20 +15,20 @@ const Getstarted = () => {
     <div className="mt-8 grid lg:grid-cols-2 grid-cols-1 lg:gap-20 gap-10">
     <div className='border shadow-lg bg-gray-100 md:py-20 py-10 md:px-20 px-5 rounded-md'>
 <h2 className='font-bold text-lg'>Suppliers:</h2>
-<ul className='my-7'>
-    <li className='flex py-2 space-x-6 '><LogIn className='mr-2 h-5 w-4 '/> Sign up on our site</li>
-    <li className='flex py-2 space-x-6 '><ReceiptText className='mr-2 h-5 w-4'/> Fill out the inquiry form</li>
-    <li className='flex py-2 space-x-6 '><MessageSquareText className='mr-2 h-5 w-5 max-sm:w-6'/>Select your favorite forwarders and start chatting.</li>
-    <li className='flex py-2 space-x-6 '><ScrollText className='mr-2 h-5 w-4 max-sm:w-5'/>Seal the deal and arrange payment right here </li>
+<ul className='my-7 flex flex-col gap-3'>
+    <li className='flex gap-3'><LogIn  size={18}/> Sign up on our site</li>
+    <li className='flex gap-3'><ReceiptText size={18}/> Fill out the inquiry form</li>
+    <li className='flex gap-3'><MessageSquareText  size={18}/>Select your favorite forwarders and start chatting.</li>
+    <li className='flex gap-3'><ScrollText  size={18}/>Seal the deal and arrange payment right here </li>
 </ul>
 <p className='font-bold text-lg text-black'>Bingo! We guarantee your shipment will arrive on time.</p>
     </div>
     <div className='border shadow-lg bg-gray-100 md:py-20 py-10 md:px-20 px-5 rounded-md'>
 <h2 className='font-bold text-lg'>Forwarders:</h2>
-<ul className='my-7'>
-    <li className='flex py-2'><LogIn className='mr-2 h-5 w-4'/> Sign up on our site</li>
-    <li className='flex py-2'><MessageSquareText className='mr-2 h-5 w-5 max-sm:w-6'/>Get quotes from suppliers and start chatting with them</li>
-    <li className='flex py-2'><ScrollText className='mr-2 h-5 w-4 max-sm:w-5'/>Seal the deal and arrange payment right here </li>
+<ul className='my-7 flex flex-col gap-3'>
+    <li className='flex gap-3'><LogIn size={18}/> Sign up on our site</li>
+    <li className='flex gap-3'><MessageSquareText size={18}/>Get quotes from suppliers and start chatting with them</li>
+    <li className='flex gap-3'><ScrollText size={18}/>Seal the deal and arrange payment right here </li>
 </ul>
 <p className='font-bold text-lg text-black'>Bingo! We guarantee you'll get paid on time.</p>
     </div>
