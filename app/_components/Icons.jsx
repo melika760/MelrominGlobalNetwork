@@ -23,7 +23,7 @@ const Icons = () => {
         <item.Icon size={32} color="#ffff" strokeWidth={1.5} />
         
         </div>
-        <h2 className='text-gray-800 font-bold'>{item.Tiltle}</h2>
+        <h2 className='text-gray-800 font-bold sm:text-sm'>{item.Tiltle}</h2>
       </div>))}
       
     </div>
