@@ -4,7 +4,7 @@ import React from 'react'
 const Hero = () => {
   return (
 <section
-  className="relative bg-[url(/heros.jpg)] bg-cover bg-center bg-no-repeat  "
+  className="relative bg-[url(/heros.jpg)] bg-cover bg-center bg-no-repeat "
 >
   <div
     className=" absolute inset-0 bg-black/70 sm,xl:bg-transparent sm,xl:from-black/95 sm,xl:to-black/10 ltr:sm,xl:bg-gradient-to-l rtl:sm,xl:bg-gradient-to-r"
