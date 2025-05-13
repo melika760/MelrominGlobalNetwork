@@ -29,7 +29,7 @@ const Hero = () => {
         <Link
           href="#start"
         >
-      <button  className="bg-primary hover:bg-white hover:text-primary border-primary border-2 text-white  py-3 px-12 rounded-md transition-colors duration-300 text-md">
+      <button  className="bg-primary hover:bg-white hover:text-primary border-primary border-2 text-white  py-3 px-12 rounded-md transition-colors duration-300 text-md max-sm:px-6">
 Get Started
    </button>
         </Link>
@@ -37,7 +37,7 @@ Get Started
         <Link
           href="/About"
         >
-            <button  className="bg-white hover:bg-primary hover:text-white border-primary border-2 text-primary  py-3 px-12 rounded-md transition-colors duration-300 text-md">
+            <button  className="bg-white hover:bg-primary hover:text-white border-primary border-2 text-primary  py-3 px-12 rounded-md transition-colors duration-300 text-md max-sm:px-6">
 Learn more
    </button>
         </Link>

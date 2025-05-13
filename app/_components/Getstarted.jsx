@@ -95,7 +95,7 @@ router.push('/sign-up')
               </li>
             </ul>
              <br/>
-            <br/>
+            <br className="max-sm:hidden"/>
             <p className="font-bold text-gray-900 mt-6">
               Bingo! We guarantee you'll get paid on time.
             </p>
