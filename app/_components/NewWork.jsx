@@ -13,7 +13,7 @@ const NewWork = () => {
                 How It Works
               </h2>
 
-          <p className="mt-4 text-gray-800">
+          <p className="my-8 text-gray-800">
          The complexities of freight forwarding can hinder both efficient shipping for suppliers and optimized logistics for forwarders. Melromin offers a user-friendly platform that simplifies these processes by fostering seamless connections and providing the necessary tools for smoother operations. Discover how our tailored features empower both suppliers and forwarders, leading to greater efficiency and control.
                    </p>
 <div className='mt-5'>
