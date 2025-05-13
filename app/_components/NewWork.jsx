@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
@@ -6,7 +7,14 @@ const NewWork = () => {
         return (
     <section className='my-[12rem]'>
   <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 lg:px-8">
-    <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:items-center md:gap-8">
+    <div className="grid grid-cols-1 gap-4 md:grid-cols-2  md:items-center md:gap-8">
+   <div className='hidden max-sm:block'>
+        <img
+          src="/connect.jpg"
+          className="rounded-md  "
+          alt=""
+        />
+      </div>
       <div>
         <div className="max-w-lg md:max-w-none">
         <h2 className="text-3xl font-extrabold sm:text-4xl text-gray-800">
@@ -27,10 +35,10 @@ const NewWork = () => {
         </div>
       </div>
 
-      <div>
+      <div className='max-sm:hidden'>
         <img
           src="/connect.jpg"
-          className="rounded-md"
+          className="rounded-md  "
           alt=""
         />
       </div>
