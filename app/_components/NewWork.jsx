@@ -21,24 +21,7 @@ const NewWork = () => {
           <p className="mt-4 text-gray-800">
          The complexities of freight forwarding can hinder both efficient shipping for suppliers and optimized logistics for forwarders. Melromin offers a user-friendly platform that simplifies these processes by fostering seamless connections and providing the necessary tools for smoother operations. Discover how our tailored features empower both suppliers and forwarders, leading to greater efficiency and control.
                    </p>
-                   {/* <div className='grid grid-cols-1 gap-4'>
-                    <div className='mt-6'> <h2 className=' font-bold mb-4 text-[#6930c3]'>Suppliers:</h2>
-          {Forwarders.map((item)=>(
-            <ul className='mt-5 flex flex-col space-y-8'>
-                <li className='flex gap-2 text-gray-800'><span><item.icon size={28} strokeWidth={1.5} />
-          
-                </span>{item.title} </li>
-            </ul>
-          ))}</div>
-               <div className='mt-6'> <h2 className='text-[#6930c3] font-bold'>Forwarders:</h2>
-          {Forwarders.map((item)=>(
-            <ul className='mt-5 flex flex-col space-y-8'>
-                <li className='flex gap-2 text-gray-800'><span><item.icon size={28} strokeWidth={1.5} />
-          
-                </span>{item.title} </li>
-            </ul>
-          ))}</div>
-                   </div> */}
+
   <div className="space-y-4 mt-5">
   <details className="group [&_summary::-webkit-details-marker]:hidden" open>
     <summary
