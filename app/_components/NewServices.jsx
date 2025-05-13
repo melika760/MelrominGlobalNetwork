@@ -12,15 +12,37 @@ const NewServices = () => {
  return (
         <div className="pt-9 bg-gray-50 ">
             {/* Header */}
-            <header className="text-center py-20 bg-gradient-to-r from-purple-400 to-purple-900 text-white">
-                <h1 className="text-4xl font-extrabold mb-4">
-                    How Our Platform Benefits Suppliers and Forwarders
-                </h1>
-                <p className="text-lg max-w-2xl mx-auto">
-                    Discover how our platform connects suppliers and forwarders for more efficient logistics, lower costs,
+             <section
+        className="relative h-[600px] bg-center bg-cover bg-[url(/heros.jpg)]"
+        
+      >
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-black/90" />
+        {/* Content */}
+        <div className="relative z-10 max-w-3xl mx-auto px-4 flex flex-col items-center justify-center h-full text-center">
+          <h1 className="text-5xl sm:text-6xl font-extrabold text-white mb-4">
+              How Our Platform Benefits Suppliers and Forwarders
+          </h1>
+          <p className="text-lg sm:text-2xl text-gray-200 max-w-2xl mb-8">
+           Discover how our platform connects suppliers and forwarders for more efficient logistics, lower costs,
                     and expanded business opportunities.
-                </p>
-            </header>
+          </p>
+       
+        </div>
+        {/* Decorative Bottom Curve */}
+        <svg
+          className="absolute bottom-0 left-0 w-full text-white "
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1440 280"
+        >
+          <path
+            fill="currentColor"
+            d="M0,224L48,213.3C96,203,192,181,288,165.3C384,149,480,139,576,154.7C672,171,768,213,864,218.7C960,224,1056,192,1152,181.3C1248,171,1344,181,1392,186.7L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
+          />
+        </svg>
+      </section>
+
+
 
             {/* For Suppliers */}
             <section className="bg-white py-20">

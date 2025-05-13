@@ -9,13 +9,14 @@ import { auth } from '@/config/firebaseConfig'; // Firebase config
 import { signOut } from 'firebase/auth'; // Firebase sign-out function
 import { UserCircle2, Menu, X } from 'lucide-react'; // Import Lucide icons
 import globalapi from '../_utils/globalapi'; // Check if this works client-side
-import { useRouter } from 'next/navigation'; // Keep next/router
-
+import { usePathname, useRouter } from 'next/navigation'; // Keep next/router
 const Header = () => {
     const [user] = useAuthState(auth);
     const [path, setPath] = useState("");
     const [isMenuOpen, setIsMenuOpen] = useState(false); // State for mobile menu toggle
     const router = useRouter(); // Initialize the router
+    const [active,setactive]=useState("/")
+    const route=usePathname()
 
     useEffect(() => {
         if (user) {
@@ -31,7 +32,14 @@ const Header = () => {
             });
         }
     }, [user]);
+    useEffect(()=>{
+        navLinkStyle()
+    },[route])
 
+const navLinkStyle=()=>{
+    setactive(route)
+    console.log(route)
+}
     const handleLogout = () => {
         signOut(auth).then(() => {
             router.push('/'); // Redirect after logout
@@ -59,10 +67,10 @@ const Header = () => {
                     /></Link> 
                     {/* Desktop Navigation Links */}
                     <nav className="hidden md:flex space-x-12 text-sm font-medium">
-                        <Link href="/About" className="text-gray-700 hover:text-primary">
+                        <Link href="/About" className={active==="/About"?"text-primary":"text-gray-800"}>
                             About
                         </Link>
-                        <Link href="/Services" className="text-gray-700 hover:text-primary">
+                        <Link href="/Services" className={active==="/Services"?"text-primary":"text-gray-800"}>
                             Services
                         </Link>
                     </nav>
