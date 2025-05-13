@@ -49,13 +49,14 @@ const Header = () => {
             <div className=" py-2 flex items-center justify-between">
                 {/* Logo */}
                 <div className="flex items-center space-x-12">
-                    <Image
+                  <Link href={'/'}>
+                   <Image
                         src="/logo.png"
                         width={90}
                         height={70}
                         className="object-contain mt-3"
                         alt="Logo"
-                    />
+                    /></Link> 
                     {/* Desktop Navigation Links */}
                     <nav className="hidden md:flex space-x-12 text-sm font-medium">
                         <Link href="/About" className="text-gray-700 hover:text-primary">
