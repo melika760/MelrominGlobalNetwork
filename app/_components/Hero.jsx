@@ -33,7 +33,7 @@ const Hero = () => {
         </a>
 
         <a
-          href="#work"
+          href="/About"
           className="block w-full rounded shadow-xl bg-white px-12 py-3 text-sm font-medium text-[#6930c3]  hover:text-white hover:bg-[#6930c3]  transition-colors duration-300 text-md focus:outline-none focus:ring active:text-primary sm:w-auto max-sm:px-3"
         >
           Learn More
