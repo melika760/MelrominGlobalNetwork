@@ -116,9 +116,11 @@ const navLinkStyle=()=>{
                             About Us
                         </Link>
                         <Link href="/Services" className="text-gray-700 hover:text-[hsl(261,59%,48%)]" onClick={toggleMenu}>
-                            Works
+                            Services
                         </Link>
-                     
+                       <Link href="/sign-up" className="text-gray-700 hover:text-[hsl(261,59%,48%)]" onClick={toggleMenu}>
+                            Login
+                        </Link>
                     </div>
                 </div>
             )}
