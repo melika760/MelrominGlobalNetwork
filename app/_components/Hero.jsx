@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import React from 'react'
-
+import { Button } from '@/components/ui/button';
 
 const Hero = () => {
   return (
@@ -29,17 +29,17 @@ const Hero = () => {
         <Link
           href="#start"
         >
-      <button  className="bg-primary hover:bg-white hover:text-primary border-primary border-2 text-white  py-3 px-12 rounded-md transition-colors duration-300 text-md max-sm:px-6">
+      <Button  className="bg-primary hover:bg-white hover:text-primary  text-white w-[160px]    rounded-md transition-colors duration-300 text-md">
 Get Started
-   </button>
+   </Button>
         </Link>
 
         <Link
           href="/About"
         >
-            <button  className="bg-white hover:bg-primary hover:text-white border-primary border-2 text-primary  py-3 px-12 rounded-md transition-colors duration-300 text-md max-sm:px-6">
+            <Button  className="bg-white hover:bg-primary hover:text-white hover:border-primary hover:border-2 w-[160px]  text-primary    rounded-md transition-colors duration-300 text-md">
 Learn more
-   </button>
+   </Button>
         </Link>
       </div>
     </div>
