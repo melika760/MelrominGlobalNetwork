@@ -15,27 +15,22 @@ const Footer = () => {
         {/* Contact Info */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-lg text-center items-center md:text-left">
           <div className="flex flex-col items-center md:items-start">
-            <div className="flex items-center mb-2">
-              <MailOpen className="mr-2 text-[hsl(261,59%,48%)]" />
+            
               <span className="font-semibold ">Email:</span>
-            </div>
             <span className="text-gray-800  ">rostam@melromin.co.uk</span>
           </div>
 
           <div className="flex flex-col items-center justify-center md:items-start">
-            <div className="flex items-center mb-2">
-              <PhoneCall className="mr-2 text-[hsl(261,59%,48%)]" />
+           
               <span className="font-semibold ">Phone:</span>
-            </div>
             <span className="text-gray-800 ">07709875252</span>
           </div>
 
           <div className="flex flex-col items-center justify-center md:items-start">
-            <div className="flex items-center mb-2">
-              <MapPin className="mr-2 text-[hsl(261,59%,48%)]" />
-              <span className="font-semibold ">Location:</span>
-            </div>
-            <span className="text-gray-800  text-center">London, UK</span>
+             <span className="font-semibold ">Location:</span>
+            
+              <span className="text-gray-800 ">London, UK</span>
+           
           </div>
         </div>
 
