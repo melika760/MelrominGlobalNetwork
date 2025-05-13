@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 
 
@@ -25,19 +26,21 @@ const Hero = () => {
       </p>
 
       <div className="mt-8 flex  gap-4 text-center">
-        <a
+        <Link
           href="#start"
-          className="block w-full rounded shadow-xl bg-primary hover:bg-white hover:text-primary  text-white  py-3 px-12  transition-colors duration-300 text-md focus:outline-none focus:ring active:bg-primary sm:w-auto max-sm:px-3"
         >
-          Get Started
-        </a>
+      <button  className="bg-primary hover:bg-white hover:text-primary border-primary border-2 text-white  py-3 px-12 rounded-md transition-colors duration-300 text-md">
+Get Started
+   </button>
+        </Link>
 
-        <a
+        <Link
           href="/About"
-          className="block w-full rounded shadow-xl bg-white px-12 py-3 text-sm font-medium text-[#6930c3]  hover:text-white hover:bg-[#6930c3]  transition-colors duration-300 text-md focus:outline-none focus:ring active:text-primary sm:w-auto max-sm:px-3"
         >
-          Learn More
-        </a>
+            <button  className="bg-white hover:bg-primary hover:text-white border-primary border-2 text-primary  py-3 px-12 rounded-md transition-colors duration-300 text-md">
+Learn more
+   </button>
+        </Link>
       </div>
     </div>
   </div>

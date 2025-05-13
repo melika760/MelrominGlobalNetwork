@@ -85,7 +85,7 @@ const navLinkStyle=()=>{
                         </Link>
                     </div>
                 ) : (
-                    <div className="flex items-center space-x-4">
+                    <div className="flex items-center space-x-4 max-sm:hidden">
                         <Link href="/sign-in">
                             <Button variant="ghost" className="sm:text-sm text-gray-800">Login</Button>
                         </Link>
