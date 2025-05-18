@@ -17,7 +17,7 @@ export default function AboutPage() {
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-black/90" />
         {/* Content */}
         <div className="relative z-10 max-w-3xl mx-auto px-4 flex flex-col items-center justify-center h-full text-center">
-          <h1 className="text-5xl sm:text-6xl font-extrabold text-white mb-4">
+          <h1 className="text-5xl max-sm:text-4xl font-extrabold text-white mb-4">
             About Melromin Global Network
           </h1>
           <p className="text-lg sm:text-2xl text-gray-200 max-w-2xl mb-8">
