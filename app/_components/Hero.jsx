@@ -13,10 +13,10 @@ const Hero = () => {
   
 
   <div
-    className="relative z-10 items-center mx-auto max-w-screen-xl px-4 py-32 sm:px-6 lg:flex lg:h-screen lg:items-center lg:px-8 h-full"
+    className="relative z-10  mx-auto max-w-screen-xl  max-sm:px-3 flex h-screen items-center px-8 align-middle  "
   >
-    <div className="max-w-xl  ltr:sm:text-left rtl:sm:text-right">
-      <h1 className=" text-3xl font-bold sm:text-5xl  text-white ">
+    <div className="max-w-xl  ltr:sm:text-left rtl:sm:text-right ">
+      <h1 className=" text-5xl font-bold max-sm:text-4xl  text-white ">
       The World’s First Logistics & Supply Chain Partnership
       
       </h1>
