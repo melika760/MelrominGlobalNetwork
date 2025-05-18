@@ -114,7 +114,7 @@ useEffect(()=>{
 
   return (
     <div className='flex items-baseline justify-center my-20 '>
-      <div className='flex flex-col items-center p-10 bg-slate-100 border border-gray-200 rounded-md m-4 shadow-lg'>
+      <div className='flex flex-col items-center p-10 bg-purple-50 border border-purple-100 rounded-md m-4 shadow-lg'>
         <Image src={"/logo2.png"} width={200} height={200} alt='Logo' className='mb-5 object-contain' />
         
         <h2 className='font-bold text-3xl max-md:text-xl'>Create an Account</h2>
@@ -292,7 +292,7 @@ useEffect(()=>{
             {loader ? <LoaderIcon className='animate-spin' /> : "Create An Account"}
           </Button>
           <p>Already have an account?
-            <Link href="/sign-in" className='text-blue-500'>Click here to Sign in</Link>
+            <Link href="/sign-in" className='text-primary'>Click here to Sign in</Link>
           </p>
         </div>
       </div>

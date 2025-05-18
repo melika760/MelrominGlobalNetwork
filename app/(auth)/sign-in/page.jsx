@@ -105,7 +105,7 @@ const SignIn = () => {
 
   return (
     <div className='flex items-baseline justify-center my-20 '>
-      <div className='flex flex-col items-center p-10 bg-slate-100 border border-gray-200 rounded-md m-4 shadow-lg'>
+      <div className='flex flex-col items-center p-10 bg-purple-50 border border-purple-100 rounded-md m-4 shadow-lg'>
         <Image src={"/logo2.png"} width={200} height={200} alt='Logo' />
         
         <h2 className='font-bold text-3xl mb-2'>Login</h2>
@@ -142,7 +142,7 @@ const SignIn = () => {
             {loader ? <LoaderIcon className='animate-spin' /> : "Login"}
           </Button>
           <p>Don't have an account?
-            <Link href="/sign-up" className='text-blue-500'> Click here to create an account</Link>
+            <Link href="/sign-up" className='text-primary'> Click here to create an account</Link>
           </p>
         </div>
       </div>
