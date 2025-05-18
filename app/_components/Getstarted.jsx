@@ -18,7 +18,7 @@ router.push('/sign-up')
     <section className="my-[12rem] max-sm:my-[8rem] overflow-x-hidden" id="start">
       <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="mx-auto max-w-2xl text-center">
+        <div className="mx-auto max-w-2xl text-center max-sm:text-left">
           <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-800">
             Get Started
           </h2>

@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 const Hero = () => {
   return (
 <section
-  className="relative bg-[url(/heros.jpg)] bg-cover bg-center bg-no-repeat "
+  className="relative h-[870px] bg-[url(/heros.jpg)] bg-cover bg-center bg-no-repeat "
 >
   <div
     className=" absolute inset-0 bg-black/70 sm,xl:bg-transparent sm,xl:from-black/95 sm,xl:to-black/10 ltr:sm,xl:bg-gradient-to-l rtl:sm,xl:bg-gradient-to-r"
@@ -13,7 +13,7 @@ const Hero = () => {
   
 
   <div
-    className="relative mx-auto max-w-screen-xl px-4 py-32 sm:px-6 lg:flex lg:h-screen lg:items-center lg:px-8"
+    className="relative z-10 items-center mx-auto max-w-screen-xl px-4 py-32 sm:px-6 lg:flex lg:h-screen lg:items-center lg:px-8 h-full"
   >
     <div className="max-w-xl  ltr:sm:text-left rtl:sm:text-right">
       <h1 className=" text-3xl font-bold sm:text-5xl  text-white ">
