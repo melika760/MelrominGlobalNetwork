@@ -113,7 +113,7 @@ const navLinkStyle=()=>{
                 <div className="md:hidden bg-white shadow-md absolute w-full top-full left-0">
                     <div className="flex flex-col items-center py-4 space-y-4">
                         <Link href="/About" className="text-gray-700 hover:text-[hsl(261,59%,48%)]" onClick={toggleMenu}>
-                            About Us
+                            About
                         </Link>
                         <Link href="/Services" className="text-gray-700 hover:text-[hsl(261,59%,48%)]" onClick={toggleMenu}>
                             Services
