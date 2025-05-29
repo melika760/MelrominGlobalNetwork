@@ -37,25 +37,25 @@ router.push('/sign-up')
             </h3>
             <ul className="space-y-4 text-gray-700 text-base">
               <li className="flex items-start gap-3">
-                <div className="w-8 h-8 flex items-center justify-center bg-purple-100 rounded-full">
+                <div className="p-2  flex items-center justify-center bg-purple-100 rounded-full">
                   <LogIn size={18} className="text-primary" />
                 </div>
                 Sign up on our site
               </li>
               <li className="flex items-start gap-3">
-                <div className="w-8 h-8 flex items-center justify-center bg-purple-100 rounded-full">
+                <div className="p-2  flex items-center justify-center bg-purple-100 rounded-full">
                   <ReceiptText size={18} className="text-primary" />
                 </div>
                 Fill out the inquiry form
               </li>
               <li className="flex items-start gap-3">
-                <div className="w-8 h-8 flex items-center justify-center bg-purple-100 rounded-full">
+                <div className="p-2  flex items-center justify-center bg-purple-100 rounded-full">
                   <MessageSquareText size={18} className="text-primary" />
                 </div>
                 Select your favorite forwarders and start chatting
               </li>
               <li className="flex items-start gap-3">
-                <div className="w-8 h-8 flex items-center justify-center bg-purple-100 rounded-full">
+                <div className="p-2 flex items-center justify-center bg-purple-100 rounded-full">
                   <ScrollText size={18} className="text-primary" />
                 </div>
                 Seal the deal and arrange payment right here
@@ -76,19 +76,19 @@ router.push('/sign-up')
             </h3>
             <ul className="space-y-4 text-gray-700 text-base">
               <li className="flex items-start gap-3">
-                <div className="w-8 h-8 flex items-center justify-center bg-purple-100 rounded-full">
+                <div className="p-2  flex items-center justify-center bg-purple-100 rounded-full">
                   <LogIn size={18} className="text-primary" />
                 </div>
                 Sign up on our site
               </li>
               <li className="flex items-start gap-3">
-                <div className="w-8 h-8 flex items-center justify-center bg-purple-100 rounded-full">
+                <div className="p-2  flex items-center justify-center bg-purple-100 rounded-full">
                   <MessageSquareText size={18} className="text-primary" />
                 </div>
                 Get quotes from suppliers and start chatting
               </li>
               <li className="flex items-start gap-3">
-                <div className="w-8 h-8 flex items-center justify-center bg-purple-100 rounded-full">
+                <div className="p-2  flex items-center justify-center bg-purple-100 rounded-full">
                   <ScrollText size={18} className="text-primary" />
                 </div>
                 Seal the deal and arrange payment right here
