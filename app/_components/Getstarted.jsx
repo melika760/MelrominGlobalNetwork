@@ -64,7 +64,7 @@ router.push('/sign-up')
             <p className="font-bold text-gray-900 mt-6">
               Bingo! We guarantee your shipment will arrive on time.
             </p>
-            <button className="mt-6 w-full bg-primary hover:bg-white hover:text-primary border-primary border-2 text-white  py-3 px-4 rounded-md transition-colors duration-300 text-md">
+            <button className="mt-6 w-full bg-primary hover:bg-white hover:text-primary border-primary border-2 text-white  py-3 px-4 rounded-md transition-colors duration-300 text-md" onClick={start}>
               Start as Supplier
             </button>
           </div>

@@ -158,9 +158,12 @@ export default function AboutPage() {
                 Join Melromin Global Network now and unlock efficient, reliable freight
             solutions worldwide.
                 </p>
-                <button className="bg-white hover:bg-gray-100 text-purple-600 font-bold py-3 px-6 rounded-md transition-colors duration-300 text-lg">
+                <Link href={'/sign-up'}>
+                 <button className="bg-white hover:bg-gray-100 text-purple-600 font-bold py-3 px-6 rounded-md transition-colors duration-300 text-lg">
                     Get Started
                 </button>
+                </Link>
+               
             </section>
     </main>
   );

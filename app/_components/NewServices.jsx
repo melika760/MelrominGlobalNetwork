@@ -122,9 +122,10 @@ const NewServices = () => {
                 <p className="text-lg mb-6">
                     Sign up today to start benefiting from seamless logistics and connect with global partners.
                 </p>
-                <button className="bg-white hover:bg-gray-100 text-purple-600 font-bold py-3 px-6 rounded-md transition-colors duration-300 text-lg">
+                <Link href={'/sign-up'}> <button className="bg-white hover:bg-gray-100 text-purple-600 font-bold py-3 px-6 rounded-md transition-colors duration-300 text-lg">
                     Join Now
-                </button>
+                </button></Link>
+             
             </section>
         </div>
     );
