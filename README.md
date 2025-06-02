@@ -18,31 +18,7 @@ Melromin Global Network is a cutting-edge digital platform designed to streamlin
 - **Real-Time Communication:** Firebase Firestore (onSnapshot)
 - **Hosting & Deployment:** Netlify
 
-## 📦 Installation & Setup
-To run the project locally:
-
-1. **Clone the repository**
-   ```sh
-   git clone https://github.com/melromin/melromin-platform.git
-   cd melromin-platform
-   ```
-
-2. **Install dependencies**
-   ```sh
-   npm install  # or yarn install
-   ```
-
-3. **Set up environment variables** (Create a `.env.local` file and add Firebase and Stripe credentials)
-   ```env
-   NEXT_PUBLIC_FIREBASE_API_KEY=your_api_key
-   NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your_auth_domain
-   NEXT_PUBLIC_FIREBASE_PROJECT_ID=your_project_id
-   NEXT_PUBLIC_STRIPE_PUBLIC_KEY=your_stripe_key
-   ```
-
-4. **Run the development server**
-   ```sh
-   npm run dev  # or yarn dev
+   `
    ```
 
 5. **Open in Browser**
