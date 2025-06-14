@@ -24,7 +24,7 @@ export default function AboutPage() {
             We connect businesses with trusted freight forwarders, crafting seamless global logistics with transparency and reliability.
           </p>
           <Link href="/sign-up" passHref className='mb-7'>
-            <Button size="lg" className="bg-primary hover:bg-primary-dark text-white">
+            <Button  className="bg-primary hover:bg-white hover:text-primary text-white w-full sm:w-[160px] rounded-md transition-colors duration-500 text-md">
               Get Started
             </Button>
           </Link>
@@ -159,7 +159,7 @@ export default function AboutPage() {
             solutions worldwide.
                 </p>
                 <Link href={'/sign-up'}>
-                <Button className="bg-primary hover:bg-white hover:text-primary text-white w-full sm:w-[160px] rounded-md transition-colors duration-500 text-md">
+                <Button className="bg-white hover:bg-gray-100 text-purple-600 font-bold py-3 px-6 rounded-md transition-colors duration-300 text-lg">
                           Get Started
                         </Button>
                 </Link>
